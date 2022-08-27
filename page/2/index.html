@@ -1,0 +1,1074 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Haosicx blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/5adb4644-8346-46e4-9869-51339e86ad81.JPG') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="好记性 不如烂键盘 Keep learning!"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/22/webpack5%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%8A%A0%E8%BD%BD%E9%80%9F%E5%BA%A6/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5代码分离优化项目加载速度">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/22/webpack5%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%8A%A0%E8%BD%BD%E9%80%9F%E5%BA%A6/" target="_self">
+          webpack5代码分离优化项目加载速度
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/22/webpack5%E4%BB%A3%E7%A0%81%E5%88%86%E7%A6%BB%E4%BC%98%E5%8C%96%E9%A1%B9%E7%9B%AE%E5%8A%A0%E8%BD%BD%E9%80%9F%E5%BA%A6/" target="_self">
+        <div>
+          什么是代码分离 代码分离是webpack的特性之一 可以把代码分离到不同的bundle中 bundle就是我们打包分离出来的文件 然后就可以把这些文件按需加载或者并行加载  代码分离的好处 可以用于获取更小的bundle 以及控制资源加载的优先级  如果使用合理 可以极大的影响首屏的加载时间  常用的代码分离方法 第一种叫做配置入口节点– 可以使用entry来配置手动的分离代码– 这种方式有个问题
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-22 16:47" pubdate>
+              2022-05-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/22/webpack5%E4%BD%BF%E7%94%A8souceMap%E5%92%8CwatchMode%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5使用souceMap和watchMode搭建简易开发环境">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/22/webpack5%E4%BD%BF%E7%94%A8souceMap%E5%92%8CwatchMode%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_self">
+          webpack5使用souceMap和watchMode搭建简易开发环境
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/22/webpack5%E4%BD%BF%E7%94%A8souceMap%E5%92%8CwatchMode%E6%90%AD%E5%BB%BA%E7%AE%80%E6%98%93%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" target="_self">
+        <div>
+          引导 上一篇讲解了 webpack的插件 但是之前我们每次更新了代码 都要重新刷新浏览器看到新的效果 – 很多的操作都是要自己手动去做  非常的不方便 我们可以搭建一个开发环境来使开发变得更加轻松  mode(打包选项) 首先看到webpack.config.js里的配置  我们把mode改成development 变成一个开发的模式再进行一个打包   此时观察打包后的bundle.js可以发现把
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-22 16:47" pubdate>
+              2022-05-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/20/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8http-server%E5%90%AF%E7%94%A8%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%9C%8D%E5%8A%A1/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="如何使用http-server启用一个本地的服务">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/20/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8http-server%E5%90%AF%E7%94%A8%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%9C%8D%E5%8A%A1/" target="_self">
+          如何使用http-server启用一个本地的服务
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/20/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8http-server%E5%90%AF%E7%94%A8%E4%B8%80%E4%B8%AA%E6%9C%AC%E5%9C%B0%E7%9A%84%E6%9C%8D%E5%8A%A1/" target="_self">
+        <div>
+          在做一个练习的时候  使用的是index.html文件然后想使用import导入一个其他的js文件调用里面的方法  进行一个本地的查看  但是打开浏览器中显示跨域  &lt;!DOCTYPE html&gt; &lt;html lang&#x3D;&quot;en&quot;&gt; &lt;head&gt;   &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;   &lt;m
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-20 16:41" pubdate>
+              2022-05-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/19/%E8%B7%B3%E8%BF%87git%20commit%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%E7%9A%84%E6%96%B9%E6%B3%95/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5 loader解析器">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/19/%E8%B7%B3%E8%BF%87git%20commit%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%E7%9A%84%E6%96%B9%E6%B3%95/" target="_self">
+          webpack5 loader解析器
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/19/%E8%B7%B3%E8%BF%87git%20commit%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%E7%9A%84%E6%96%B9%E6%B3%95/" target="_self">
+        <div>
+          pre-commit是检查代码的钩子如果报错了 就去文件夹里的.git&#x2F;hook里把pre-commit删除就可以了 注意!!!删除后会自动跳过eslint的代码检查  意思就是不通过检查可以直接push了 不过最好别这么做 小心被开了
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-19 12:24" pubdate>
+              2022-05-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/git%E7%9B%B8%E5%85%B3/" class="category-chain-item">git相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/git/">#git</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/05/19/uView%20indexList%E7%B4%A2%E5%BC%95%E5%88%97%E8%A1%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="uView indexList索引列表遇到的坑">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/05/19/uView%20indexList%E7%B4%A2%E5%BC%95%E5%88%97%E8%A1%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" target="_self">
+          uView indexList索引列表遇到的坑
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/05/19/uView%20indexList%E7%B4%A2%E5%BC%95%E5%88%97%E8%A1%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" target="_self">
+        <div>
+          在使用uView索引列表做通讯录的时候遇到了几个问题先上图片  问题1: 右侧的abcd首字母按钮点击错乱  比如点了f  弹出显示的是a开头的人(应该是f开头的人才对)   通过排查  发现传入这个右侧组件参数的时候  后端并没有返回完整的A-Z  而是有A首字母的数据  才返回了A  没有F首字母的  就没有返回F 导致数据整体A-Z不完整  所以传进入组件后显示就出问题了  所以不管数据有没
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-05-19 12:21" pubdate>
+              2022-05-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/bug/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uniapp/">#uniapp</a>
+            
+              <a href="/tags/uView/">#uView</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/24/%E5%89%8D%E7%AB%AF%E5%A4%A7%E5%B1%8F%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5 loader解析器">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/24/%E5%89%8D%E7%AB%AF%E5%A4%A7%E5%B1%8F%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" target="_self">
+          webpack5 loader解析器
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/04/24/%E5%89%8D%E7%AB%AF%E5%A4%A7%E5%B1%8F%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          在每个路由主文件使用mixin混入drawMixin.js( 代码在下面 ) 前提  每个主文件的最外层  需要写id和ref drawMixin.js   &#x2F;&#x2F; 屏幕适配 mixin 函数  &#x2F;&#x2F; * 默认缩放值 const scale &#x3D; &amp;#123;   width: &amp;#x27;1&amp;#x27;,   height: &amp;#x27;1&amp;#x27;, &amp;#125;  &#x2F;&#x2F; * 设计稿尺寸（px）
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-24 17:14" pubdate>
+              2022-04-24
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/" class="category-chain-item">大屏项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/echarts/">#echarts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/16/css%E8%AE%BE%E7%BD%AE%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%BC%80%E5%A4%B4%E6%88%96%E5%8C%85%E5%90%AB%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E7%9A%84%E7%B1%BB%E5%90%8D%E6%A0%B7%E5%BC%8F/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="css设置以某个字符开头或包含某个字符的类名样式">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/16/css%E8%AE%BE%E7%BD%AE%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%BC%80%E5%A4%B4%E6%88%96%E5%8C%85%E5%90%AB%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E7%9A%84%E7%B1%BB%E5%90%8D%E6%A0%B7%E5%BC%8F/" target="_self">
+          css设置以某个字符开头或包含某个字符的类名样式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/04/16/css%E8%AE%BE%E7%BD%AE%E4%BB%A5%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E5%BC%80%E5%A4%B4%E6%88%96%E5%8C%85%E5%90%AB%E6%9F%90%E4%B8%AA%E5%AD%97%E7%AC%A6%E7%9A%84%E7%B1%BB%E5%90%8D%E6%A0%B7%E5%BC%8F/" target="_self">
+        <div>
+          以icon开头，包含 ‘ icon’的类名[class^&#x3D;&amp;#x27;icon&amp;#x27;],   [class*&#x3D;&amp;#x27; icon&amp;#x27;] &amp;#123;     width: 100px;     height: 100px;     background-color: red;   &amp;#125;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-16 23:30" pubdate>
+              2022-04-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/css/" class="category-chain-item">css</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/css/">#css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/16/vue%E6%8B%96%E6%8B%BD@drop%E4%B8%8D%E7%94%9F%E6%95%88%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue拖拽@drop不生效解决方式">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/16/vue%E6%8B%96%E6%8B%BD@drop%E4%B8%8D%E7%94%9F%E6%95%88%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" target="_self">
+          vue拖拽@drop不生效解决方式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/04/16/vue%E6%8B%96%E6%8B%BD@drop%E4%B8%8D%E7%94%9F%E6%95%88%E8%A7%A3%E5%86%B3%E6%96%B9%E5%BC%8F/" target="_self">
+        <div>
+          想要一个原生可以进行拖拽  可以使用HTML5的一个属性draggable&#x3D;&#39;true&#39; &lt;div class&#x3D;&quot;widget&quot; draggable&#x3D;&amp;#x27;true&amp;#x27;&gt;pie&lt;&#x2F;div&gt;  加上了后这个元素就开启了拖拽 然后在需要放置的元素上注册一个@drop&#x3D;&#39;函数&#39;来接收拖拽的元素但是你会发现元素拖拽上
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-16 14:46" pubdate>
+              2022-04-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/12/el-input-number%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="el-input-number的问题">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/12/el-input-number%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+          el-input-number的问题
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/04/12/el-input-number%E7%9A%84%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          最近在做一个表单  使用到了el-input-number发现了一个小小问题  在此记录一下 以免下次再犯 就是v-model绑定了值后  输入框的默认值会为0– ( 我的默认值是空字符串  但是输入框里显示的是0 ) 后来发现绑定的值不能为空字符串 也不能为null–只能为undefined  这样就不会出现输入框默认值为0了  但是又出现了一个问题  我的必填校验是这样写的 :rules&#x3D;&amp;q
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-12 15:03" pubdate>
+              2022-04-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+              <a href="/tags/elementUI/">#elementUI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/04/03/vue%E5%9C%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%AD%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0hosts%E4%BF%AE%E6%94%B9%E5%9F%9F%E5%90%8D/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue在开发环境中配置本地hosts修改域名">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/04/03/vue%E5%9C%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%AD%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0hosts%E4%BF%AE%E6%94%B9%E5%9F%9F%E5%90%8D/" target="_self">
+          vue在开发环境中配置本地hosts修改域名
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/04/03/vue%E5%9C%A8%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E4%B8%AD%E9%85%8D%E7%BD%AE%E6%9C%AC%E5%9C%B0hosts%E4%BF%AE%E6%94%B9%E5%9F%9F%E5%90%8D/" target="_self">
+        <div>
+          修改hosts文件 打开访达  按住command+shift+g搜索&#x2F;private&#x2F;etc&#x2F;hosts 然后修改hosts文件把你想要的域名设置成localhosts一样的ip 修改完成后终端输入sudo vim &#x2F;etc&#x2F;hosts查看hosts文件设置好了后  可以ping一个这个域名 测试一下通不通如果通的话  项目启动后原本localh
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-04-03 01:20" pubdate>
+              2022-04-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%85%8D%E7%BD%AE/" class="category-chain-item">配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/mac/">#mac</a>
+            
+              <a href="/tags/host/">#host</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

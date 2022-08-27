@@ -18,25 +18,26 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装依赖：postcss-pxtorem 5.1.1 vue2项目 在根目录下新增.postcssrc.js  关键要配置rootValue和propList  text  module.exports &#x3D; &amp;#123;   plugins: [       &amp;#x27;autoprefixer&amp;#x27;,       [&amp;#x27;postcss-pxtorem&amp;#x27;, &amp;#123;">
+    <meta name="description" content="qiankun文档点击跳转首先创建两个项目 qiankun-base  基座 qiankun-vue 子应用  基座基础配置 App.vue 建立一个element-ui的菜单用来跳转  &lt;template&gt;     &lt;div&gt;       &lt;el-menu router mode&#x3D;&amp;#x27;horizontal&amp;#x27;&gt;         &lt;!--">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动端配置postcss-pxtorem">
-<meta property="og:url" content="http://example.com/2019/10/10/hello-world/index.html">
+<meta property="og:title" content="前端微服务qiankun基础使用">
+<meta property="og:url" content="http://example.com/2022/02/20/%E5%89%8D%E7%AB%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1qiankun%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="安装依赖：postcss-pxtorem 5.1.1 vue2项目 在根目录下新增.postcssrc.js  关键要配置rootValue和propList  text  module.exports &#x3D; &amp;#123;   plugins: [       &amp;#x27;autoprefixer&amp;#x27;,       [&amp;#x27;postcss-pxtorem&amp;#x27;, &amp;#123;">
+<meta property="og:description" content="qiankun文档点击跳转首先创建两个项目 qiankun-base  基座 qiankun-vue 子应用  基座基础配置 App.vue 建立一个element-ui的菜单用来跳转  &lt;template&gt;     &lt;div&gt;       &lt;el-menu router mode&#x3D;&amp;#x27;horizontal&amp;#x27;&gt;         &lt;!--">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-10-10T02:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-27T14:55:44.465Z">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/6346f296b73f41529af6fcadb882d450.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5paH55qTenp6eg==,size_20,color_FFFFFF,t_70,g_se,x_16">
+<meta property="article:published_time" content="2022-02-20T10:41:16.000Z">
+<meta property="article:modified_time" content="2022-08-27T15:44:07.098Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="h5">
-<meta property="article:tag" content="css">
+<meta property="article:tag" content="qiankun">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/6346f296b73f41529af6fcadb882d450.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5paH55qTenp6eg==,size_20,color_FFFFFF,t_70,g_se,x_16">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>移动端配置postcss-pxtorem - Hexo</title>
+  <title>前端微服务qiankun基础使用 - Hexo</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -144,62 +145,6 @@
           
           
           
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="iconfont icon-archive-fill"></i>
-                常用网址
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://gitee.com/">
-                    
-                    gitee
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://github.com/">
-                    
-                    github
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://www.csdn.net/">
-                    
-                    CSDN
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://juejin.cn/">
-                    
-                    掘金
-                  </a>
-                
-                  
-                  
-                  
-                  <a class="dropdown-item" target="_blank" rel="noopener" href="https://stackoverflow.com/">
-                    
-                    stackoverflow
-                  </a>
-                
-              </div>
-            </li>
-          
-        
-          
-          
-          
-          
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
@@ -272,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="移动端配置postcss-pxtorem"></span>
+            <span id="subtitle" data-typed-text="前端微服务qiankun基础使用"></span>
           
         </div>
 
@@ -288,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2019-10-10 10:00" pubdate>
-          October 10, 2019 am
+        <time datetime="2022-02-20 18:41" pubdate>
+          February 20, 2022 pm
         </time>
       </span>
     
@@ -301,7 +246,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.8k 字
+          2.8k 字
         
       </span>
     
@@ -313,7 +258,7 @@
         
         
           <!-- compatible with older versions-->
-          15 分钟
+          23 分钟
         
       </span>
     
@@ -359,12 +304,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">移动端配置postcss-pxtorem</h1>
+            <h1 style="display: none">前端微服务qiankun基础使用</h1>
             
               <p class="note note-info">
                 
                   
-                    Last updated on a few seconds ago
+                    Last updated on an hour ago
                   
                 
               </p>
@@ -372,86 +317,137 @@
             
               <div class="markdown-body">
                 
-                <ol>
-<li>安装依赖：postcss-pxtorem 5.1.1</li>
-<li>vue2项目 在根目录下新增.postcssrc.js  关键要配置rootValue和propList</li>
-</ol>
-<span class="label label-primary">text</span>
-
-<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span> = &#123;
-  <span class="hljs-attr">plugins</span>: [
-      <span class="hljs-string">&#x27;autoprefixer&#x27;</span>,
-      [<span class="hljs-string">&#x27;postcss-pxtorem&#x27;</span>, &#123;
-        <span class="hljs-attr">rootValue</span>: <span class="hljs-number">100</span>, <span class="hljs-comment">// 换算基数 12*100</span>
-        <span class="hljs-attr">unitPrecision</span>: <span class="hljs-number">3</span>, 
-        <span class="hljs-attr">propList</span>: [<span class="hljs-string">&#x27;*&#x27;</span>],
-        <span class="hljs-attr">exclude</span>: <span class="hljs-regexp">/(node_module)/</span>, <span class="hljs-comment">// 默认false，，过滤/(node_module)/ 。如果想把前端UI框架内的px也转换成rem，就不要过滤</span>
-        <span class="hljs-attr">mediaQuery</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// （布尔值）允许在媒体查询中转换px。</span>
-        <span class="hljs-attr">minPixelValue</span>: <span class="hljs-number">1</span> <span class="hljs-comment">// 设置要替换的最小像素值</span>
-      &#125;]
-    ]
-&#125;;</code></pre></div>
-<p>3、在移动端的入口文件配置设置根目录font-size的方法 </p>
-<ul>
-<li>rem 适配方法</li>
+                <h1 id="qiankun文档点击跳转"><a href="#qiankun文档点击跳转" class="headerlink" title="qiankun文档点击跳转"></a><a target="_blank" rel="noopener" href="https://qiankun.umijs.org/zh/guide">qiankun文档点击跳转</a></h1><h1 id="首先创建两个项目"><a href="#首先创建两个项目" class="headerlink" title="首先创建两个项目"></a>首先创建两个项目</h1><ul>
+<li>qiankun-base  基座</li>
+<li>qiankun-vue 子应用</li>
 </ul>
-<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 设备判断</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">remSize</span>(<span class="hljs-params">noRest</span>) &#123;
-  <span class="hljs-keyword">let</span> winWidth;
-  <span class="hljs-comment">// 获取窗口宽度</span>
-  <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>) &#123;
-    winWidth = <span class="hljs-variable language_">window</span>.<span class="hljs-property">innerWidth</span>;
-  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> ((<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>) &amp;&amp; (<span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span>)) &#123;
-    winWidth = <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-property">clientWidth</span>;
-  &#125;
-  <span class="hljs-comment">// 通过深入Document内部对body进行检测，获取窗口大小</span>
-  <span class="hljs-keyword">if</span> (
-    <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>
-    &amp;&amp; <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientHeight</span>
-    &amp;&amp; <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span>
-  ) &#123;
-    winWidth = <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">clientWidth</span>;
-  &#125;
-  <span class="hljs-comment">// 修改font-size</span>
-  <span class="hljs-keyword">const</span> fontSize = ((winWidth / <span class="hljs-number">375</span>) * <span class="hljs-number">100</span>).<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">4</span>);
-  <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = <span class="hljs-string">`<span class="hljs-subst">$&#123;fontSize&#125;</span>px`</span>;
+<h1 id="基座基础配置"><a href="#基座基础配置" class="headerlink" title="基座基础配置"></a>基座基础配置</h1><ul>
+<li>App.vue <code>建立一个element-ui的菜单用来跳转</code></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">el-menu</span> <span class="hljs-attr">router</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">&#x27;horizontal&#x27;</span>&gt;</span>
+        <span class="hljs-comment">&lt;!-- 基座中可以放自己的路由 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-menu-item</span> <span class="hljs-attr">index</span>=<span class="hljs-string">&quot;/&quot;</span>&gt;</span>Home<span class="hljs-tag">&lt;/<span class="hljs-name">el-menu-item</span>&gt;</span> 
+         <span class="hljs-comment">&lt;!-- 引用其他子应用 --&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">el-menu-item</span> <span class="hljs-attr">index</span>=<span class="hljs-string">&quot;/vue&quot;</span>&gt;</span>vue应用<span class="hljs-tag">&lt;/<span class="hljs-name">el-menu-item</span>&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">el-menu</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">router-view</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">router-view</span>&gt;</span>
+      <span class="hljs-comment">&lt;!-- 挂载vue应用的地方 --&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;id&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></code></pre></div>
+<blockquote>
+<p>安装qiankun <code>yarn add qiankun</code></p>
+</blockquote>
+<ul>
+<li>main.js中初始化</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">ElementUI</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;element-ui&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;element-ui/lib/theme-chalk/index.css&#x27;</span>;
+<span class="hljs-title class_">Vue</span>.<span class="hljs-title function_">use</span>(<span class="hljs-title class_">ElementUI</span>);
 
-  <span class="hljs-comment">// 适配对font-size额外处理的手机</span>
-  <span class="hljs-keyword">const</span> nowFontSize = <span class="hljs-built_in">parseFloat</span>(<span class="hljs-title function_">getComputedStyle</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>, <span class="hljs-literal">false</span>)[<span class="hljs-string">&#x27;font-size&#x27;</span>]).<span class="hljs-title function_">toFixed</span>(<span class="hljs-number">4</span>);
-  <span class="hljs-keyword">if</span> (noRest !== <span class="hljs-literal">true</span> &amp;&amp; <span class="hljs-string">`<span class="hljs-subst">$&#123;nowFontSize&#125;</span>`</span> !== fontSize) &#123;
-    <span class="hljs-variable language_">document</span>.<span class="hljs-property">documentElement</span>.<span class="hljs-property">style</span>.<span class="hljs-property">fontSize</span> = <span class="hljs-string">`<span class="hljs-subst">$&#123;(fontSize * fontSize) / nowFontSize&#125;</span>px`</span>;
-  &#125;
+<span class="hljs-comment">// 引入qiankun 的注册应用方法 / 启动应用方法</span>
+<span class="hljs-keyword">import</span> &#123; registerMicroApps,start &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;qiankun&#x27;</span>
+<span class="hljs-comment">// 定义一个列表  写入要注册的app</span>
+<span class="hljs-keyword">const</span> apps = [&#123;
+  <span class="hljs-attr">name</span>:<span class="hljs-string">&#x27;vueApp&#x27;</span>, <span class="hljs-comment">//应用的名字</span>
+  <span class="hljs-comment">// 默认会加载这个html 动态执行里面的( http://localhost:8080/js/chunk-vendors.js和app.js )</span>
+  <span class="hljs-attr">entry</span>:<span class="hljs-string">&#x27;//localhost:8081&#x27;</span>, <span class="hljs-comment">//子应用必须支持跨域 fetch</span>
+  <span class="hljs-attr">container</span>:<span class="hljs-string">&#x27;#vue&#x27;</span>, <span class="hljs-comment">//挂载到自身的哪个元素上</span>
+  <span class="hljs-attr">activeRule</span>:<span class="hljs-string">&#x27;/vue&#x27;</span> <span class="hljs-comment">// 访问到/vue的时候  跳转子应用</span>
+&#125;]
+<span class="hljs-comment">// 注册app</span>
+<span class="hljs-title function_">registerMicroApps</span>(apps)
+<span class="hljs-comment">// 开启</span>
+<span class="hljs-title function_">start</span>(&#123;
+  <span class="hljs-attr">prefetch</span>:<span class="hljs-literal">false</span> <span class="hljs-comment">// 取消预加载</span>
+&#125;)
+
+<span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">productionTip</span> = <span class="hljs-literal">false</span>
+
+<span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;
+  router,
+  <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> <span class="hljs-title function_">h</span>(<span class="hljs-title class_">App</span>)
+&#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)</code></pre></div>
+<h1 id="子应用基础配置"><a href="#子应用基础配置" class="headerlink" title="子应用基础配置"></a>子应用基础配置</h1><ul>
+<li>因为在基座的<code>main.js</code>中配置了访问到<code>/vue</code>的时候 就挂载子应用<br>– 所以就要修改子应用路由的根路径 <code>router/index.js</code></li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> router = <span class="hljs-keyword">new</span> <span class="hljs-title class_">VueRouter</span>(&#123;
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">&#x27;history&#x27;</span>,
+  <span class="hljs-comment">// base: process.env.BASE_URL 删除原本的</span>
+  <span class="hljs-attr">base</span>: <span class="hljs-string">&#x27;/vue&#x27;</span>,
+  routes
+&#125;)</code></pre></div>
+<ul>
+<li>然后我们要把子应用打包成一个类库<br>– 在<code>main.js</code>中配置</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Vue</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">App</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./App.vue&#x27;</span>
+<span class="hljs-keyword">import</span> router <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./router&#x27;</span>
+
+<span class="hljs-title class_">Vue</span>.<span class="hljs-property">config</span>.<span class="hljs-property">productionTip</span> = <span class="hljs-literal">false</span>
+
+<span class="hljs-comment">//定义一个变量接收vue的实例</span>
+<span class="hljs-keyword">let</span> instance = <span class="hljs-literal">null</span>
+
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">render</span>(<span class="hljs-params"></span>) &#123;
+  <span class="hljs-comment">// 这里是挂载到自己的html上 </span>
+  <span class="hljs-comment">// 基座会拿到挂载后的html 插入到#vue这个容器中</span>
+  instance = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Vue</span>(&#123;
+    router,
+    <span class="hljs-attr">render</span>: <span class="hljs-function"><span class="hljs-params">h</span> =&gt;</span> <span class="hljs-title function_">h</span>(<span class="hljs-title class_">App</span>)
+  &#125;).$mount(<span class="hljs-string">&#x27;#app&#x27;</span>)
 &#125;
-</code></pre></div>
+
+<span class="hljs-comment">//如果是基座访问子应用 (qiankun访问子应用)</span>
+<span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">__POWERED_BY_QIANKUN__</span>) &#123;
+  <span class="hljs-comment">//就动态配置子应用的自身的根路径 ( 避免使用到基座的根路径 )</span>
+  __webpack_public_path__ = <span class="hljs-variable language_">window</span>.<span class="hljs-property">__INJECTED_PUBLIC_PATH_BY_QIANKUN__</span>
+&#125;
+<span class="hljs-comment">//如果子应用是独立运行的话 就直接渲染</span>
+<span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">window</span>.<span class="hljs-property">__POWERED_BY_QIANKUN__</span>) &#123;
+  <span class="hljs-title function_">render</span>();
+&#125;
+
+<span class="hljs-comment">// 子组件的协议(固定) 导出三个promise函数</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">bootstrap</span>(<span class="hljs-params">props</span>) &#123;
+  <span class="hljs-comment">//应用初始化的时候调用</span>
+&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">mount</span>(<span class="hljs-params">props</span>) &#123;
+  <span class="hljs-comment">//每次进入子应用的时候调用</span>
+  <span class="hljs-comment">//子应用渲染的时候挂载 也可以把props传入子应用进行通讯</span>
+  <span class="hljs-title function_">render</span>(props)
+&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">unmount</span>(<span class="hljs-params">props</span>) &#123;
+  <span class="hljs-comment">//切出 / 卸载的时候会调用</span>
+  <span class="hljs-comment">// 子应用卸载的时候用destory把实例卸载了</span>
+  instance.$destory()
+&#125;</code></pre></div>
 
 <ul>
-<li>main.js中使用</li>
-</ul>
-<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> remSize <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./remSize&#x27;</span>;
-
-<span class="hljs-keyword">let</span> noReset;
-
-<span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">top</span> === <span class="hljs-variable language_">window</span>.<span class="hljs-property">self</span>) &#123;
-  <span class="hljs-variable language_">window</span>.<span class="hljs-property">onresize</span> = <span class="hljs-function">() =&gt;</span> &#123;
-    <span class="hljs-title function_">remSize</span>(noReset);
-  &#125;;
-
-  <span class="hljs-comment">// 安卓10以上不需要处理修改系统字体大小</span>
-  <span class="hljs-keyword">if</span> (判断是否安卓) &#123;
-    <span class="hljs-title class_">Vue</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">$isAndroid10</span>.<span class="hljs-title function_">getHTTPRequestHeaders</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">&#123; data = &#123;&#125; &#125;</span>) =&gt;</span> &#123;
-      <span class="hljs-keyword">const</span> version = data[<span class="hljs-string">&#x27;x-rpc-sys_version&#x27;</span>] || <span class="hljs-string">&#x27;&#x27;</span>;
-      <span class="hljs-keyword">const</span> [v] = version.<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;.&#x27;</span>);
-      noReset = <span class="hljs-title class_">Number</span>(v) &gt;= <span class="hljs-number">10</span>;
-      <span class="hljs-title function_">remSize</span>(noReset);
-    &#125;);
-  &#125; <span class="hljs-keyword">else</span> &#123;
-    <span class="hljs-title function_">remSize</span>(noReset);
+<li>配置完成后 需要打包成类库  所以还得配置一下打包<code>vue.config.js</code><br> – 因为子应用嵌套在父应用下  所以还需要<code>配置跨域</code><br> – 还要配置打包后的结果<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-variable language_">module</span>.<span class="hljs-property">exports</span>= &#123;
+  <span class="hljs-attr">devServer</span>:&#123;
+    <span class="hljs-attr">port</span>:<span class="hljs-number">10000</span>, <span class="hljs-comment">// 配置端口号</span>
+    <span class="hljs-attr">headers</span>:&#123;
+      <span class="hljs-comment">// 配置跨域  表示所有的人都可以访问我</span>
+      <span class="hljs-string">&#x27;Access-Control-Allow-Origin&#x27;</span>:<span class="hljs-string">&#x27;*&#x27;</span>
+    &#125;
+  &#125;,
+    <span class="hljs-attr">configureWebpack</span>:&#123;
+      <span class="hljs-attr">output</span>:&#123;
+        <span class="hljs-attr">library</span>:<span class="hljs-string">&#x27;vueApp&#x27;</span>, <span class="hljs-comment">// 类库的名字</span>
+        <span class="hljs-comment">// 指定模块类型  umd 会把打包后那三个属性挂在window上 </span>
+        <span class="hljs-comment">//比如 window.bootstrap / window.mount / window.oumount</span>
+        <span class="hljs-attr">libraryTarget</span>:<span class="hljs-string">&#x27;umd&#x27;</span> 
+      &#125;
   &#125;
-&#125;
-</code></pre></div>
-
-
-
+&#125;</code></pre></div></li>
+</ul>
+<h1 id="基本的接入已经完成"><a href="#基本的接入已经完成" class="headerlink" title="基本的接入已经完成"></a>基本的接入已经完成</h1><p><img src="https://img-blog.csdnimg.cn/6346f296b73f41529af6fcadb882d450.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5paH55qTenp6eg==,size_20,color_FFFFFF,t_70,g_se,x_16" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
 
                 
               </div>
@@ -470,15 +466,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/h5/" class="category-chain-item">h5</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/h5/css/" class="category-chain-item">css</a>
-  
-  
-
   
 
       </span>
@@ -492,9 +481,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/h5/">#h5</a>
-      
-        <a href="/tags/css/">#css</a>
+        <a href="/tags/qiankun/">#qiankun</a>
       
     </div>
   
@@ -506,8 +493,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>移动端配置postcss-pxtorem</div>
-      <div>http://example.com/2019/10/10/hello-world/</div>
+      <div>前端微服务qiankun基础使用</div>
+      <div>http://example.com/2022/02/20/前端微服务qiankun基础使用/</div>
     </div>
     <div class="license-meta">
       
@@ -519,7 +506,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 10, 2019</div>
+          <div>February 20, 2022</div>
         </div>
       
       
@@ -549,9 +536,21 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/02/20/SingleSpa%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%90%86/" title="SingleSpa微前端基本使用以及原理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">SingleSpa微前端基本使用以及原理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/02/20/shadow%E5%BD%B1%E5%AD%90css%E9%9A%94%E7%A6%BB/" title="shadow影子css隔离">
+                        <span class="hidden-mobile">shadow影子css隔离</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

@@ -1,0 +1,1311 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在写大屏项目的时候 需要引入特别多的echarts图表所以可以把echarts封装一下  方便使用  在main.js 中首先导入echarts(需要安装) 然后把echatrs挂在到vue的原型上  这样就可以直接使用this.$echarts访问到实例了  &#x2F;&#x2F;引入echart import echarts from &amp;#x27;echarts&amp;#x27; import &amp;#x27;echar">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue大屏项目封装echarts">
+<meta property="og:url" content="http://example.com/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在写大屏项目的时候 需要引入特别多的echarts图表所以可以把echarts封装一下  方便使用  在main.js 中首先导入echarts(需要安装) 然后把echatrs挂在到vue的原型上  这样就可以直接使用this.$echarts访问到实例了  &#x2F;&#x2F;引入echart import echarts from &amp;#x27;echarts&amp;#x27; import &amp;#x27;echar">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-04T03:14:32.000Z">
+<meta property="article:modified_time" content="2022-08-27T16:37:46.967Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="echarts">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>vue大屏项目封装echarts - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Haosicx blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="vue大屏项目封装echarts"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-08-04 11:14" pubdate>
+          August 4, 2021 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          13k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          112 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">vue大屏项目封装echarts</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 15 minutes ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>在写大屏项目的时候 需要引入特别多的echarts图表<br>所以可以把echarts封装一下  方便使用</p>
+<ul>
+<li>在main.js 中首先导入echarts(需要安装)</li>
+<li>然后把echatrs挂在到vue的原型上  这样就可以直接使用this.$echarts访问到实例了</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//引入echart</span>
+<span class="hljs-keyword">import</span> echarts <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;echarts&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;echarts-liquidfill&#x27;</span>
+<span class="hljs-title class_">Vue</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">$echarts</span> = echarts</code></pre></div>
+<p>然后创建一个<code>utils/resizeMixin.js</code>文件去做大屏的自适应图表<br>并且创建一个<code>utils/index</code>文件做一个防抖的函数  去控制屏幕大小变化的频率</p>
+<ul>
+<li>resizeMixin.js文件<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">// 混入代码 resize-mixins.js</span>
+<span class="hljs-keyword">import</span> &#123; debounce &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils&#x27;</span>;
+<span class="hljs-keyword">const</span> resizeChartMethod = <span class="hljs-string">&#x27;$__resizeChartMethod&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 在组件内部将图表 init 的引用映射到 chart 属性上</span>
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">chart</span>: <span class="hljs-literal">null</span>,
+    &#125;;
+  &#125;,
+  <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;resize&#x27;</span>, <span class="hljs-variable language_">this</span>[resizeChartMethod], <span class="hljs-literal">false</span>);
+  &#125;,
+  <span class="hljs-title function_">activated</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-comment">// 防止 keep-alive 之后图表变形</span>
+    <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>) &#123;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>.<span class="hljs-title function_">resize</span>()
+    &#125;
+  &#125;,
+  <span class="hljs-title function_">beforeDestroy</span>(<span class="hljs-params"></span>) &#123;
+    <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;reisze&#x27;</span>, <span class="hljs-variable language_">this</span>[resizeChartMethod]);
+  &#125;,
+  <span class="hljs-attr">methods</span>: &#123;
+    <span class="hljs-comment">// 防抖函数来控制 resize 的频率</span>
+    [resizeChartMethod]: <span class="hljs-title function_">debounce</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>) &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>.<span class="hljs-title function_">resize</span>();
+      &#125;
+    &#125;, <span class="hljs-number">300</span>),
+  &#125;,
+&#125;;
+</code></pre></div></li>
+<li>utils&#x2F;index.js文件</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">debounce</span>(<span class="hljs-params">fn, delay</span>) &#123;
+  <span class="hljs-keyword">var</span> timer;
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+    <span class="hljs-keyword">var</span> context = <span class="hljs-variable language_">this</span>;
+    <span class="hljs-keyword">var</span> args = <span class="hljs-variable language_">arguments</span>;
+    <span class="hljs-built_in">clearTimeout</span>(timer);
+    timer = <span class="hljs-built_in">setTimeout</span>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+      fn.<span class="hljs-title function_">apply</span>(context, args);
+    &#125;, delay);
+  &#125;;
+&#125;</code></pre></div>
+<p>然后就是封装echarts了<br>创建一个echarts的文件夹  里面一个<code>index.vue</code>是组件  还有一个<code>theme.json</code>是主题文件</p>
+<ul>
+<li>index.vue</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:id</span>=<span class="hljs-string">&quot;id&quot;</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;className&quot;</span> <span class="hljs-attr">:style</span>=<span class="hljs-string">&quot;&#123; height: height, width: width &#125;&quot;</span> /&gt;</span></span>
+&lt;/template&gt;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> tdTheme <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./theme.json&#x27;</span> <span class="hljs-comment">// 引入默认主题</span></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> resizeMixins <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;@/utils/resizeMixins&quot;</span>;</span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;../map/fujian.js&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;echart&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">mixins</span>: [resizeMixins],</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">props</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">className</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;chart&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">id</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;chart&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">width</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;100%&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">height</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">type</span>: <span class="hljs-title class_">String</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">default</span>: <span class="hljs-string">&#x27;2.5rem&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">options</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">default</span>: <span class="hljs-function">()=&gt;</span>(&#123;&#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  data () &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">chart</span>: <span class="hljs-literal">null</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">watch</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">options</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      handler (options) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 设置true清空echart缓存</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>.<span class="hljs-title function_">setOption</span>(options, <span class="hljs-literal">true</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">deep</span>: <span class="hljs-literal">true</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  mounted () &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">this</span>.<span class="hljs-property">$echarts</span>.<span class="hljs-title function_">registerTheme</span>(<span class="hljs-string">&#x27;tdTheme&#x27;</span>, tdTheme); <span class="hljs-comment">// 覆盖默认主题</span></span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initChart</span>();</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    initChart () &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 初始化echart</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$echarts</span>.<span class="hljs-title function_">init</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">$el</span>, <span class="hljs-string">&#x27;tdTheme&#x27;</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.$emit(<span class="hljs-string">&#x27;myCharts&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>)  <span class="hljs-comment">// 把实例丢出来</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">chart</span>.<span class="hljs-title function_">setOption</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">options</span>, <span class="hljs-literal">true</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">&#125;</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
+</code></pre></div>
+<ul>
+<li>theme.json</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript">&#123;
+  <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#2d8cf0&quot;</span>, <span class="hljs-string">&quot;#19be6b&quot;</span>, <span class="hljs-string">&quot;#ff9900&quot;</span>, <span class="hljs-string">&quot;#E46CBB&quot;</span>, <span class="hljs-string">&quot;#9A66E4&quot;</span>, <span class="hljs-string">&quot;#ed3f14&quot;</span>],
+  <span class="hljs-string">&quot;backgroundColor&quot;</span>: <span class="hljs-string">&quot;rgba(0,0,0,0)&quot;</span>,
+  <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;&#125;,
+  <span class="hljs-string">&quot;title&quot;</span>: &#123;
+    <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#516b91&quot;</span>
+    &#125;,
+    <span class="hljs-string">&quot;subtextStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#93b7e3&quot;</span>
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;line&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;symbolSize&quot;</span>: <span class="hljs-string">&quot;6&quot;</span>,
+    <span class="hljs-string">&quot;symbol&quot;</span>: <span class="hljs-string">&quot;emptyCircle&quot;</span>,
+    <span class="hljs-string">&quot;smooth&quot;</span>: <span class="hljs-literal">true</span>
+  &#125;,
+  <span class="hljs-string">&quot;radar&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;symbolSize&quot;</span>: <span class="hljs-string">&quot;6&quot;</span>,
+    <span class="hljs-string">&quot;symbol&quot;</span>: <span class="hljs-string">&quot;emptyCircle&quot;</span>,
+    <span class="hljs-string">&quot;smooth&quot;</span>: <span class="hljs-literal">true</span>
+  &#125;,
+  <span class="hljs-string">&quot;bar&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;barBorderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;barBorderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;barBorderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;barBorderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;pie&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;scatter&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;boxplot&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;parallel&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;sankey&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;funnel&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;gauge&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;candlestick&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#edafda&quot;</span>,
+        <span class="hljs-string">&quot;color0&quot;</span>: <span class="hljs-string">&quot;transparent&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#d680bc&quot;</span>,
+        <span class="hljs-string">&quot;borderColor0&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;graph&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#aaa&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;symbolSize&quot;</span>: <span class="hljs-string">&quot;6&quot;</span>,
+    <span class="hljs-string">&quot;symbol&quot;</span>: <span class="hljs-string">&quot;emptyCircle&quot;</span>,
+    <span class="hljs-string">&quot;smooth&quot;</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#2d8cf0&quot;</span>, <span class="hljs-string">&quot;#19be6b&quot;</span>, <span class="hljs-string">&quot;#f5ae4a&quot;</span>, <span class="hljs-string">&quot;#9189d5&quot;</span>, <span class="hljs-string">&quot;#56cae2&quot;</span>, <span class="hljs-string">&quot;#cbb0e3&quot;</span>],
+    <span class="hljs-string">&quot;label&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#eee&quot;</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;map&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;areaColor&quot;</span>: <span class="hljs-string">&quot;#f3f3f3&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#516b91&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0.5</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;areaColor&quot;</span>: <span class="hljs-string">&quot;rgba(165,231,240,1)&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#516b91&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">1</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;label&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#000&quot;</span>
+        &#125;
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;rgb(81,107,145)&quot;</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;geo&quot;</span>: &#123;
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;areaColor&quot;</span>: <span class="hljs-string">&quot;#f3f3f3&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#516b91&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0.5</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;areaColor&quot;</span>: <span class="hljs-string">&quot;rgba(165,231,240,1)&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#516b91&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">1</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;label&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#000&quot;</span>
+        &#125;
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;rgb(81,107,145)&quot;</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;categoryAxis&quot;</span>: &#123;
+    <span class="hljs-string">&quot;axisLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#cccccc&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisTick&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#333&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisLabel&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#fff&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#eeeeee&quot;</span>]
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitArea&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;areaStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;rgba(250,250,250,0.05)&quot;</span>, <span class="hljs-string">&quot;rgba(200,200,200,0.02)&quot;</span>]
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;valueAxis&quot;</span>: &#123;
+    <span class="hljs-string">&quot;axisLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#cccccc&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisTick&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#333&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisLabel&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#fff&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#eeeeee&quot;</span>]
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitArea&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;areaStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;rgba(250,250,250,0.05)&quot;</span>, <span class="hljs-string">&quot;rgba(200,200,200,0.02)&quot;</span>]
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;logAxis&quot;</span>: &#123;
+    <span class="hljs-string">&quot;axisLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#cccccc&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisTick&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#333&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisLabel&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#999999&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#eeeeee&quot;</span>]
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitArea&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;areaStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;rgba(250,250,250,0.05)&quot;</span>, <span class="hljs-string">&quot;rgba(200,200,200,0.02)&quot;</span>]
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;timeAxis&quot;</span>: &#123;
+    <span class="hljs-string">&quot;axisLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#cccccc&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisTick&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#333&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;axisLabel&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#999999&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitLine&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">true</span>,
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#eeeeee&quot;</span>]
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;splitArea&quot;</span>: &#123;
+      <span class="hljs-string">&quot;show&quot;</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-string">&quot;areaStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;rgba(250,250,250,0.05)&quot;</span>, <span class="hljs-string">&quot;rgba(200,200,200,0.02)&quot;</span>]
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;toolbox&quot;</span>: &#123;
+    <span class="hljs-string">&quot;iconStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#999&quot;</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#666&quot;</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;legend&quot;</span>: &#123;
+    <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#fff&quot;</span>
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;tooltip&quot;</span>: &#123;
+    <span class="hljs-string">&quot;axisPointer&quot;</span>: &#123;
+      <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>,
+        <span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-number">1</span>
+      &#125;,
+      <span class="hljs-string">&quot;crossStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#ccc&quot;</span>,
+        <span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-number">1</span>
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;timeline&quot;</span>: &#123;
+    <span class="hljs-string">&quot;lineStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+      <span class="hljs-string">&quot;width&quot;</span>: <span class="hljs-number">1</span>
+    &#125;,
+    <span class="hljs-string">&quot;itemStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">1</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;controlStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0.5</span>
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+        <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+        <span class="hljs-string">&quot;borderWidth&quot;</span>: <span class="hljs-number">0.5</span>
+      &#125;
+    &#125;,
+    <span class="hljs-string">&quot;checkpointStyle&quot;</span>: &#123;
+      <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>,
+      <span class="hljs-string">&quot;borderColor&quot;</span>: <span class="hljs-string">&quot;rgba(138,124,168,0.37)&quot;</span>
+    &#125;,
+    <span class="hljs-string">&quot;label&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>
+        &#125;
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#8fd3e8&quot;</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;,
+  <span class="hljs-string">&quot;visualMap&quot;</span>: &#123;
+    <span class="hljs-string">&quot;color&quot;</span>: [<span class="hljs-string">&quot;#516b91&quot;</span>, <span class="hljs-string">&quot;#59c4e6&quot;</span>, <span class="hljs-string">&quot;#a5e7f0&quot;</span>]
+  &#125;,
+  <span class="hljs-string">&quot;dataZoom&quot;</span>: [
+    &#123;
+      <span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;inside&quot;</span>,
+      <span class="hljs-string">&quot;backgroundColor&quot;</span>: <span class="hljs-string">&quot;rgba(0,0,0,0)&quot;</span>,
+      <span class="hljs-string">&quot;dataBackgroundColor&quot;</span>: <span class="hljs-string">&quot;rgba(255,255,255,0.3)&quot;</span>,
+      <span class="hljs-string">&quot;fillerColor&quot;</span>: <span class="hljs-string">&quot;rgba(167,183,204,0.4)&quot;</span>,
+      <span class="hljs-string">&quot;handleColor&quot;</span>: <span class="hljs-string">&quot;#a7b7cc&quot;</span>,
+      <span class="hljs-string">&quot;handleSize&quot;</span>: <span class="hljs-string">&quot;100%&quot;</span>,
+      <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+        <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#333&quot;</span>
+      &#125;
+    &#125;
+  ],
+  <span class="hljs-string">&quot;markPoint&quot;</span>: &#123;
+    <span class="hljs-string">&quot;label&quot;</span>: &#123;
+      <span class="hljs-string">&quot;normal&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#eee&quot;</span>
+        &#125;
+      &#125;,
+      <span class="hljs-string">&quot;emphasis&quot;</span>: &#123;
+        <span class="hljs-string">&quot;textStyle&quot;</span>: &#123;
+          <span class="hljs-string">&quot;color&quot;</span>: <span class="hljs-string">&quot;#eee&quot;</span>
+        &#125;
+      &#125;
+    &#125;
+  &#125;
+&#125;
+</code></pre></div>
+
+
+<p>使用这个组件的方法</p>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Echart</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/echart&#x27;</span> <span class="hljs-comment">//引入echatrs组件</span>
+ <span class="hljs-attr">components</span>: &#123; <span class="hljs-comment">//并且注册组件</span>
+    <span class="hljs-title class_">Echart</span>,
+  &#125;,
+===================  ===================  ===================  
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">Echart</span>  <span class="hljs-attr">:options</span>=<span class="hljs-string">&quot;图表的配置&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;可选&quot;</span> <span class="hljs-attr">height</span>=<span class="hljs-string">&#x27;100%&#x27;</span> <span class="hljs-attr">width</span>=<span class="hljs-string">&quot;100%&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Echart</span>&gt;</span></span></code></pre></div>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/" class="category-chain-item">大屏项目</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/echarts/">#echarts</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>vue大屏项目封装echarts</div>
+      <div>http://example.com/2021/08/04/vue大屏项目封装echarts/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 4, 2021</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/10/ElementUI%20-%20image-viewer%20-%20%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7%E6%9F%A5%E7%9C%8B%E7%BB%84%E4%BB%B6/" title="ElementUI - image-viewer - 图片放大查看组件">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ElementUI - image-viewer - 图片放大查看组件</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/07/%E5%89%8D%E7%AB%AF%E6%A0%B9%E6%8D%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%88%A4%E6%96%AD%E5%8A%A0%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6/" title="前端根据动态路由判断加载对应组件">
+                        <span class="hidden-mobile">前端根据动态路由判断加载对应组件</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

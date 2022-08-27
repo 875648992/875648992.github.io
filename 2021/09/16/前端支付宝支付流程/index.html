@@ -1,0 +1,1056 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="支付宝支付思路如下  首先点击商品的支付按钮  同时拿到这个订单的编号等一些信息  然后拿着这些数据去调用后端给的支付的接口  支付的接口会返回一个链接  这个链接就是订单对接支付宝  支付宝给我们用来跳转的链接    拿着这个链接去调原生的方法  就可以唤醒支付宝支付了  唤醒支付宝后我们再调用一个原生的方法  这个方法是监听我们支付完成后  有没有返回进入了我们的app  当我们返回app的时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端支付宝支付流程">
+<meta property="og:url" content="http://example.com/2021/09/16/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="支付宝支付思路如下  首先点击商品的支付按钮  同时拿到这个订单的编号等一些信息  然后拿着这些数据去调用后端给的支付的接口  支付的接口会返回一个链接  这个链接就是订单对接支付宝  支付宝给我们用来跳转的链接    拿着这个链接去调原生的方法  就可以唤醒支付宝支付了  唤醒支付宝后我们再调用一个原生的方法  这个方法是监听我们支付完成后  有没有返回进入了我们的app  当我们返回app的时">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-16T06:58:05.000Z">
+<meta property="article:modified_time" content="2022-08-27T16:28:44.583Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="h5">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>前端支付宝支付流程 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Haosicx blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="前端支付宝支付流程"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-09-16 14:58" pubdate>
+          September 16, 2021 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          6.8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">前端支付宝支付流程</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 24 minutes ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <p>支付宝支付思路如下</p>
+<ul>
+<li><p>首先点击商品的支付按钮  同时拿到这个订单的编号等一些信息</p>
+</li>
+<li><p>然后拿着这些数据去调用后端给的支付的接口  支付的接口会返回一个链接  这个链接就是订单对接支付宝  支付宝给我们用来跳转的链接  </p>
+</li>
+<li><p>拿着这个链接去调原生的方法  就可以唤醒支付宝支付了</p>
+</li>
+<li><p>唤醒支付宝后我们再调用一个原生的方法  这个方法是监听我们支付完成后  有没有返回进入了我们的app  当我们返回app的时候 可以拿到这个状态</p>
+</li>
+<li><p>这个时候判断这个状态  如果状态为返回了app  我们就要调用一个后端的接口来判断我们是否支付成功了  </p>
+</li>
+<li><p>然后就可以进行支付后的动作了</p>
+</li>
+<li><p>代码如下  项目不同 不能直接复制  仅供参考</p>
+<blockquote>
+<p>没有接微信的支付  因为公司用的是聚合支付  原生说如果调用微信支付的话 他拿不到回调(我也不懂) 反正就是需要前端开发一个小程序专门用来支付  然后点击按钮使app跳转到小程序去支付  好麻烦就暂时没做了</p>
+</blockquote>
+</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript">&lt;template&gt;
+  <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;module_paymentHome&quot;</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;payment-cont&quot;</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">van-radio-group</span> <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;payParams.payType&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;payment-mode&quot;</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">van-cell-group</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">van-cell</span> <span class="hljs-attr">clickable</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon-pay&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;@/assets/images/sharedData/icon_pay_zfb.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>支付宝支付<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right-icon</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">van-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;ALIPAY&quot;</span> /&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">van-cell</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">van-cell</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">&quot;false&quot;</span> <span class="hljs-attr">clickable</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">title</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon-pay&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;@/assets/images/sharedData/icon_pay_wx.png&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span> /&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>微信支付<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">template</span> #<span class="hljs-attr">right-icon</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">van-radio</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;WECHAT&quot;</span> /&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">van-cell</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">van-cell-group</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">van-radio-group</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml"></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn-area&quot;</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;btn-submit&quot;</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;&#123;&#x27;disable&#x27;: !payParams.payType&#125;&quot;</span> @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;confirmPay&quot;</span>&gt;</span></span>
+<span class="language-xml">        确认支付</span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+&lt;/template&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Toast</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vant&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> deviceEnv <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/utils/deviceEnv&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-comment">// import cookie from &#x27;../../utils/cookie&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">import</span> payment <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/api/payment&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">return</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">isSubmit</span>: <span class="hljs-literal">false</span>, <span class="hljs-comment">// 防重复提交</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">payType</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">channel</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">orderId</span>: <span class="hljs-string">&#x27;&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-attr">payParams</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">orderNo</span>: <span class="hljs-string">&#x27;&#x27;</span>, <span class="hljs-comment">// 数据id</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">payType</span>: <span class="hljs-string">&#x27;ALIPAY&#x27;</span>, <span class="hljs-comment">// 支付渠道</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">uid</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">guid</span>(),</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">paySubType</span>: <span class="hljs-string">&#x27;APP&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">watch</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-title function_">created</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">this</span>.<span class="hljs-property">payParams</span>.<span class="hljs-property">orderNo</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$route</span>.<span class="hljs-property">params</span>.<span class="hljs-property">id</span></span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-variable language_">window</span>.<span class="hljs-property">isPaymentSuc</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">isPaymentSuc</span></span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-attr">methods</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">S4</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span> (((<span class="hljs-number">1</span> + <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">random</span>()) * <span class="hljs-number">0x10000</span>) | <span class="hljs-number">0</span>).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>).<span class="hljs-title function_">substring</span>(<span class="hljs-number">1</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">guid</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-string">&#x27;-&#x27;</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>() + <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">S4</span>())</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">async</span> <span class="hljs-title function_">confirmPay</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">isSubmit</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">return</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title class_">Toast</span>.<span class="hljs-title function_">loading</span>(&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;加载中...&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">forbidClick</span>: <span class="hljs-literal">true</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">duration</span>: <span class="hljs-number">10000</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">isSubmit</span> = <span class="hljs-literal">true</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// console.log(this.payParams.payType)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// console.log(cookie.readCookie(&#x27;sdktoken&#x27;))</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// +++++++++  微信  +++++++++</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// if (this.payParams.payType === &#x27;WECHAT&#x27;) &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// console.log(deviceEnv.isFromIos())</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// console.log(&#x27;ios&#x27;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// if (deviceEnv.isFromIos()) &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// ios</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// window.webkit.messageHandlers.adaPay.postMessage(&#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   body: &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     payType: this.payParams.payType,</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     merchantNo: this.payParams.orderNo, // id</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     token: cookie.readCookie(&#x27;sdktoken&#x27;),</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     type: this.$route.query.target ? &#x27;exhibit&#x27; : &#x27;&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// &#125;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// &#125; else &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// 安卓</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// =================  支付宝支付 =================</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">payParams</span>.<span class="hljs-property">payType</span> === <span class="hljs-string">&#x27;ALIPAY&#x27;</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">const</span> param = &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">orderNo</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">payParams</span>.<span class="hljs-property">orderNo</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">payType</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">payParams</span>.<span class="hljs-property">payType</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">uid</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">payParams</span>.<span class="hljs-property">uid</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">paySubType</span>: <span class="hljs-string">&#x27;APP&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// +++++++++  支付的接口  +++++++++</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> payment.<span class="hljs-title function_">pay</span>(param)</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(res)</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">if</span> (res.<span class="hljs-property">code</span> === <span class="hljs-number">0</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">orderId</span> = res.<span class="hljs-property">data</span>.<span class="hljs-property">orderId</span></span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-keyword">if</span> (deviceEnv.<span class="hljs-title function_">isFromIos</span>()) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-comment">// IOS</span></span></span>
+<span class="language-javascript"><span class="language-xml">            <span class="hljs-variable language_">window</span>.<span class="hljs-property">webkit</span>.<span class="hljs-property">messageHandlers</span>.<span class="hljs-property">adaPaydoPay</span>.<span class="hljs-title function_">postMessage</span>(&#123; <span class="hljs-attr">body</span>: res.<span class="hljs-property">data</span>.<span class="hljs-property">bankReturnMsg</span> &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">          &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (deviceEnv.<span class="hljs-title function_">isFromAndroid</span>()) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-comment">// 安卓</span></span></span>
+<span class="language-javascript"><span class="language-xml">            <span class="hljs-variable language_">window</span>.<span class="hljs-property">android</span>.<span class="hljs-title function_">adaPaydoPay</span>(res.<span class="hljs-property">data</span>.<span class="hljs-property">bankReturnMsg</span>, <span class="hljs-string">&#x27;isPaymentSuc&#x27;</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">          &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">        &#125; <span class="hljs-keyword">else</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.$toast(res.<span class="hljs-property">message</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-keyword">if</span> (res.<span class="hljs-property">code</span> === <span class="hljs-number">60000</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">            <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">              <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">go</span>(-<span class="hljs-number">1</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">            &#125;, <span class="hljs-number">2000</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">          &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-comment">// 是否支付成功</span></span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-keyword">async</span> <span class="hljs-title function_">isPaymentSuc</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title class_">Toast</span>.<span class="hljs-title function_">loading</span>(&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;加载中...&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">forbidClick</span>: <span class="hljs-literal">true</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">duration</span>: <span class="hljs-number">10000</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> payment.<span class="hljs-title function_">orderDetail</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">payParams</span>.<span class="hljs-property">orderNo</span>)</span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title class_">Toast</span>.<span class="hljs-title function_">clear</span>()</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// if (result.code === 0) &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(result, <span class="hljs-string">&#x27;result&#x27;</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">if</span> (result.<span class="hljs-property">message</span> === <span class="hljs-string">&#x27;success&#x27;</span> &amp;&amp; result.<span class="hljs-property">data</span> === <span class="hljs-literal">true</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// 订单id没有 只有订单编号</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.$toast(&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;支付成功&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">forbidClick</span>: <span class="hljs-literal">true</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">go</span>(-<span class="hljs-number">1</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;, <span class="hljs-number">2000</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125; <span class="hljs-keyword">else</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.$toast(&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">message</span>: <span class="hljs-string">&#x27;支付失败&#x27;</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">duration</span>: <span class="hljs-number">2000</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">forbidClick</span>: <span class="hljs-literal">true</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">icon</span>: <span class="hljs-string">&#x27;success&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-built_in">setTimeout</span>(<span class="hljs-function">() =&gt;</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">$router</span>.<span class="hljs-title function_">go</span>(-<span class="hljs-number">1</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;, <span class="hljs-number">2000</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// else &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//   this.$router.replace(&#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//     path: &#x27;/paymentSuccess&#x27;,</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//     query: &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//       status: result.data</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//     &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//   &#125;);</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// if (result.data === &#x27;failed&#x27;) &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//   // this.$toast(&#x27;支付失败&#x27;);</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// if (result.data === &#x27;cancel&#x27;) &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">//   this.$toast(&#x27;订单取消&#x27;);</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-comment">// &#125;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml"></span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">&#125;</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;less&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css"></span></span>
+<span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.module_paymentHome</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-attribute">min-height</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-attribute">position</span>: relative;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-attribute">background</span>: <span class="hljs-number">#ffffff</span>;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">3.125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.btn-area</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">position</span>: fixed;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-selector-class">.btn-submit</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.9375rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">display</span>: block;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">color</span>: <span class="hljs-number">#ffffff</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">border</span>: none;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(<span class="hljs-number">90deg</span>, <span class="hljs-number">#54CC54</span>, <span class="hljs-number">#30B654</span>);</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0.3125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">      &amp;<span class="hljs-selector-class">.disable</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">opacity</span>: .<span class="hljs-number">6</span>;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">background</span>: <span class="hljs-number">#888888</span>;</span></span>
+<span class="language-css"><span class="language-xml">      &#125;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.icon-pay</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">width</span>: <span class="hljs-number">1.75rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">height</span>: <span class="hljs-number">1.75rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: inline-block;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0.625rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.van-cell</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1.5625rem</span> <span class="hljs-number">1.25rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.payment-status</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">2rem</span> <span class="hljs-number">2.125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ffffff</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">text-align</span>: center;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">0.625rem</span> solid <span class="hljs-number">#f5f5f5</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    &amp;-<span class="hljs-attribute">icon</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">width</span>: <span class="hljs-number">4.875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">height</span>: <span class="hljs-number">4.875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">background</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">&#x27;~@/assets/images/payment/icon_time.png&#x27;</span>) no-repeat center top;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">background-size</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0.5rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    &amp;-info&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9375rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">color</span>: <span class="hljs-number">#333333</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-selector-tag">span</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">display</span>: block;</span></span>
+<span class="language-css"><span class="language-xml">      &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">      &amp;-<span class="hljs-selector-tag">time</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.75rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">color</span>: <span class="hljs-number">#666666</span>;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0.625rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      &#125;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.payment-cont</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.6875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.payment-product</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0.875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">0.0625rem</span> solid <span class="hljs-number">#E6E6E6</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    &amp;-poster&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">min-width</span>: <span class="hljs-number">5rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">max-width</span>: <span class="hljs-number">5rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">height</span>: <span class="hljs-number">5rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">0.625rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">overflow</span>: hidden;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">0.625rem</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-selector-tag">img</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">      &#125;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    &amp;-info&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">    &amp;-name&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">color</span>: <span class="hljs-number">#333333</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">line-height</span>: <span class="hljs-number">1.125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1.5rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    &amp;-price&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">justify-content</span>: space-between;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.6875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">color</span>: <span class="hljs-number">#999999</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-selector-tag">span</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">        &amp;<span class="hljs-selector-pseudo">:first</span>-child&#123;</span></span>
+<span class="language-css"><span class="language-xml">          <span class="hljs-attribute">color</span>: <span class="hljs-number">#EA291F</span>;</span></span>
+<span class="language-css"><span class="language-xml">          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">        &#125;</span></span>
+<span class="language-css"><span class="language-xml">      &#125;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">    &amp;-total&#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">text-align</span>: right;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">0.875rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">3.125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-selector-tag">span</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">        &amp;<span class="hljs-selector-pseudo">:last-child</span>&#123;</span></span>
+<span class="language-css"><span class="language-xml">          <span class="hljs-attribute">color</span>: <span class="hljs-number">#EA291F</span>;</span></span>
+<span class="language-css"><span class="language-xml">          <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.125rem</span>;</span></span>
+<span class="language-css"><span class="language-xml">        &#125;</span></span>
+<span class="language-css"><span class="language-xml">      &#125;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">&#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
+</code></pre></div>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%AF%E4%BB%98%E7%9B%B8%E5%85%B3/" class="category-chain-item">支付相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/h5/">#h5</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>前端支付宝支付流程</div>
+      <div>http://example.com/2021/09/16/前端支付宝支付流程/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 16, 2021</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/16/uniapp%E4%BD%BF%E7%94%A8scroll-view%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%97%A0%E6%B3%95%E5%8F%96%E6%B6%88%E7%9A%84%E5%9D%91/" title="uniapp使用scroll-view下拉刷新无法取消的坑">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">uniapp使用scroll-view下拉刷新无法取消的坑</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/31/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" title="jenkins构建项目后发现访问不到静态资源">
+                        <span class="hidden-mobile">jenkins构建项目后发现访问不到静态资源</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

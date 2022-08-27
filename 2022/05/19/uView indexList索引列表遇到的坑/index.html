@@ -1,0 +1,1823 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="在使用uView索引列表做通讯录的时候遇到了几个问题先上图片  问题1: 右侧的abcd首字母按钮点击错乱  比如点了f  弹出显示的是a开头的人(应该是f开头的人才对)   通过排查  发现传入这个右侧组件参数的时候  后端并没有返回完整的A-Z  而是有A首字母的数据  才返回了A  没有F首字母的  就没有返回F 导致数据整体A-Z不完整  所以传进入组件后显示就出问题了  所以不管数据有没">
+<meta property="og:type" content="article">
+<meta property="og:title" content="uView indexList索引列表遇到的坑">
+<meta property="og:url" content="http://example.com/2022/05/19/uView%20indexList%E7%B4%A2%E5%BC%95%E5%88%97%E8%A1%A8%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在使用uView索引列表做通讯录的时候遇到了几个问题先上图片  问题1: 右侧的abcd首字母按钮点击错乱  比如点了f  弹出显示的是a开头的人(应该是f开头的人才对)   通过排查  发现传入这个右侧组件参数的时候  后端并没有返回完整的A-Z  而是有A首字母的数据  才返回了A  没有F首字母的  就没有返回F 导致数据整体A-Z不完整  所以传进入组件后显示就出问题了  所以不管数据有没">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/a20570b6735e46b6bca55aaec0483167.png">
+<meta property="article:published_time" content="2022-05-19T04:21:17.000Z">
+<meta property="article:modified_time" content="2022-08-27T16:26:50.109Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="uniapp">
+<meta property="article:tag" content="uView">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/a20570b6735e46b6bca55aaec0483167.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>uView indexList索引列表遇到的坑 - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Haosicx blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="uView indexList索引列表遇到的坑"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-19 12:21" pubdate>
+          May 19, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          25k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          211 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">uView indexList索引列表遇到的坑</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 25 minutes ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="在使用uView索引列表做通讯录的时候遇到了几个问题"><a href="#在使用uView索引列表做通讯录的时候遇到了几个问题" class="headerlink" title="在使用uView索引列表做通讯录的时候遇到了几个问题"></a>在使用uView索引列表做通讯录的时候遇到了几个问题</h2><p>先上图片<br><img src="https://img-blog.csdnimg.cn/a20570b6735e46b6bca55aaec0483167.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+<blockquote>
+<p>问题1: 右侧的abcd首字母按钮点击错乱  比如点了f  弹出显示的是a开头的人(应该是f开头的人才对)</p>
+</blockquote>
+<ul>
+<li>通过排查  发现传入这个右侧组件参数的时候  后端并没有返回完整的A-Z  而是有A首字母的数据  才返回了A  没有F首字母的  就没有返回F 导致数据整体A-Z不完整  所以传进入组件后显示就出问题了  所以不管数据有没有都要想办法把A-Z匹配完整才行  <blockquote>
+<p>问题2: 点击右侧的按钮 不会锚点跳转  比如点击Z  要跳转到Z的首字母那里去</p>
+</blockquote>
+</li>
+<li>后来发现uView只提供了点击右侧按钮的回调方法 (可以拿到点击的字母)  并不自带跳转  于是我们首先给每一个列表添加上一个id  id就是当前的字母  然后通过dom拿到这个元素距离顶部的距离  然后拿到最外层的元素顶部的距离  去滚动即可</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-title function_">clickSelect</span>(<span class="hljs-params">e</span>) &#123;
+       <span class="hljs-comment">//从当前位置到达目标位置</span>
+       uni
+         .<span class="hljs-title function_">createSelectorQuery</span>()
+         .<span class="hljs-title function_">select</span>(<span class="hljs-string">&#x27;#&#x27;</span> + e) 
+         .<span class="hljs-title function_">boundingClientRect</span>(<span class="hljs-function">(<span class="hljs-params">data</span>) =&gt;</span> &#123;
+           <span class="hljs-comment">//目标位置的节点：类或者id</span>
+           uni
+             .<span class="hljs-title function_">createSelectorQuery</span>()
+             .<span class="hljs-title function_">select</span>(<span class="hljs-string">&#x27;.container&#x27;</span>)
+             .<span class="hljs-title function_">boundingClientRect</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;
+               <span class="hljs-comment">//最外层盒子的节点：类或者id</span>
+               <span class="hljs-variable language_">this</span>.$nextTick(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;
+                 uni.<span class="hljs-title function_">pageScrollTo</span>(&#123;
+                   <span class="hljs-attr">scrollTop</span>: data.<span class="hljs-property">top</span> - res.<span class="hljs-property">top</span>,
+                   <span class="hljs-attr">duration</span>: <span class="hljs-number">0</span> <span class="hljs-comment">//app端这个必须设置成0</span>
+                 &#125;)
+               &#125;)
+             &#125;)
+             .<span class="hljs-title function_">exec</span>()
+         &#125;)
+         .<span class="hljs-title function_">exec</span>()
+     &#125;,</code></pre></div>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/gun_kill_seven/article/details/112464970?utm_medium=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~CTRLIST~default-1.no_search_link">如果uni.pageScrollTo滚动不了  就去看这篇文章</a></li>
+</ul>
+<blockquote>
+<p>2022年  第二次更新<br>第二个问题其实是是索引列表自带了跳转的  上面我写的方法其实也可以不用 主要还是数据格式要对才行  </p>
+</blockquote>
+<blockquote>
+<p>楼下放上mock数据格式 和源码 <code>业务代码直接复制的  有些东西是无用的  可以自行删除</code></p>
+</blockquote>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> aaa = [
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;A&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;B&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;C&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;D&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;E&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;F&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;G&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;H&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;I&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;J&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;K&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;L&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;M&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;N&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;O&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;P&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;Q&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;R&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;S&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;T&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;U&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;V&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;W&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;X&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;Y&#x27;</span>
+  &#125;,
+  &#123;
+    <span class="hljs-attr">data</span>: [
+      &#123;
+        <span class="hljs-attr">id</span>: <span class="hljs-string">&#x27;9e2c82ee2a054496bf6297442763d5c4&#x27;</span>,
+        <span class="hljs-attr">provinceName</span>: <span class="hljs-string">&#x27;海南省&#x27;</span>,
+        <span class="hljs-attr">cityName</span>: <span class="hljs-string">&#x27;三亚市&#x27;</span>,
+        <span class="hljs-attr">countyName</span>: <span class="hljs-string">&#x27;天涯区&#x27;</span>,
+        <span class="hljs-attr">townName</span>: <span class="hljs-string">&#x27;天涯镇&#x27;</span>,
+        <span class="hljs-attr">villageId</span>: <span class="hljs-string">&#x27;460204198222&#x27;</span>,
+        <span class="hljs-attr">villageName</span>: <span class="hljs-string">&#x27;抱前村&#x27;</span>,
+        <span class="hljs-attr">groupName</span>: <span class="hljs-string">&#x27;干沟一村&#x27;</span>,
+        <span class="hljs-attr">groupId</span>: <span class="hljs-string">&#x27;46020419822208&#x27;</span>,
+        <span class="hljs-attr">address</span>: <span class="hljs-string">&#x27;海南省|三亚市|天涯区|天涯镇|抱前村|干沟一村&#x27;</span>,
+        <span class="hljs-attr">fullName</span>: <span class="hljs-string">&#x27;邱明俊&#x27;</span>,
+        <span class="hljs-attr">fullNameInitials</span>: <span class="hljs-string">&#x27;Q&#x27;</span>,
+        <span class="hljs-attr">phone</span>: <span class="hljs-string">&#x27;13222222222&#x27;</span>,
+        <span class="hljs-attr">roleCode</span>: <span class="hljs-string">&#x27;villager&#x27;</span>,
+        <span class="hljs-attr">roleName</span>: <span class="hljs-string">&#x27;&#x27;</span>,
+        <span class="hljs-attr">idcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">managingIdcard</span>: <span class="hljs-string">&#x27;340825199611010412&#x27;</span>,
+        <span class="hljs-attr">positionName</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">avatar</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">isRegister</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isPartyMember</span>: <span class="hljs-string">&#x27;0&#x27;</span>,
+        <span class="hljs-attr">isGridMember</span>: <span class="hljs-string">&#x27;2&#x27;</span>,
+        <span class="hljs-attr">gender</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">partyBranchCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">villagerCommittee</span>: <span class="hljs-literal">null</span>,
+        <span class="hljs-attr">userId</span>: <span class="hljs-string">&#x27;1431210121718927361&#x27;</span>
+      &#125;
+    ],
+    <span class="hljs-attr">letter</span>: <span class="hljs-string">&#x27;Z&#x27;</span>
+  &#125;
+]
+</code></pre></div>
+
+<div class="code-wrapper"><pre><code class="hljs javascript">&lt;!--
+ * @<span class="hljs-title class_">Author</span>: <span class="hljs-variable constant_">LWF</span>
+ * @<span class="hljs-title class_">Date</span>: <span class="hljs-number">2021</span>-<span class="hljs-number">09</span>-<span class="hljs-number">01</span> <span class="hljs-number">18</span>:<span class="hljs-number">43</span>:<span class="hljs-number">10</span>
+ * @<span class="hljs-title class_">LastEditTime</span>: <span class="hljs-number">2021</span>-<span class="hljs-number">09</span>-<span class="hljs-number">22</span> <span class="hljs-number">11</span>:<span class="hljs-number">20</span>:<span class="hljs-number">02</span>
+ * @<span class="hljs-title class_">LastEditors</span>: <span class="hljs-title class_">Please</span> set <span class="hljs-title class_">LastEditors</span>
+ * @<span class="hljs-title class_">FilePath</span>: <span class="hljs-regexp">/src/</span>pagesCountry/address/index.<span class="hljs-property">vue</span>
+ * @<span class="hljs-title class_">Description</span>: 通讯录
+--&gt;
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;container wrapper&quot;</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;header&quot;</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;padding: 10px&quot;</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">u-search</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">bg-color</span>=<span class="hljs-string">&quot;#fff&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;搜索姓名 / 小组名 / 身份类型&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">:show-action</span>=<span class="hljs-string">&quot;false&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;keyword&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        @<span class="hljs-attr">change</span>=<span class="hljs-string">&quot;searchChange&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">u-search</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">u-icon</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;tooptilpShow = true&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;info-circle&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;#2979ff&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;40&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">u-icon</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">u-modal</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">v-model</span>=<span class="hljs-string">&quot;tooptilpShow&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">        <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;搜索以下身份类型，可批量展示该身份的村民: 党员、村组长、户主、网格员、村民委员会、村党支部委员&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">      &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">u-modal</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;main&quot;</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;<span class="hljs-name">u-index-list</span> <span class="hljs-attr">:scrollTop</span>=<span class="hljs-string">&quot;scrollTop&quot;</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in indexList&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span> <span class="hljs-attr">:id</span>=<span class="hljs-string">&quot;item.letter&quot;</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">u-index-anchor</span> <span class="hljs-attr">:index</span>=<span class="hljs-string">&quot;item.letter&quot;</span> <span class="hljs-attr">v-show</span>=<span class="hljs-string">&quot;item.data.length&quot;</span> /&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;list&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(n, i) in item.data&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;i&quot;</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">text</span>&gt;</span>&#123;&#123; n.fullName &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">text</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;label-grounp&quot;</span>&gt;</span>&#123;&#123; n.groupName &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">text</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;icon&quot;</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">u-icon</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;chat&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;/static/image/i-msg.png&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;margin-right: 13px&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;55&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">u-icon</span>&gt;</span></span>
+<span class="language-xml">              <span class="hljs-tag">&lt;<span class="hljs-name">u-icon</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                @<span class="hljs-attr">click</span>=<span class="hljs-string">&quot;call(n.phone)&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;/static/image/i-phone.png&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">                <span class="hljs-attr">size</span>=<span class="hljs-string">&quot;55&quot;</span></span></span>
+<span class="hljs-tag"><span class="language-xml">              &gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">u-icon</span>&gt;</span></span>
+<span class="language-xml">            <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">          <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">        <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">      <span class="hljs-tag">&lt;/<span class="hljs-name">u-index-list</span>&gt;</span></span>
+<span class="language-xml">    <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml">  <span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span></span>
+<span class="language-xml"><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="language-javascript"></span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">import</span> &#123; getUserList &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@/api/send/index&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">import</span> &#123; aaa &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./list&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">  <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">data</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-keyword">return</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">show</span>: <span class="hljs-literal">false</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">tooptilpShow</span>: <span class="hljs-literal">false</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">scrollTop</span>: <span class="hljs-number">0</span>,</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">indexList</span>: [],</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">list2</span>: [],</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">list1</span>: [],</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-attr">keyword</span>: <span class="hljs-string">&#x27;&#x27;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">onPageScroll</span>(<span class="hljs-params">e</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">&#x27;执行&#x27;</span>)</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.<span class="hljs-property">scrollTop</span> = e.<span class="hljs-property">scrollTop</span></span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-title function_">onLoad</span>(<span class="hljs-params">val</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   获取所有人  </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getAllList</span>()</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">    <span class="hljs-attr">methods</span>: &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//  点击锚点跳转 </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// clickSelect(e) &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   //从当前位置到达目标位置</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   uni</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     .createSelectorQuery()</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     .select(&#x27;#&#x27; + e)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     .boundingClientRect((data) =&gt; &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//       //目标位置的节点：类或者id</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//       uni</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//         .createSelectorQuery()</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//         .select(&#x27;.container&#x27;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//         .boundingClientRect((res) =&gt; &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//           //最外层盒子的节点：类或者id</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//           this.$nextTick(function () &#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//             uni.pageScrollTo(&#123;</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//               scrollTop: data.top - res.top,</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//               duration: 0 //app端这个必须设置成0</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//             &#125;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//           &#125;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//         &#125;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//         .exec()</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     &#125;)</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//     .exec()</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">// &#125;,</span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   选择所有人 </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">getAllList</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-keyword">const</span> params = &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">searchValue</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">keyword</span></span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">       <span class="hljs-comment">// 这里数获取数据 换成mock的数据即可</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-title function_">getUserList</span>(params).<span class="hljs-title function_">then</span>(<span class="hljs-function">(<span class="hljs-params">res</span>) =&gt;</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-comment">// this.indexList = aaa</span></span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">indexList</span> = res.<span class="hljs-property">data</span></span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-variable language_">this</span>.<span class="hljs-property">indexList</span>.<span class="hljs-title function_">filter</span>(<span class="hljs-function">(<span class="hljs-params">item</span>) =&gt;</span> &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">            <span class="hljs-keyword">if</span> (!item.<span class="hljs-property">data</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">              item.<span class="hljs-property">data</span> = []</span></span>
+<span class="language-javascript"><span class="language-xml">            &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">          &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   跳转到聊天 </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">chat</span>(<span class="hljs-params"></span>) &#123;&#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   打电话 </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">call</span>(<span class="hljs-params">val</span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        uni.<span class="hljs-title function_">makePhoneCall</span>(&#123;</span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-comment">// 手机号</span></span></span>
+<span class="language-javascript"><span class="language-xml">          <span class="hljs-attr">phoneNumber</span>: val</span></span>
+<span class="language-javascript"><span class="language-xml">        &#125;)</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   搜索 </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">searchChange</span>(<span class="hljs-params"></span>) &#123;</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">page</span> = <span class="hljs-number">1</span></span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-property">sendList</span> = []</span></span>
+<span class="language-javascript"><span class="language-xml">        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getAllList</span>()</span></span>
+<span class="language-javascript"><span class="language-xml">      &#125;,</span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-comment">//   点击提示 </span></span></span>
+<span class="language-javascript"><span class="language-xml">      <span class="hljs-title function_">tooptilp</span>(<span class="hljs-params"></span>) &#123;&#125;</span></span>
+<span class="language-javascript"><span class="language-xml">    &#125;</span></span>
+<span class="language-javascript"><span class="language-xml">  &#125;</span></span>
+<span class="language-javascript"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span>
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span> <span class="hljs-attr">scoped</span>&gt;</span><span class="language-css"></span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.header</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">justify-content</span>: space-between;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background-color</span>: white;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">20</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding-bottom</span>: <span class="hljs-number">20</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-selector-class">.btn</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">width</span>: <span class="hljs-number">200</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">height</span>: <span class="hljs-number">60</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">      // <span class="hljs-attribute">float</span>: right;</span></span>
+<span class="language-css"><span class="language-xml">      // <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">30</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.main</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-selector-class">.radio-group</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">      //</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">flex-direction</span>: column;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.footers</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">position</span>: fixed;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">height</span>: auto;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">20</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">justify-content</span>: flex-end;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">999</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.list</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#fff</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">10</span>rpx <span class="hljs-number">40</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">17px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">justify-content</span>: space-between;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-selector-class">.icon</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">margin-right</span>: <span class="hljs-number">20px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.footer</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background-color</span>: white;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-selector-class">.btn</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">height</span>: <span class="hljs-number">60</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">width</span>: <span class="hljs-number">180</span>rpx;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.headerFlex</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">justify-content</span>: flex-end;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span> <span class="hljs-number">10px</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.label-grounp</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#69d4af</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">padding</span>: <span class="hljs-number">3px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">color</span>: <span class="hljs-number">#f5f5f5</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">8px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">10px</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.wrapper</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">height</span>: auto <span class="hljs-meta">!important</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.fiex</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">position</span>: fixed;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">top</span>: <span class="hljs-number">40px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">z-index</span>: <span class="hljs-number">999</span>;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span></span>
+<span class="language-css"><span class="language-xml">  ::v-deep &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-selector-class">.u-index-bar__index</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span> <span class="hljs-meta">!important</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span>
+</code></pre></div>
+
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/bug/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/uniapp/">#uniapp</a>
+      
+        <a href="/tags/uView/">#uView</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>uView indexList索引列表遇到的坑</div>
+      <div>http://example.com/2022/05/19/uView indexList索引列表遇到的坑/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 19, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/19/%E8%B7%B3%E8%BF%87git%20commit%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%E7%9A%84%E6%96%B9%E6%B3%95/" title="webpack5 loader解析器">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">webpack5 loader解析器</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/24/%E5%89%8D%E7%AB%AF%E5%A4%A7%E5%B1%8F%E9%80%82%E9%85%8D%E6%96%B9%E6%A1%88/" title="webpack5 loader解析器">
+                        <span class="hidden-mobile">webpack5 loader解析器</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

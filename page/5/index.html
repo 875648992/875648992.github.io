@@ -1,0 +1,1093 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Haosicx blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/5adb4644-8346-46e4-9869-51339e86ad81.JPG') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="好记性 不如烂键盘 Keep learning!"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/13/js%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8tabs/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="js自定义滚动tabs">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/13/js%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8tabs/" target="_self">
+          js自定义滚动tabs
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/12/13/js%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8tabs/" target="_self">
+        <div>
+          vue组件&lt;template&gt; &lt;div style&#x3D;&quot;width:100%;display:flex&quot;&gt;   &lt;div @click&#x3D;&quot;left&quot; v-if&#x3D;&quot;tabList.length&gt;5&quot; class&#x3D;&quot;jiantou&quot;&gt;◀&lt;&#x2F;div&gt;   &lt;div
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-13 15:23" pubdate>
+              2021-12-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/js/" class="category-chain-item">js</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/js/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/10/element%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8%E7%A6%81%E7%94%A8%E6%8C%87%E5%AE%9A%E6%9C%88%E4%BB%BD/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="jenkins构建项目后发现访问不到静态资源">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/10/element%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8%E7%A6%81%E7%94%A8%E6%8C%87%E5%AE%9A%E6%9C%88%E4%BB%BD/" target="_self">
+          jenkins构建项目后发现访问不到静态资源
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/12/10/element%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9%E5%99%A8%E7%A6%81%E7%94%A8%E6%8C%87%E5%AE%9A%E6%9C%88%E4%BB%BD/" target="_self">
+        <div>
+          遇到一个需求  日期选择器只能选6-12月  我使用的是element的日期选择器    解决方法  - 上代码: &lt;el-date-picker  :picker-options&#x3D;&quot;pickerOptions&quot; v-model&#x3D;&quot;xxx&quot; type&#x3D;&quot;month&quot; value-format&#x3D;&quot;yyyy-MM&quot;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-10 17:04" pubdate>
+              2021-12-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/elememtUI/">#elememtUI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AE%80%E6%98%93%E6%BB%91%E5%8A%A8%E8%A1%A8%E6%A0%BC/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="移动端简易滑动表格">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AE%80%E6%98%93%E6%BB%91%E5%8A%A8%E8%A1%A8%E6%A0%BC/" target="_self">
+          移动端简易滑动表格
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/12/09/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%AE%80%E6%98%93%E6%BB%91%E5%8A%A8%E8%A1%A8%E6%A0%BC/" target="_self">
+        <div>
+          上js文件代码&lt;template&gt;   &lt;view&gt;     &lt;scroll-view scroll-x&#x3D;&quot;true&quot; class&#x3D;&quot;scroll-table&quot;&gt;       &lt;view class&#x3D;&quot;scroll-tr&quot;&gt;         &lt;view class&#x3D;&quot;cus-
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-09 14:35" pubdate>
+              2021-12-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uniapp/">#uniapp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/06/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E7%83%AD%E5%8A%9B%E5%9B%BE%E5%B1%95%E7%A4%BA/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="高德地图热力图展示">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/06/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E7%83%AD%E5%8A%9B%E5%9B%BE%E5%B1%95%E7%A4%BA/" target="_self">
+          高德地图热力图展示
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/12/06/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E7%83%AD%E5%8A%9B%E5%9B%BE%E5%B1%95%E7%A4%BA/" target="_self">
+        <div>
+          1.下载这个插件 @amap&#x2F;amap-jsapi-loader import AMap from &amp;#x27;@amap&#x2F;amap-jsapi-loader&amp;#x27;  2.初始化地图并且创建热力图 &#x2F;**  初始化地图  *&#x2F;      async newsMap()&amp;#123;      this.AMap &#x3D;   await AMap.load(&amp;#123;        ke
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-06 11:18" pubdate>
+              2021-12-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/" class="category-chain-item">大屏项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/echarts/">#echarts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/12/06/%E6%A0%B9%E6%8D%AE%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E9%87%8C%E7%9A%84%E6%9F%90%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%8E%92%E5%BA%8F/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="jenkins构建项目后发现访问不到静态资源">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/12/06/%E6%A0%B9%E6%8D%AE%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E9%87%8C%E7%9A%84%E6%9F%90%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%8E%92%E5%BA%8F/" target="_self">
+          jenkins构建项目后发现访问不到静态资源
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/12/06/%E6%A0%B9%E6%8D%AE%E6%95%B0%E7%BB%84%E5%AF%B9%E8%B1%A1%E9%87%8C%E7%9A%84%E6%9F%90%E4%B8%80%E4%B8%AA%E5%AD%97%E6%AE%B5%E6%8E%92%E5%BA%8F/" target="_self">
+        <div>
+          &#x2F;**  排序  *&#x2F;      objectArraySort (keyName) &amp;#123;      return function (objectN, objectM) &amp;#123;        var valueN &#x3D; objectN[keyName]        var valueM &#x3D; objectM[keyName]        if (valueN &gt; valueM
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-12-06 11:14" pubdate>
+              2021-12-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/js/" class="category-chain-item">js</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/23/vue%20%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="jenkins构建项目后发现访问不到静态资源">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/23/vue%20%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C/" target="_self">
+          jenkins构建项目后发现访问不到静态资源
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/11/23/vue%20%E4%BD%BF%E7%94%A8%E7%AE%80%E5%8D%95%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C/" target="_self">
+        <div>
+          在html中引用cdn&lt;link href&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;animate.css@3.5.1&quot; rel&#x3D;&quot;stylesheet&quot; type&#x3D;&quot;text&#x2F;css&quot;&gt;    先在元素上使用v-show  然后在mounted中使用定时器来控制几秒钟让元素显示出来 然后用transiti
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-23 15:28" pubdate>
+              2021-11-23
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+              <a href="/tags/%E5%8A%A8%E7%94%BB/">#动画</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/11/03/uniapp%E7%AE%80%E5%8D%95%E9%9F%B3%E9%A2%91%E7%BB%84%E4%BB%B6/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="jenkins构建项目后发现访问不到静态资源">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/11/03/uniapp%E7%AE%80%E5%8D%95%E9%9F%B3%E9%A2%91%E7%BB%84%E4%BB%B6/" target="_self">
+          jenkins构建项目后发现访问不到静态资源
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/11/03/uniapp%E7%AE%80%E5%8D%95%E9%9F%B3%E9%A2%91%E7%BB%84%E4%BB%B6/" target="_self">
+        <div>
+          引入组件 import WzsAudio from &amp;#x27;@&#x2F;components&#x2F;WZS-Audio&#x2F;WZS-Audio.vue&amp;#x27; components: &amp;#123;     WzsAudio   &amp;#125;, 使用方式 &lt;WzsAudio :music&#x3D;&quot;Url&quot; :autoplay&#x3D;&quot;false&quot; &lt;&#x2F;WzsAudio
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-11-03 11:19" pubdate>
+              2021-11-03
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/uniapp/" class="category-chain-item">uniapp</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/uniapp/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uniapp/">#uniapp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/10/21/uniapp%20map%E7%9A%84circles%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="uniapp map的circles不透明问题">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/10/21/uniapp%20map%E7%9A%84circles%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/" target="_self">
+          uniapp map的circles不透明问题
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/10/21/uniapp%20map%E7%9A%84circles%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          在做地图的时候  绘制圆形地块发现背景色不透明  rgba也无效 研究了很久发现十六进制的颜色后两位可以控制透明色  官方写的是AA(不透明) circles: [          &amp;#123;            latitude: 31.15775526258681, &#x2F;&#x2F;纬度            longitude: 121.4210634114583, &#x2F;&#x2F;经度
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-10-21 17:51" pubdate>
+              2021-10-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/bug/uniapp/" class="category-chain-item">uniapp</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uniapp/">#uniapp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/09/16/uniapp%E4%BD%BF%E7%94%A8scroll-view%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%97%A0%E6%B3%95%E5%8F%96%E6%B6%88%E7%9A%84%E5%9D%91/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="uniapp使用scroll-view下拉刷新无法取消的坑">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/16/uniapp%E4%BD%BF%E7%94%A8scroll-view%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%97%A0%E6%B3%95%E5%8F%96%E6%B6%88%E7%9A%84%E5%9D%91/" target="_self">
+          uniapp使用scroll-view下拉刷新无法取消的坑
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/09/16/uniapp%E4%BD%BF%E7%94%A8scroll-view%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%97%A0%E6%B3%95%E5%8F%96%E6%B6%88%E7%9A%84%E5%9D%91/" target="_self">
+        <div>
+          在做uniapp的时候需要用到tap页  但是uView的基础tap页是不支持左右滑动的  所以使用了tap-swiper组件    但是这个组件必须包裹一个scroll-view  包裹后uniapp自带的下拉刷新就没了  必须使用scroll-view自带的下拉刷新才行   但是做的时候出现了一个问题  scroll-view自带的下拉刷新 刷新后无法取消那个动画  我在网上也找了很多  都
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-16 15:15" pubdate>
+              2021-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/bug/uniapp/" class="category-chain-item">uniapp</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uniapp/">#uniapp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2021/09/16/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="前端支付宝支付流程">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/16/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+          前端支付宝支付流程
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2021/09/16/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+        <div>
+          支付宝支付思路如下  首先点击商品的支付按钮  同时拿到这个订单的编号等一些信息  然后拿着这些数据去调用后端给的支付的接口  支付的接口会返回一个链接  这个链接就是订单对接支付宝  支付宝给我们用来跳转的链接    拿着这个链接去调原生的方法  就可以唤醒支付宝支付了  唤醒支付宝后我们再调用一个原生的方法  这个方法是监听我们支付完成后  有没有返回进入了我们的app  当我们返回app的时
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-16 14:58" pubdate>
+              2021-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%AF%E4%BB%98%E7%9B%B8%E5%85%B3/" class="category-chain-item">支付相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/h5/">#h5</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/4/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#board">6</a><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/6/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

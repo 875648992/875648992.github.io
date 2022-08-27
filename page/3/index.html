@@ -1,0 +1,1100 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Haosicx blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/5adb4644-8346-46e4-9869-51339e86ad81.JPG') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="好记性 不如烂键盘 Keep learning!"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/21/%E5%88%A9%E7%94%A8vue2%E3%80%81echarts%E7%94%BB%E6%95%A3%E7%82%B9%E5%9C%B0%E5%9B%BE/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="利用vue2.x、echarts画散点地图">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/21/%E5%88%A9%E7%94%A8vue2%E3%80%81echarts%E7%94%BB%E6%95%A3%E7%82%B9%E5%9C%B0%E5%9B%BE/" target="_self">
+          利用vue2.x、echarts画散点地图
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/21/%E5%88%A9%E7%94%A8vue2%E3%80%81echarts%E7%94%BB%E6%95%A3%E7%82%B9%E5%9C%B0%E5%9B%BE/" target="_self">
+        <div>
+          一、我们需要安装echarts、下载China.js文件 这是我的微信公众号全是技术文章： 1.echarts安装方法：      npm install echarts --save     main.js里面          import echarts from &#39;echarts&#39;                         Vue.prototype.$echarts
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-21 14:52" pubdate>
+              2022-02-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/" class="category-chain-item">大屏项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/echarts/">#echarts</a>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/20/SingleSpa%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%90%86/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="SingleSpa微前端基本使用以及原理">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/SingleSpa%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%90%86/" target="_self">
+          SingleSpa微前端基本使用以及原理
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/20/SingleSpa%E5%BE%AE%E5%89%8D%E7%AB%AF%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%8E%9F%E7%90%86/" target="_self">
+        <div>
+          先说说singleSpa的缺点 不够灵活 不能动态加载css文件 css不隔离 没有js沙箱的机制 ( 没有全局对象  每次切换的应用  都是同一个window ) 但是刚刚接触微前端  可以了解一下微前端的基础使用qiankun微前端框架已经很成熟  也是基于singleSpa来实现的点击跳转qiankun的基础使用    大致实现思路 (不了解微前端概念的可以去自行了解) 首先在父应用注册一个
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 18:43" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/SingleSpa/">#SingleSpa</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/20/%E5%89%8D%E7%AB%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1qiankun%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="前端微服务qiankun基础使用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/%E5%89%8D%E7%AB%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1qiankun%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" target="_self">
+          前端微服务qiankun基础使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/20/%E5%89%8D%E7%AB%AF%E5%BE%AE%E6%9C%8D%E5%8A%A1qiankun%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          qiankun文档点击跳转首先创建两个项目 qiankun-base  基座 qiankun-vue 子应用  基座基础配置 App.vue 建立一个element-ui的菜单用来跳转  &lt;template&gt;     &lt;div&gt;       &lt;el-menu router mode&#x3D;&amp;#x27;horizontal&amp;#x27;&gt;         &lt;!--
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 18:41" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/qiankun/">#qiankun</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/20/shadow%E5%BD%B1%E5%AD%90css%E9%9A%94%E7%A6%BB/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="shadow影子css隔离">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/shadow%E5%BD%B1%E5%AD%90css%E9%9A%94%E7%A6%BB/" target="_self">
+          shadow影子css隔离
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/20/shadow%E5%BD%B1%E5%AD%90css%E9%9A%94%E7%A6%BB/" target="_self">
+        <div>
+          主应用和子应用之间的样式隔离 BDM 约定项目前缀 在样式前面加一个路径  比如&#x2F;vue下面的所有样式–   这就也可以实现项目的个隔离  但是既然是约定  那就容易不遵守约定 css-modules 打包时候生成不冲突的选择器名   shadow Dom 真正意义上的隔离  shadow影子隔离基础概念 给元素创建一个影子  然后给这个影子添加样式   这个样式只会添加在影子上 不会影响dom上
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 16:49" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/css/" class="category-chain-item">css</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/css/">#css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/20/vue%E4%B8%AD%E4%BD%BF%E7%94%A8@%E7%9A%84%E6%97%B6%E5%80%99%E9%85%8D%E7%BD%AE%E8%B7%AF%E5%BE%84%E6%8F%90%E7%A4%BA/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue中使用@的时候配置路径提示">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/20/vue%E4%B8%AD%E4%BD%BF%E7%94%A8@%E7%9A%84%E6%97%B6%E5%80%99%E9%85%8D%E7%BD%AE%E8%B7%AF%E5%BE%84%E6%8F%90%E7%A4%BA/" target="_self">
+          vue中使用@的时候配置路径提示
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/20/vue%E4%B8%AD%E4%BD%BF%E7%94%A8@%E7%9A%84%E6%97%B6%E5%80%99%E9%85%8D%E7%BD%AE%E8%B7%AF%E5%BE%84%E6%8F%90%E7%A4%BA/" target="_self">
+        <div>
+          新增配置文件 jsconfig.json 当我们路径中使用@的时候可以有提示  &amp;#123;   &quot;compilerOptions&quot;: &amp;#123;     &quot;baseUrl&quot;: &quot;.&quot;,     &quot;paths&quot;: &amp;#123;       &quot;@&#x2F;*&quot;: [&quot;.&#x2F;src&#x2F;*&quot;]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-20 16:49" pubdate>
+              2022-02-20
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/vue/" class="category-chain-item">vue</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/17/vue3%E4%B8%AD%20element%20Plus%E4%B8%AD%E5%9B%BE%E6%A0%87%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue3中 element Plus中图标的使用">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/17/vue3%E4%B8%AD%20element%20Plus%E4%B8%AD%E5%9B%BE%E6%A0%87%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          vue3中 element Plus中图标的使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/17/vue3%E4%B8%AD%20element%20Plus%E4%B8%AD%E5%9B%BE%E6%A0%87%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          安装图片库npm install @element-plus&#x2F;icons 注册组件import &amp;#123; createApp &amp;#125; from &amp;#x27;vue&amp;#x27; import App from &amp;#x27;.&#x2F;App.vue&amp;#x27; import ElementPlus from &amp;#x27;element-plus&amp;#x27; import * as ElIcons
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-17 17:51" pubdate>
+              2022-02-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/vue/icon/" class="category-chain-item">icon</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+              <a href="/tags/elementUI/">#elementUI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/15/%E5%9F%BA%E4%BA%8Eelement-ui%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%AB%AF%E8%87%AA%E8%A1%8C%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="基于element-ui实现前端自行分页组件">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/15/%E5%9F%BA%E4%BA%8Eelement-ui%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%AB%AF%E8%87%AA%E8%A1%8C%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" target="_self">
+          基于element-ui实现前端自行分页组件
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/15/%E5%9F%BA%E4%BA%8Eelement-ui%E5%AE%9E%E7%8E%B0%E5%89%8D%E7%AB%AF%E8%87%AA%E8%A1%8C%E5%88%86%E9%A1%B5%E7%BB%84%E4%BB%B6/" target="_self">
+        <div>
+          &lt;template&gt;   &lt;div&gt;     &lt;div class&#x3D;&quot;table&quot;&gt;       &lt;el-pagination         small         @size-change&#x3D;&quot;handleSizeChange&quot;         @current-change&#x3D;&quot;handleCurre
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-15 15:27" pubdate>
+              2022-02-15
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/vue/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/elementUI/">#elementUI</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/14/vue%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue初始化全局样式">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/14/vue%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F/" target="_self">
+          vue初始化全局样式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/14/vue%E5%88%9D%E5%A7%8B%E5%8C%96%E5%85%A8%E5%B1%80%E6%A0%B7%E5%BC%8F/" target="_self">
+        <div>
+          normalize是CSS重置的现代替代方法  normalize.css  安装normalize.css  yarn add normalize.css   使用normalize.css  main.js 导入 normalize.css 即可。 import &amp;#123; createApp &amp;#125; from &amp;#x27;vue&amp;#x27; import App from &amp;#x2
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-14 19:55" pubdate>
+              2022-02-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vue/" class="category-chain-item">vue</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/vue/css/" class="category-chain-item">css</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/css/">#css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/02/14/vue-cli%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue-cli自动导入样式文件">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/02/14/vue-cli%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6/" target="_self">
+          vue-cli自动导入样式文件
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/02/14/vue-cli%E8%87%AA%E5%8A%A8%E5%AF%BC%E5%85%A5%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6/" target="_self">
+        <div>
+          如果你使用的是less或sass定义了一些变量或者函数的时候在调用的过程中  需要在每次引用导入的时候都要import这个文件这样的话就非常麻烦   其实vue-cil中提供了一个插件可以自动把你定义的样式文件导入到所有vue的组件中  vue-cli-plugin-style-resources-loader  执行命令  vue add style-resources-loader   可能
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-02-14 19:42" pubdate>
+              2022-02-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/css/" class="category-chain-item">css</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/css/">#css</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="/2022/01/21/%E5%89%8D%E7%AB%AF%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%BC%98%E5%8C%96%20(%20%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%20)/" target="_self">
+          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="前端图片显示优化 ( 压缩图片 )">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/01/21/%E5%89%8D%E7%AB%AF%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%BC%98%E5%8C%96%20(%20%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%20)/" target="_self">
+          前端图片显示优化 ( 压缩图片 )
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt " href="/2022/01/21/%E5%89%8D%E7%AB%AF%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA%E4%BC%98%E5%8C%96%20(%20%E5%8E%8B%E7%BC%A9%E5%9B%BE%E7%89%87%20)/" target="_self">
+        <div>
+          图片预览的时候 如果图片过大 就会加载的很慢可以在图片的路径后面用?拼接?x-oss-process&#x3D;image%2Fresize%2Cm_fixed%2Cw_100%2Ch_100’ 会压缩图片 使得图片加载速度提升  &#96;图片的url?x-oss-process&#x3D;image%2Fresize%2Cm_fixed%2Cw_100%2Ch_100&amp;#x27;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-01-21 11:50" pubdate>
+              2022-01-21
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="category-chain-item">性能优化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/2/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/4/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
