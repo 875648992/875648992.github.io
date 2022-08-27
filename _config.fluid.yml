@@ -232,10 +232,13 @@ font:
 # 指定自定义 .js 文件路径，支持列表；路径是相对 source 目录，如 /js/custom.js 对应存放目录 source/js/custom.js
 # Specify the path of your custom js file, support list. The path is relative to the source directory, such as `/js/custom.js` corresponding to the directory `source/js/custom.js`
 custom_js:
+  - /js/fireworks.js
 
 # 指定自定义 .css 文件路径，用法和 custom_js 相同
 # The usage is the same as custom_js
 custom_css:
+  - /css/scrollbar.css
+  - /css/indeximg-hover.css
 
 # 网页访问统计
 # Analysis of website visitors
@@ -326,7 +329,7 @@ iconfont: //at.alicdn.com/t/font_1736178_lbnruvf0jn.css
 navbar:
   # 导航栏左侧的标题，为空则按 hexo config 中 `title` 显示
   # The title on the left side of the navigation bar. If empty, it is based on `title` in hexo config
-  blog_title: "Haosicx blog"
+  blog_title: "Wenhao blog"
 
   # 导航栏毛玻璃特效，实验性功能，可能会造成页面滚动掉帧和抖动，部分浏览器不支持会自动不生效
   # Navigation bar frosted glass special animation. It is an experimental feature
@@ -924,7 +927,7 @@ giscus:
 # Archive Page
 #---------------------------
 archive:
-  banner_img: https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png
+  banner_img: https://cdn.wallpaperhub.app/cloudcache/a/6/3/1/c/4/a631c417f9d159e4a7012f0f9b4210cd164aa0f7.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -935,7 +938,7 @@ archive:
 #---------------------------
 category:
   enable: true
-  banner_img: https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png
+  banner_img: https://cdn.wallpaperhub.app/cloudcache/a/6/3/1/c/4/a631c417f9d159e4a7012f0f9b4210cd164aa0f7.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
 
@@ -964,7 +967,7 @@ category:
 #---------------------------
 tag:
   enable: true
-  banner_img: https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png
+  banner_img: https://cdn.wallpaperhub.app/cloudcache/2/e/8/f/5/7/2e8f57c8817cd2ef196903cb1f14b60bc5117674.png
   banner_img_height: 80
   banner_mask_alpha: 0.3
   tagcloud:
@@ -981,7 +984,7 @@ tag:
 #---------------------------
 about:
   enable: true
-  banner_img: https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png
+  banner_img: https://cdn.wallpaperhub.app/cloudcache/c/8/5/6/6/4/c85664354a3b9a9c98c27c54f51d175b3f17f7ef.jpg
   banner_img_height: 60
   banner_mask_alpha: 0.3
   avatar: /img/avatar.png
