@@ -346,17 +346,17 @@ navbar:
   # Navigation bar menu. `key` is used to associate languages/*.yml. If there is no association, the value of `key` itself will be displayed; if `icon` is a css class, it can be omitted; adding `name` can force the display of the specified name
   menu:
     - { key: "主页", link: "/", icon: "iconfont icon-home-fill" }
-    - { 
-        key: "常用网址", link: "/archives/", 
-        icon: "iconfont icon-archive-fill",
-        submenu: [
-          { key: 'gitee', link: 'https://gitee.com/' },
-          { key: 'github', link: 'https://github.com/' },
-          { key: 'CSDN', link: 'https://www.csdn.net/' },
-          { key: '掘金', link: 'https://juejin.cn/' },
-          { key: 'stackoverflow', link: 'https://stackoverflow.com/' }
-        ]
-      }
+    # - { 
+    #     key: "常用网址", link: "/archives/", 
+    #     icon: "iconfont icon-archive-fill",
+    #     submenu: [
+    #       { key: 'gitee', link: 'https://gitee.com/' },
+    #       { key: 'github', link: 'https://github.com/' },
+    #       { key: 'CSDN', link: 'https://www.csdn.net/' },
+    #       { key: '掘金', link: 'https://juejin.cn/' },
+    #       { key: 'stackoverflow', link: 'https://stackoverflow.com/' }
+    #     ]
+    #   }
     - { key: "分类", link: "/categories/", icon: "iconfont icon-category-fill" }
     - { key: "标签", link: "/tags/", icon: "iconfont icon-tags-fill" }
     - { key: "关于", link: "/about/", icon: "iconfont icon-user-fill" }
@@ -1035,22 +1035,34 @@ links:
   # Member item of page
   items:
     - {
-      title: "Fluid Blog",
-      intro: "主题博客",
-      link: "https://hexo.fluid-dev.com/",
-      avatar: "/img/favicon.png"
+      title: "gitee",
+      intro: "码云",
+      link: "https://gitee.com/",
+      avatar: "https://gitee.com/static/images/logo_themecolor.png"
     }
     - {
-      title: "Fluid Docs",
-      intro: "主题使用指南",
-      link: "https://hexo.fluid-dev.com/docs/",
-      avatar: "/img/favicon.png"
+      title: "github",
+      intro: "成人交友网站",
+      link: "https://github.com/",
+      avatar: "https://avatars.githubusercontent.com/u/75724207?v=4"
     }
     - {
-      title: "Fluid Repo",
-      intro: "主题 GitHub 仓库",
-      link: "https://github.com/fluid-dev/hexo-theme-fluid",
-      avatar: "/img/favicon.png"
+      title: "CSDN",
+      intro: "专业开发者社区",
+      link: "https://www.csdn.net/",
+      avatar: "https://g.csdnimg.cn/static/logo/favicon32.ico"
+    }
+    - {
+      title: "掘金",
+      intro: "稀土掘金",
+      link: "https://juejin.cn/",
+      avatar: "https://lf3-cdn-tos.bytescm.com/obj/static/xitu_juejin_web//static/favicons/favicon-16x16.png"
+    }
+    - {
+      title: "stackoverflow",
+      intro: "海外开发者交流社区",
+      link: "https://stackoverflow.com/",
+      avatar: "https://cdn.sstatic.net/Sites/stackoverflow/Img/apple-touch-icon.png?v=c78bd457575a"
     }
 
   # 当成员头像加载失败时，替换为指定图片

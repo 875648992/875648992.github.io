@@ -1,15 +1,12 @@
 ---
-title: 文章标题
-tags: [Hexo, 博客]
+title: 移动端配置postcss-pxtorem
+tags: [h5, css]
 date: 2019-10-10 10:00:00
-categories: ccc
+categories: [h5,css]
 ---
 
 1. 安装依赖：postcss-pxtorem 5.1.1
 2. vue2项目 在根目录下新增.postcssrc.js  关键要配置rootValue和propList
-
-
-{% label primary @text %}
 
 ```javascript
 module.exports = {
