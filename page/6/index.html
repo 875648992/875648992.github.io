@@ -19,9 +19,9 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="吴文皓的博客">
 <meta property="og:url" content="http://example.com/page/6/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="吴文皓的博客">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hexo</title>
+  <title>吴文皓的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -95,6 +95,8 @@
 
 
   
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
@@ -108,7 +110,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Wenhao blog</strong>
+      <strong>吴文皓技术博客</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -209,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="好记性 不如烂键盘 Keep learning!"></span>
+            <span id="subtitle" data-typed-text="好记性 不如烂键盘!"></span>
           
         </div>
 
@@ -244,13 +246,68 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/31/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="jenkins构建项目后发现访问不到静态资源">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/16/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+          前端支付宝支付流程
         </a>
-      </div>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/09/16/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+        <div>
+          支付宝支付思路如下  首先点击商品的支付按钮  同时拿到这个订单的编号等一些信息  然后拿着这些数据去调用后端给的支付的接口  支付的接口会返回一个链接  这个链接就是订单对接支付宝  支付宝给我们用来跳转的链接    拿着这个链接去调原生的方法  就可以唤醒支付宝支付了  唤醒支付宝后我们再调用一个原生的方法  这个方法是监听我们支付完成后  有没有返回进入了我们的app  当我们返回app的时
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-16 14:58" pubdate>
+              2021-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
-    <article class="col-12 col-md-8 mx-auto index-info">
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%AF%E4%BB%98%E7%9B%B8%E5%85%B3/" class="category-chain-item">支付相关</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/h5/">#h5</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/31/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" target="_self">
@@ -259,7 +316,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/31/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/31/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" target="_self">
         <div>
           在许多场景都需要使用随机密钥可以使用uuid插件也可以额前端自己生成下面是前端生成随机密钥的方法 &#x2F;&#x2F; 使用随机数  S4() &amp;#123;       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)     &amp;#125;, &#x2F;&#x2F; 调用guid函数生成uid     guid() &amp;#123;
         </div>
@@ -311,13 +368,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/31/vue%E4%B8%AD%E5%A4%84%E7%90%86vr%E5%9B%BE%E7%89%87/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue中处理vr图片">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/31/vue%E4%B8%AD%E5%A4%84%E7%90%86vr%E5%9B%BE%E7%89%87/" target="_self">
@@ -326,7 +377,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/31/vue%E4%B8%AD%E5%A4%84%E7%90%86vr%E5%9B%BE%E7%89%87/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/31/vue%E4%B8%AD%E5%A4%84%E7%90%86vr%E5%9B%BE%E7%89%87/" target="_self">
         <div>
           首先在html中引入cdn  &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pannellum@2.5.6&#x2F;build&#x2F;pannellum.js&quot;&gt;&lt;&#x2F;script&gt;    然后在页面中定义一个div  &lt;div id&#x3D;&quot;panora
         </div>
@@ -385,13 +436,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/17/echarts%E7%9A%84tooltip%E5%B1%95%E7%A4%BA%E6%80%BB%E9%87%8F/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="echarts的tooltip展示总量">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/17/echarts%E7%9A%84tooltip%E5%B1%95%E7%A4%BA%E6%80%BB%E9%87%8F/" target="_self">
@@ -400,7 +445,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/17/echarts%E7%9A%84tooltip%E5%B1%95%E7%A4%BA%E6%80%BB%E9%87%8F/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/17/echarts%E7%9A%84tooltip%E5%B1%95%E7%A4%BA%E6%80%BB%E9%87%8F/" target="_self">
         <div>
           有的时候需要tooltip展示总量怎么做呢?下面的代码可以展示x轴当前数据的总和  tooltip: &amp;#123;           trigger: &amp;#x27;axis&amp;#x27;,           axisPointer: &amp;#123;            &#x2F;&#x2F; Use axis to trigger tooltip             type: &amp;#x27;shadow&amp;#
         </div>
@@ -452,13 +497,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/12/vue%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue实现文字滚动效果">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/12/vue%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" target="_self">
@@ -467,7 +506,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/12/vue%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/12/vue%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" target="_self">
         <div>
           这段时间遇到一个需求,  从后端获取到很多人的名字需要横向滚动轮播这些名字, 就像商铺门口的电子横幅一样    查了很多的插件  也没有找到自己想要的感觉于是准备自己写一个通用的组件 创建一个my-marquee.vue文件 &lt;template&gt;   &lt;div class&#x3D;&quot;wrap&quot;&gt;     &lt;div ref&#x3D;&quot;box&quot;
         </div>
@@ -526,13 +565,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/12/echarts%E5%9B%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E5%90%8Elabel%E6%96%87%E5%AD%97%E4%B8%8D%E5%8F%98%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="echarts图表数据刷新后label文字不变化的问题以及解决方案">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/12/echarts%E5%9B%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E5%90%8Elabel%E6%96%87%E5%AD%97%E4%B8%8D%E5%8F%98%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
@@ -541,7 +574,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/12/echarts%E5%9B%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E5%90%8Elabel%E6%96%87%E5%AD%97%E4%B8%8D%E5%8F%98%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/12/echarts%E5%9B%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E5%90%8Elabel%E6%96%87%E5%AD%97%E4%B8%8D%E5%8F%98%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
         <div>
           使用select切换数据  得到新的数据后给serise里的data赋值  会发现图表的数据是变了  但是后面的数值不变  – 数值是用series里的label显示的 ( 图表的数据变成了60多  但是后面的值还是上一次的值381 )    找了很久的方法 网上有说用setOptions,有说用$set 但是我都试过了  都没有用–   因为图表的数据是变了 只是后面的值没有变化–  所以
         </div>
@@ -593,13 +626,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/10/vue%E7%9B%B4%E6%8E%A5%E5%BC%95%E7%94%A8animate.css%20%E5%8A%A8%E7%94%BB%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue直接引用animate.css 动画不起作用问题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/10/vue%E7%9B%B4%E6%8E%A5%E5%BC%95%E7%94%A8animate.css%20%E5%8A%A8%E7%94%BB%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
@@ -608,7 +635,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/10/vue%E7%9B%B4%E6%8E%A5%E5%BC%95%E7%94%A8animate.css%20%E5%8A%A8%E7%94%BB%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/10/vue%E7%9B%B4%E6%8E%A5%E5%BC%95%E7%94%A8animate.css%20%E5%8A%A8%E7%94%BB%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
         <div>
           场景（原因）：  由于vue官网引用的是animate.css 3.5版本，其无法向上兼容最新的animate.css版本，这就导致了直接npminstall animate.css后，动画压根无法生效。  因此解决方案就是安装对应低版本的animate.css：安装依赖： npm install animate.css@3.5.1 --save main.js全局引入 import animat
         </div>
@@ -667,13 +694,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/10/el-dialog%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="el-dialog垂直居中问题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/10/el-dialog%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98/" target="_self">
@@ -682,7 +703,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/10/el-dialog%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/10/el-dialog%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98/" target="_self">
         <div>
           该组件并不自带让其垂直居中的属性，因此只能通过CSS来控制（以下样式代码已兼容IE） .el-dialog&amp;#123;   display: flex;   display: -ms-flex; &#x2F;* 兼容IE *&#x2F;   flex-direction: column;   -ms-flex-direction: column; &#x2F;* 兼容IE *&#x2F;   margin:0 !important;
         </div>
@@ -741,13 +762,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/10/ElementUI%20-%20image-viewer%20-%20%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7%E6%9F%A5%E7%9C%8B%E7%BB%84%E4%BB%B6/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="ElementUI - image-viewer - 图片放大查看组件">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/10/ElementUI%20-%20image-viewer%20-%20%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7%E6%9F%A5%E7%9C%8B%E7%BB%84%E4%BB%B6/" target="_self">
@@ -756,7 +771,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/10/ElementUI%20-%20image-viewer%20-%20%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7%E6%9F%A5%E7%9C%8B%E7%BB%84%E4%BB%B6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/10/ElementUI%20-%20image-viewer%20-%20%E5%9B%BE%E7%89%87%E6%94%BE%E5%A4%A7%E6%9F%A5%E7%9C%8B%E7%BB%84%E4%BB%B6/" target="_self">
         <div>
           在使用element-ui的图片预览的时候  只能通过el-image的点击才可以触发 通过观察element-ui 的image源码发现里面是使用了一个组件  所以我们可以吧这个组件提取出来  这样img标签的点击也可以使用这个预览了  &#x2F;&#x2F; import引入 import ElImageViewer from &amp;#x27;element-ui&#x2F;packages&#x2F;image&#x2F;src&#x2F;image
         </div>
@@ -815,13 +830,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue大屏项目封装echarts">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/" target="_self">
@@ -830,7 +839,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/" target="_self">
         <div>
           在写大屏项目的时候 需要引入特别多的echarts图表所以可以把echarts封装一下  方便使用  在main.js 中首先导入echarts(需要安装) 然后把echatrs挂在到vue的原型上  这样就可以直接使用this.$echarts访问到实例了  &#x2F;&#x2F;引入echart import echarts from &amp;#x27;echarts&amp;#x27; import &amp;#x27;echar
         </div>
@@ -886,85 +895,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2021/07/07/%E5%89%8D%E7%AB%AF%E6%A0%B9%E6%8D%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%88%A4%E6%96%AD%E5%8A%A0%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="前端根据动态路由判断加载对应组件">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/07/%E5%89%8D%E7%AB%AF%E6%A0%B9%E6%8D%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%88%A4%E6%96%AD%E5%8A%A0%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6/" target="_self">
-          前端根据动态路由判断加载对应组件
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2021/07/07/%E5%89%8D%E7%AB%AF%E6%A0%B9%E6%8D%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%88%A4%E6%96%AD%E5%8A%A0%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6/" target="_self">
-        <div>
-          假如有一个需求:  多个模块需要使用一个页面– 但是每个模块里的中央内容都不一样   我们可以把页面里的不同内容封装成一个一个组件– 但如果使用v-if判断显示对应的组件– 那么假如使用的模块很多  比如30个模块都要使用  那么不得在这个页面里写30个子组件? 这个方法显然不是最好的  有个好的办法就是通过动态路由去判断当前页面处于什么模块下  就自动渲染对应模块的那个子组件– 具体代码如下
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-07 22:14" pubdate>
-              2021-07-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/vue/" class="category-chain-item">vue</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/vue/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/5/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#board">4</a><a class="page-number" href="/page/5/#board">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/#board">7</a><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/7/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -1014,7 +949,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>吴文皓的博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>保持学习</span></a> 
     </div>
   
   
@@ -1040,19 +975,17 @@
     
   
 </div>
-<div id="music_div" style="position: fixed; bottom: 0px; left: 30px;z-index:999;transition: .4s">
-  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 
+<!-- <div id="music_div" style="position: fixed; bottom: 0px; left: 30px;z-index:999;transition: .4s"> -->
+  <!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 
     src="//music.163.com/outchain/player?type=0&id=919444742&auto=1&height=90">
-  </iframe>
+  </iframe> -->
   <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css"></link>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css"></link>
-  <script src="/js/musicshow.js"></script>
-</div>
+<!-- </div> -->
 
   
   

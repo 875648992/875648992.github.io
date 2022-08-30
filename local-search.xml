@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>document.load和document.ready之间的区别</title>
+    <link href="/2022/12/16/document.load%E5%92%8Cdocument.ready%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/"/>
+    <url>/2022/12/16/document.load%E5%92%8Cdocument.ready%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/</url>
+    
+    <content type="html"><![CDATA[<h1 id="概括"><a href="#概括" class="headerlink" title="概括"></a>概括</h1><h3 id="页面加载完成有两种事件"><a href="#页面加载完成有两种事件" class="headerlink" title="页面加载完成有两种事件"></a>页面加载完成有两种事件</h3><ul><li>1.load是当页面所有资源全部加载完成后（包括DOM文档树，css文件，js文件，图片资源等），执行一个函数</li></ul><blockquote><p>问题：如果图片资源较多，加载时间较长，onload后等待执行的函数需要等待较长时间，所以一些效果可能受到影响</p></blockquote><ul><li>2.$(document).ready()是当<code>DOM文档树</code>加载完成后执行一个函数 （不包含图片，css等）所以会比load较快执行</li></ul><blockquote><p>在原生的jS中不包括ready()这个方法，只有load方法就是onload事件</p></blockquote><h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><h3 id="DOM文档解析："><a href="#DOM文档解析：" class="headerlink" title="DOM文档解析："></a>DOM文档解析：</h3><ul><li>解析html结构</li><li>加载脚本和样式文件</li><li>解析并执行脚本</li><li>构造html的DOM模型      <code>执行ready</code></li><li>加载图片等外部资源文件</li><li>页面加载完毕               <code>执行load</code></li></ul><h3 id="比如你需要在所有文件执行完成之后再调用某些函数-就可以额使用load"><a href="#比如你需要在所有文件执行完成之后再调用某些函数-就可以额使用load" class="headerlink" title="比如你需要在所有文件执行完成之后再调用某些函数  就可以额使用load"></a>比如你需要在所有文件执行完成之后再调用某些函数  就可以额使用load</h3><div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//document load</span>$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">load</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;    ...code...&#125;)</code></pre></div><h3 id="在原生的jS中不包括ready-这个方法，Jquery才有，jquery中有-ready-function-。"><a href="#在原生的jS中不包括ready-这个方法，Jquery才有，jquery中有-ready-function-。" class="headerlink" title="在原生的jS中不包括ready()这个方法，Jquery才有，jquery中有 $().ready(function)。"></a>在原生的jS中不包括ready()这个方法，Jquery才有，jquery中有 $().ready(function)。</h3><div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-comment">//document ready</span>$(<span class="hljs-variable language_">document</span>).<span class="hljs-title function_">ready</span>(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;    ...code...&#125;)<span class="hljs-comment">//document ready 简写</span>$(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)&#123;    ...code...&#125;)</code></pre></div><h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><blockquote><p>如果页面中要是没有图片之类的媒体文件的话ready与load是差不多的，但是页面中有文件就不一样了，所以还是推荐大家在工作中用ready。 如果需要依赖这些外部的资源 就使用load</p></blockquote>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>js</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>qiankun在兼容ie的坑</title>
     <link href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/"/>
     <url>/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/</url>

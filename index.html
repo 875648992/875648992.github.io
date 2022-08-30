@@ -19,9 +19,9 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="吴文皓的博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="吴文皓的博客">
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
@@ -30,7 +30,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Hexo</title>
+  <title>吴文皓的博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -95,6 +95,8 @@
 
 
   
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
 <meta name="generator" content="Hexo 6.2.0"></head>
 
 
@@ -108,7 +110,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Wenhao blog</strong>
+      <strong>吴文皓技术博客</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -209,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="好记性 不如烂键盘 Keep learning!"></span>
+            <span id="subtitle" data-typed-text="好记性 不如烂键盘!"></span>
           
         </div>
 
@@ -244,13 +246,68 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="qiankun在兼容ie的坑">
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/12/16/document.load%E5%92%8Cdocument.ready%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
+          document.load和document.ready之间的区别
         </a>
-      </div>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/16/document.load%E5%92%8Cdocument.ready%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
+        <div>
+          概括页面加载完成有两种事件 1.load是当页面所有资源全部加载完成后（包括DOM文档树，css文件，js文件，图片资源等），执行一个函数   问题：如果图片资源较多，加载时间较长，onload后等待执行的函数需要等待较长时间，所以一些效果可能受到影响   2.$(document).ready()是当DOM文档树加载完成后执行一个函数 （不包含图片，css等）所以会比load较快执行   在原生
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-12-16 23:30" pubdate>
+              2022-12-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
     
-    <article class="col-12 col-md-8 mx-auto index-info">
+      <span class="category-chain">
+        
+  <a href="/categories/%E9%9D%A2%E8%AF%95%E9%A2%98/" class="category-chain-item">面试题</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" target="_self">
@@ -259,7 +316,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" target="_self">
         <div>
           最近在做ie11的需求  需要了两个坑 第一个坑可能不是ie的问题  就是接口在ie模式下 会出现缓存  比如登录后 登录信息不同步这类似的 因为在ie中  请求的url地址一样的话会被缓存– 导致下一次的get请求 还是上一次的信息  需要在axios中 给每个get请求携带一个时间戳   第二个问题是在qiankun中调用主应用的极验等一系列第三方js会报错  原因是qiankun的第三方sc
         </div>
@@ -320,13 +377,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/06/14/mac%20M1%20nvm%20%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="mac M1 nvm 安装问题">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/06/14/mac%20M1%20nvm%20%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" target="_self">
@@ -335,7 +386,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/06/14/mac%20M1%20nvm%20%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/14/mac%20M1%20nvm%20%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" target="_self">
         <div>
           新款的mac搭载了苹果自研的芯片，放弃了intel的x86芯片，那之前的软件难免会存在兼容性问题。 鄙人有幸踩了第一个坑。 在通过nvm 安装不同版本的node 时，出现了问题。 问题一：先说一下 nvm的安装问题，这个跟m1的兼容性无关。参考大神文章（https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;622ad36ee020）  我在通过命令行安装nvm成功之后（curl -o- https:
         </div>
@@ -389,13 +440,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/06/14/vue3%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91%E5%92%8C%E7%BA%B5%E5%90%91%E6%BB%9A%E5%8A%A8%E8%B7%9D%E7%A6%BB/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="vue3获取页面横向和纵向滚动距离">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/06/14/vue3%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91%E5%92%8C%E7%BA%B5%E5%90%91%E6%BB%9A%E5%8A%A8%E8%B7%9D%E7%A6%BB/" target="_self">
@@ -404,7 +449,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/06/14/vue3%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91%E5%92%8C%E7%BA%B5%E5%90%91%E6%BB%9A%E5%8A%A8%E8%B7%9D%E7%A6%BB/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/14/vue3%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91%E5%92%8C%E7%BA%B5%E5%90%91%E6%BB%9A%E5%8A%A8%E8%B7%9D%E7%A6%BB/" target="_self">
         <div>
           创建一个hooks文件保存进去就行import &amp;#123; ref, onMounted, onBeforeMount &amp;#125; from &amp;#x27;vue&amp;#x27; export function useWindowScroll () &amp;#123;   const x &#x3D; ref(0)   const y &#x3D; ref(0)   const onScroll &#x3D; () &#x3D;&gt; &amp;#
         </div>
@@ -456,13 +501,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/23/webpack%E9%85%8D%E7%BD%AE%E7%BC%93%E5%AD%98/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="移动端配置postcss-pxtorem">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/05/23/webpack%E9%85%8D%E7%BD%AE%E7%BC%93%E5%AD%98/" target="_self">
@@ -471,7 +510,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/05/23/webpack%E9%85%8D%E7%BD%AE%E7%BC%93%E5%AD%98/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/23/webpack%E9%85%8D%E7%BD%AE%E7%BC%93%E5%AD%98/" target="_self">
         <div>
           为什么要设置缓存 我们使用webpack来打包我们模块化以后的应用程序  , webpack会生成一个可以部署的dist目录 , 然后我们把打包好的内容放置在这个目录里 , 将来我们把这个目录的内容部署到服务器上 , 浏览器就可以访问这个服务器上的网站和资源了   而最后一步获取资源是比较耗时间的 所以浏览器会使用一个叫做缓存的技术我们可以通过命中缓存去降低网络流量 , 使网站加载速度更快   然
         </div>
@@ -523,13 +562,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/22/webpack5%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%A6%82%E5%BF%B5/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5快速上手打包以及概念">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/05/22/webpack5%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%A6%82%E5%BF%B5/" target="_self">
@@ -538,7 +571,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/05/22/webpack5%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%A6%82%E5%BF%B5/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%A6%82%E5%BF%B5/" target="_self">
         <div>
           @[toc] 安装webpack有两种方式&#x2F;&#x2F; 全局安装(不建议 会锁定webpack的版本)  npm install webpack webpack-cli --global &#x2F;&#x2F; 项目中安装  npm install webpack webpack-cli --save-dev  在项目中安装的时候  可以安装在setup-app文件的里面也可以安装在setup-app文件的外面   安装在
         </div>
@@ -590,13 +623,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/22/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5的插件plugin">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/05/22/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" target="_self">
@@ -605,7 +632,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/05/22/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" target="_self">
         <div>
           引导 上一篇讲解了 webpack的快速打包 因此衍生出了一个问题  webpack打包那么方便  能不能自动管理index.html中script的路径  什么是插件  webpack就像是一条生产线  要经过一系列处理流程后 才能将入口文件转化成输出的结果 入口文件还可以依赖于其他两个js的模块 其中被依赖的模块  还可能依赖于其他的模块   并且js也会引用css文件  css文件的引入
         </div>
@@ -657,13 +684,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/22/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5资源模块asset">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/05/22/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/" target="_self">
@@ -672,7 +693,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/05/22/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/" target="_self">
         <div>
           引导 上一篇讲解了webpack搭建开发环境 有一个问题  到目前为止  项目只能加载JS  但是我们想混合一些其他的资源怎么办呢?– 比如images&#x2F; 字体 &#x2F; 图标等  资源模块asset module type 可以通过4种类型模块 来替换掉所有的loader  asset &#x2F; resource 导出图片资源 用于发送一个单独的文件并导出URl   比如我现在想在项目中
         </div>
@@ -724,13 +745,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/22/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5 loader解析器">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/05/22/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" target="_self">
@@ -739,7 +754,7 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/05/22/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" target="_self">
         <div>
           引导 上一篇讲解了 webpack的asset资源模块 除了资源模块 还可以通过loader来引入其他类型的文件  loader webpack只能解析js和json这样的文件 loader可以让webpack解析其他类型的文件 并且转化成模块来供我们使用  使用loader去加载一个css模块 如果我们不加loader去解析css  打包的时候就会报错  显示识别不了css 所以在项目的根目录下
         </div>
@@ -791,13 +806,7 @@
   <div class="row mx-auto index-card">
     
     
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/22/webpack5css%E6%8A%BD%E7%A6%BB%E5%92%8C%E5%8E%8B%E7%BC%A9/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5css抽离和压缩">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
+    <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
         <a href="/2022/05/22/webpack5css%E6%8A%BD%E7%A6%BB%E5%92%8C%E5%8E%8B%E7%BC%A9/" target="_self">
@@ -806,76 +815,9 @@
       </h1>
 
       
-      <a class="index-excerpt " href="/2022/05/22/webpack5css%E6%8A%BD%E7%A6%BB%E5%92%8C%E5%8E%8B%E7%BC%A9/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5css%E6%8A%BD%E7%A6%BB%E5%92%8C%E5%8E%8B%E7%BC%A9/" target="_self">
         <div>
           引导 上一篇讲解了 webpack的loader 我们已经可以通过loader加载css了  但是现在的代码是和html在一起的 我需要把style的代码放置到一个单独的文件里通过link去加载   mini-css-extract-plugin 这个功能需要一个插件npm i mini-css-extract-plugin -D– 这个插件是基于webpack5构建的  只能在webpack5环
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-22 16:47" pubdate>
-              2022-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-      <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/2022/05/22/webpack5%E4%BD%BF%E7%94%A8babel-loader%20ES6%E8%BD%AC%E5%8C%96ES5/" target="_self">
-          <img src="https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/d4d15cc8-efb3-41c0-8d5c-9e78514d8c09.png" srcset="/img/loading.gif" lazyload alt="webpack5使用babel-loader ES6转化ES5">
-        </a>
-      </div>
-    
-    <article class="col-12 col-md-8 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/22/webpack5%E4%BD%BF%E7%94%A8babel-loader%20ES6%E8%BD%AC%E5%8C%96ES5/" target="_self">
-          webpack5使用babel-loader ES6转化ES5
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt " href="/2022/05/22/webpack5%E4%BD%BF%E7%94%A8babel-loader%20ES6%E8%BD%AC%E5%8C%96ES5/" target="_self">
-        <div>
-          引导 上一篇讲解了 webpack的css抽离和压缩 之前我们用了less-loader编译了less文件  用css-loader编译了css文件 那么js文件需要编译吗?– 我们在页面中写一个promise定时器2秒后打印hello word 打包后我们观察输出的bundle.js文件  发现我们的ES6代码 被原封不动的打包到了这个文件里 这就引发了一个问题  !!!!不是所有浏览器都支持E
         </div>
       </a>
 
@@ -926,7 +868,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/#board">7</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
@@ -976,7 +918,7 @@
     <div class="footer-inner">
   
     <div class="footer-content">
-       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>吴文皓的博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>保持学习</span></a> 
     </div>
   
   
@@ -1002,19 +944,17 @@
     
   
 </div>
-<div id="music_div" style="position: fixed; bottom: 0px; left: 30px;z-index:999;transition: .4s">
-  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 
+<!-- <div id="music_div" style="position: fixed; bottom: 0px; left: 30px;z-index:999;transition: .4s"> -->
+  <!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=110 
     src="//music.163.com/outchain/player?type=0&id=919444742&auto=1&height=90">
-  </iframe>
+  </iframe> -->
   <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css"></link>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css"></link>
-  <script src="/js/musicshow.js"></script>
-</div>
+<!-- </div> -->
 
   
   
