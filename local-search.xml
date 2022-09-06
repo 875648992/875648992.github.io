@@ -961,33 +961,6 @@
   
   
   <entry>
-    <title>jenkins构建项目后发现访问不到静态资源</title>
-    <link href="/2021/12/29/jenkins%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%90%8E%E5%8F%91%E7%8E%B0%E8%AE%BF%E9%97%AE%E4%B8%8D%E5%88%B0%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/"/>
-    <url>/2021/12/29/jenkins%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%90%8E%E5%8F%91%E7%8E%B0%E8%AE%BF%E9%97%AE%E4%B8%8D%E5%88%B0%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</url>
-    
-    <content type="html"><![CDATA[<blockquote><p>在公司一直使用的jenkins构建项目</p></blockquote><blockquote><p>最近遇到一个问题就是在写完一个新项目后  用jenkins构建好测试环境  发现测试地址打开页面白屏</p></blockquote><blockquote><p>打开控制台后发现静态资源都是404<br>于是我在本地使用yarn build打包dist后运行了一下  发现是可以的  能够访问到静态资源</p></blockquote><p>想来想去后找到了问题  因为jenkins是公司的服务器  找不到静态资源肯定是路径的问题  我自己运行的是本地服务器所以可以找到 </p><p>于是我在<code>vue.config.js</code>文件夹里加了一句<code> publicPath: &#39;./&#39;</code></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>bug</category>
-      
-      <category>前端工程化</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>jenkins</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>m1 芯片配置前端环境</title>
     <link href="/2021/12/29/m1%20%E8%8A%AF%E7%89%87%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83/"/>
     <url>/2021/12/29/m1%20%E8%8A%AF%E7%89%87%E9%85%8D%E7%BD%AE%E5%89%8D%E7%AB%AF%E7%8E%AF%E5%A2%83/</url>
@@ -1007,6 +980,33 @@
       <tag>mac</tag>
       
       <tag>m1</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>jenkins构建项目后发现访问不到静态资源</title>
+    <link href="/2021/12/29/jenkins%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%90%8E%E5%8F%91%E7%8E%B0%E8%AE%BF%E9%97%AE%E4%B8%8D%E5%88%B0%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/"/>
+    <url>/2021/12/29/jenkins%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%E5%90%8E%E5%8F%91%E7%8E%B0%E8%AE%BF%E9%97%AE%E4%B8%8D%E5%88%B0%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90/</url>
+    
+    <content type="html"><![CDATA[<blockquote><p>在公司一直使用的jenkins构建项目</p></blockquote><blockquote><p>最近遇到一个问题就是在写完一个新项目后  用jenkins构建好测试环境  发现测试地址打开页面白屏</p></blockquote><blockquote><p>打开控制台后发现静态资源都是404<br>于是我在本地使用yarn build打包dist后运行了一下  发现是可以的  能够访问到静态资源</p></blockquote><p>想来想去后找到了问题  因为jenkins是公司的服务器  找不到静态资源肯定是路径的问题  我自己运行的是本地服务器所以可以找到 </p><p>于是我在<code>vue.config.js</code>文件夹里加了一句<code> publicPath: &#39;./&#39;</code></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>bug</category>
+      
+      <category>前端工程化</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>jenkins</tag>
       
     </tags>
     
