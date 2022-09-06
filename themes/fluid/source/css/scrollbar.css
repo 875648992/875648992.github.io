@@ -25,3 +25,22 @@
 ::-webkit-scrollbar-thumb:hover {
   background-color: #4e12f1;
 }
+
+.index-info{
+  transition: .4s;           /*动画时间*/
+}
+.index-card:hover .index-info {
+  transform: scale(1.03);    /*放大倍数*/
+  background-color: rgb(151,204,232,.1);
+  box-shadow: 0px 0px 20px 10px rgb(151,204,232,.5);
+  border-radius: 10px;
+  z-index: 999 !important;
+}
+
+#waifu{
+  z-index: 99 !important;
+}
+
+#waifu-tool{
+  display: none !important;
+}
