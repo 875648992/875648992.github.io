@@ -59,7 +59,6 @@ export default Vue;
 
 > 把初始化函数_init挂载到vue的原型上 并且改写vue中的this
 
-![image-20220907142625670](/Users/mi_wenhao.wu/Library/Application Support/typora-user-images/image-20220907142625670.png)
 
 ```javascript
 // init.js
