@@ -1,7 +1,7 @@
 ---
 title: document.load和document.ready之间的区别
 tags: [js]
-date: 2022-11-46 23:30:06
+date: 2021-11-46 23:30:06
 categories: [面试题]
 ---
 
