@@ -249,15 +249,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/" target="_self">
-          vue大屏项目封装echarts
+        <a href="/2021/10/21/bug/uniapp%20map%E7%9A%84circles%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/" target="_self">
+          uniapp map的circles不透明问题
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/04/vue%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE%E5%B0%81%E8%A3%85echarts/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/10/21/bug/uniapp%20map%E7%9A%84circles%E4%B8%8D%E9%80%8F%E6%98%8E%E9%97%AE%E9%A2%98/" target="_self">
         <div>
-          在写大屏项目的时候 需要引入特别多的echarts图表所以可以把echarts封装一下  方便使用  在main.js 中首先导入echarts(需要安装) 然后把echatrs挂在到vue的原型上  这样就可以直接使用this.$echarts访问到实例了  &#x2F;&#x2F;引入echart import echarts from &amp;#x27;echarts&amp;#x27; import &amp;#x27;echar
+          在做地图的时候  绘制圆形地块发现背景色不透明  rgba也无效 研究了很久发现十六进制的颜色后两位可以控制透明色  官方写的是AA(不透明) circles: [          &amp;#123;            latitude: 31.15775526258681, &#x2F;&#x2F;纬度            longitude: 121.4210634114583, &#x2F;&#x2F;经度
         </div>
       </a>
 
@@ -265,144 +265,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-08-04 11:14" pubdate>
-              2021-08-04
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/" class="category-chain-item">大屏项目</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/echarts/">#echarts</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/07/%E5%89%8D%E7%AB%AF%E6%A0%B9%E6%8D%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%88%A4%E6%96%AD%E5%8A%A0%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6/" target="_self">
-          前端根据动态路由判断加载对应组件
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/07/07/%E5%89%8D%E7%AB%AF%E6%A0%B9%E6%8D%AE%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1%E5%88%A4%E6%96%AD%E5%8A%A0%E8%BD%BD%E5%AF%B9%E5%BA%94%E7%BB%84%E4%BB%B6/" target="_self">
-        <div>
-          假如有一个需求:  多个模块需要使用一个页面– 但是每个模块里的中央内容都不一样   我们可以把页面里的不同内容封装成一个一个组件– 但如果使用v-if判断显示对应的组件– 那么假如使用的模块很多  比如30个模块都要使用  那么不得在这个页面里写30个子组件? 这个方法显然不是最好的  有个好的办法就是通过动态路由去判断当前页面处于什么模块下  就自动渲染对应模块的那个子组件– 具体代码如下
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-07 22:14" pubdate>
-              2021-07-07
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/vue/" class="category-chain-item">vue</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/vue/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/07/04/%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEwabpack%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
-          前端配置wabpack反向代理
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/07/04/%E5%89%8D%E7%AB%AF%E9%85%8D%E7%BD%AEwabpack%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86/" target="_self">
-        <div>
-          项目的开发过程中 经常会遇到跨域的问题 跨域: 浏览器往服务器发送请求的时候–  域名 端口 地址都相同才可以  不然就是跨域 解决方案一般是后端配置cors请求头为* 允许跨域– 还有一种方式就上去前端配置反向代理进行跨域 – 重点:  服务器向服务器发送请求是不会跨域的– 所以遇到了跨域 就需要用本地的服务器去发请求  在开发vue项目的时候 webpack都会给我们开启一个本地服务器 所以可
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-04 21:42" pubdate>
-              2021-07-04
+            <time datetime="2021-10-21 17:51" pubdate>
+              2021-10-21
             </time>
           </div>
         
@@ -422,7 +286,7 @@
   
     <span>></span>
     
-  <a href="/categories/bug/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  <a href="/categories/bug/uniapp/" class="category-chain-item">uniapp</a>
   
   
 
@@ -439,7 +303,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/webpack/">#webpack</a>
+              <a href="/tags/uniapp/">#uniapp</a>
             
           </div>
         
@@ -453,15 +317,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/04/h5%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
-          h5移动端项目问题及解决方案
+        <a href="/2021/09/16/bug/uniapp%E4%BD%BF%E7%94%A8scroll-view%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%97%A0%E6%B3%95%E5%8F%96%E6%B6%88%E7%9A%84%E5%9D%91/" target="_self">
+          uniapp使用scroll-view下拉刷新无法取消的坑
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/07/04/h5%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%A1%B9%E7%9B%AE%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/09/16/bug/uniapp%E4%BD%BF%E7%94%A8scroll-view%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%97%A0%E6%B3%95%E5%8F%96%E6%B6%88%E7%9A%84%E5%9D%91/" target="_self">
         <div>
-          iOS如何取消input首字母大写 添加一个属性  设置一下即可 autocapitalize &#x3D; &#39; off &#39;&#x2F;&#x2F; 设置后  每次进入键盘的时候  首次输入字母不会大写 &lt;input type&#x3D;&amp;#x27;text&amp;#x27; autocapitalize&#x3D;&amp;#x27;off&amp;#x27;&gt;  移动端input键盘右下角搜索按钮是怎么出来的? 正常情况下是换行  但是
+          在做uniapp的时候需要用到tap页  但是uView的基础tap页是不支持左右滑动的  所以使用了tap-swiper组件    但是这个组件必须包裹一个scroll-view  包裹后uniapp自带的下拉刷新就没了  必须使用scroll-view自带的下拉刷新才行   但是做的时候出现了一个问题  scroll-view自带的下拉刷新 刷新后无法取消那个动画  我在网上也找了很多  都
         </div>
       </a>
 
@@ -469,8 +333,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-04 21:09" pubdate>
-              2021-07-04
+            <time datetime="2021-09-16 15:15" pubdate>
+              2021-09-16
             </time>
           </div>
         
@@ -490,10 +354,71 @@
   
     <span>></span>
     
-  <a href="/categories/bug/h5/" class="category-chain-item">h5</a>
+  <a href="/categories/bug/uniapp/" class="category-chain-item">uniapp</a>
   
   
 
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/uniapp/">#uniapp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/09/16/%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+          前端支付宝支付流程
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/09/16/%E6%A1%86%E6%9E%B6/%E5%89%8D%E7%AB%AF%E6%94%AF%E4%BB%98%E5%AE%9D%E6%94%AF%E4%BB%98%E6%B5%81%E7%A8%8B/" target="_self">
+        <div>
+          支付宝支付思路如下  首先点击商品的支付按钮  同时拿到这个订单的编号等一些信息  然后拿着这些数据去调用后端给的支付的接口  支付的接口会返回一个链接  这个链接就是订单对接支付宝  支付宝给我们用来跳转的链接    拿着这个链接去调原生的方法  就可以唤醒支付宝支付了  唤醒支付宝后我们再调用一个原生的方法  这个方法是监听我们支付完成后  有没有返回进入了我们的app  当我们返回app的时
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-09-16 14:58" pubdate>
+              2021-09-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%94%AF%E4%BB%98%E7%9B%B8%E5%85%B3/" class="category-chain-item">支付相关</a>
+  
   
 
       </span>
@@ -521,15 +446,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/07/02/%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/" target="_self">
+        <a href="/2021/08/31/js/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" target="_self">
           jenkins构建项目后发现访问不到静态资源
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/07/02/%E5%89%8D%E7%AB%AF%E5%A4%84%E7%90%86%E6%A0%91%E7%8A%B6%E6%95%B0%E6%8D%AE%E7%9A%84%E4%B8%80%E4%BA%9B%E6%96%B9%E6%B3%95/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/31/js/%E5%89%8D%E7%AB%AF%E7%94%9F%E6%88%90uid/" target="_self">
         <div>
-          现在有一个这样的数据 江西–  南昌– 九江 上海– 航头 北京– 天安门– 故宫– 王府井  这样类似的数据 要处理成这样的数据 makeData(list, upArray, dataSource) &amp;#123;        dataSource.forEach((item) &#x3D;&gt; &amp;#123; &#x2F;&#x2F; 树形数据父级有多少个  就遍历多少次         const array &#x3D; [
+          在许多场景都需要使用随机密钥可以使用uuid插件也可以额前端自己生成下面是前端生成随机密钥的方法 &#x2F;&#x2F; 使用随机数  S4() &amp;#123;       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)     &amp;#125;, &#x2F;&#x2F; 调用guid函数生成uid     guid() &amp;#123;
         </div>
       </a>
 
@@ -537,8 +462,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-07-02 16:30" pubdate>
-              2021-07-02
+            <time datetime="2021-08-31 16:09" pubdate>
+              2021-08-31
             </time>
           </div>
         
@@ -570,8 +495,6 @@
             
               <a href="/tags/js/">#js</a>
             
-              <a href="/tags/%E7%AE%97%E6%B3%95/">#算法</a>
-            
           </div>
         
       </div>
@@ -584,15 +507,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/20/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%A6%82%E4%BD%95%E8%87%AA%E5%B7%B1mock%E6%95%B0%E6%8D%AE/" target="_self">
-          前端项目如何自己mock数据
+        <a href="/2021/08/31/%E6%A1%86%E6%9E%B6/vue%E4%B8%AD%E5%A4%84%E7%90%86vr%E5%9B%BE%E7%89%87/" target="_self">
+          vue中处理vr图片
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/06/20/%E5%89%8D%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%A6%82%E4%BD%95%E8%87%AA%E5%B7%B1mock%E6%95%B0%E6%8D%AE/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/31/%E6%A1%86%E6%9E%B6/vue%E4%B8%AD%E5%A4%84%E7%90%86vr%E5%9B%BE%E7%89%87/" target="_self">
         <div>
-          现在的项目大多都是前后端分离的模式如果后端和前端同步开发  那么前端写逻辑的时候就需要自己mock一些数据目前有个比较好的网址可以方便mock数据faseMOck网站 进入网址登录后 首先创建一个项目  然后进入 然后点击里面的创建接口mock的数据也可以使用mack.js官网定义的一些api去模拟更多复杂的数据 之后在项目中引用axios发送请求这样就可以简单的mock数据了
+          首先在html中引入cdn  &lt;script type&#x3D;&quot;text&#x2F;javascript&quot; src&#x3D;&quot;https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;npm&#x2F;pannellum@2.5.6&#x2F;build&#x2F;pannellum.js&quot;&gt;&lt;&#x2F;script&gt;    然后在页面中定义一个div  &lt;div id&#x3D;&quot;panora
         </div>
       </a>
 
@@ -600,8 +523,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-20 17:02" pubdate>
-              2021-06-20
+            <time datetime="2021-08-31 14:42" pubdate>
+              2021-08-31
             </time>
           </div>
         
@@ -619,70 +542,9 @@
   <a href="/categories/vue/" class="category-chain-item">vue</a>
   
   
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mock/">#mock</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/20/vue%E5%92%8Cuniapp%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/" target="_self">
-          vue和uniapp页面自动滚动到最底部
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/06/20/vue%E5%92%8Cuniapp%E9%A1%B5%E9%9D%A2%E8%87%AA%E5%8A%A8%E6%BB%9A%E5%8A%A8%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/" target="_self">
-        <div>
-          vue项目中自动滚动到最底部首先可以通过这个方法  获取到当前滚动的元素是哪一个这个方法定义script标签里        export default外面然后滚动的时候可以在控制台中打印出当前滚动的什么元素 function findScroller(element) &amp;#123;     element.onscroll &#x3D; function() &amp;#123; console.log(ele
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-20 16:43" pubdate>
-              2021-06-20
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/uniapp/" class="category-chain-item">uniapp</a>
-  
-  
     <span>></span>
     
-  <a href="/categories/uniapp/js/" class="category-chain-item">js</a>
+  <a href="/categories/vue/vr/" class="category-chain-item">vr</a>
   
   
 
@@ -699,9 +561,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/uniapp/">#uniapp</a>
-            
-              <a href="/tags/dom/">#dom</a>
+              <a href="/tags/vue/">#vue</a>
             
           </div>
         
@@ -715,15 +575,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2021/06/14/element-ui%E8%A1%A8%E6%A0%BC%E6%B1%82%E5%92%8C%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/" target="_self">
-          element-ui表格求和求平均数
+        <a href="/2021/08/17/%E6%A1%86%E6%9E%B6/echarts%E7%9A%84tooltip%E5%B1%95%E7%A4%BA%E6%80%BB%E9%87%8F/" target="_self">
+          echarts的tooltip展示总量
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/06/14/element-ui%E8%A1%A8%E6%A0%BC%E6%B1%82%E5%92%8C%E6%B1%82%E5%B9%B3%E5%9D%87%E6%95%B0/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/17/%E6%A1%86%E6%9E%B6/echarts%E7%9A%84tooltip%E5%B1%95%E7%A4%BA%E6%80%BB%E9%87%8F/" target="_self">
         <div>
-          如果只需要求和  就不需要写单独的方法  在table中添加一个属性即可如果求和和求平均数都有  就要写下面这个方法 &lt;el-table :data&#x3D;&quot;paramList&quot; border :summary-method&#x3D;&quot;getSummaries&quot; empty-text&#x3D;&quot;暂无数据&quot; :show-summary&#x3D;&quot;isTo
+          有的时候需要tooltip展示总量怎么做呢?下面的代码可以展示x轴当前数据的总和  tooltip: &amp;#123;           trigger: &amp;#x27;axis&amp;#x27;,           axisPointer: &amp;#123;            &#x2F;&#x2F; Use axis to trigger tooltip             type: &amp;#x27;shadow&amp;#
         </div>
       </a>
 
@@ -731,8 +591,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-14 14:40" pubdate>
-              2021-06-14
+            <time datetime="2021-08-17 17:56" pubdate>
+              2021-08-17
             </time>
           </div>
         
@@ -747,12 +607,270 @@
     
       <span class="category-chain">
         
-  <a href="/categories/elememtUI/" class="category-chain-item">elememtUI</a>
+  <a href="/categories/%E5%A4%A7%E5%B1%8F%E9%A1%B9%E7%9B%AE/" class="category-chain-item">大屏项目</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/echarts/">#echarts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/12/%E6%A1%86%E6%9E%B6/vue%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" target="_self">
+          vue实现文字滚动效果
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/12/%E6%A1%86%E6%9E%B6/vue%E5%AE%9E%E7%8E%B0%E6%96%87%E5%AD%97%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/" target="_self">
+        <div>
+          这段时间遇到一个需求,  从后端获取到很多人的名字需要横向滚动轮播这些名字, 就像商铺门口的电子横幅一样    查了很多的插件  也没有找到自己想要的感觉于是准备自己写一个通用的组件 创建一个my-marquee.vue文件 &lt;template&gt;   &lt;div class&#x3D;&quot;wrap&quot;&gt;     &lt;div ref&#x3D;&quot;box&quot;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-12 21:20" pubdate>
+              2021-08-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/vue/" class="category-chain-item">vue</a>
   
   
     <span>></span>
     
-  <a href="/categories/elememtUI/vue/" class="category-chain-item">vue</a>
+  <a href="/categories/vue/%E5%8A%A8%E7%94%BB/" class="category-chain-item">动画</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/12/bug/echarts%E5%9B%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E5%90%8Elabel%E6%96%87%E5%AD%97%E4%B8%8D%E5%8F%98%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+          echarts图表数据刷新后label文字不变化的问题以及解决方案
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/12/bug/echarts%E5%9B%BE%E8%A1%A8%E6%95%B0%E6%8D%AE%E5%88%B7%E6%96%B0%E5%90%8Elabel%E6%96%87%E5%AD%97%E4%B8%8D%E5%8F%98%E5%8C%96%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          使用select切换数据  得到新的数据后给serise里的data赋值  会发现图表的数据是变了  但是后面的数值不变  – 数值是用series里的label显示的 ( 图表的数据变成了60多  但是后面的值还是上一次的值381 )    找了很久的方法 网上有说用setOptions,有说用$set 但是我都试过了  都没有用–   因为图表的数据是变了 只是后面的值没有变化–  所以
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-12 10:11" pubdate>
+              2021-08-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/echarts/">#echarts</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/10/bug/vue%E7%9B%B4%E6%8E%A5%E5%BC%95%E7%94%A8animate.css%20%E5%8A%A8%E7%94%BB%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
+          vue直接引用animate.css 动画不起作用问题
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/10/bug/vue%E7%9B%B4%E6%8E%A5%E5%BC%95%E7%94%A8animate.css%20%E5%8A%A8%E7%94%BB%E4%B8%8D%E8%B5%B7%E4%BD%9C%E7%94%A8%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          场景（原因）：  由于vue官网引用的是animate.css 3.5版本，其无法向上兼容最新的animate.css版本，这就导致了直接npminstall animate.css后，动画压根无法生效。  因此解决方案就是安装对应低版本的animate.css：安装依赖： npm install animate.css@3.5.1 --save main.js全局引入 import animat
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-10 16:53" pubdate>
+              2021-08-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/bug/%E5%8A%A8%E7%94%BB/" class="category-chain-item">动画</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/vue/">#vue</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/08/10/bug/el-dialog%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98/" target="_self">
+          el-dialog垂直居中问题
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2021/08/10/bug/el-dialog%E5%9E%82%E7%9B%B4%E5%B1%85%E4%B8%AD%E9%97%AE%E9%A2%98/" target="_self">
+        <div>
+          该组件并不自带让其垂直居中的属性，因此只能通过CSS来控制（以下样式代码已兼容IE） .el-dialog&amp;#123;   display: flex;   display: -ms-flex; &#x2F;* 兼容IE *&#x2F;   flex-direction: column;   -ms-flex-direction: column; &#x2F;* 兼容IE *&#x2F;   margin:0 !important;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-08-10 16:37" pubdate>
+              2021-08-10
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/bug/vue/" class="category-chain-item">vue</a>
   
   
 
@@ -777,149 +895,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/06/13/vue%E9%A1%B9%E7%9B%AE%E4%B8%ADexcel%E5%AF%BC%E5%87%BA/" target="_self">
-          vue项目中excel导出
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/06/13/vue%E9%A1%B9%E7%9B%AE%E4%B8%ADexcel%E5%AF%BC%E5%87%BA/" target="_self">
-        <div>
-          excel导出是需要模板的模板下载列举 async download() &amp;#123;      const api &#x3D; &amp;#x27;https:&#x2F;&#x2F;xxx.xxx.cn&#x2F;20210419&#x2F;b1c0801f-9377-4e5f-9d72-0032a03b0237.xlsx&amp;#x27;;  &#x2F;&#x2F; 下载地址  后端提供      const a &#x3D; await document.createEleme
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-06-13 18:43" pubdate>
-              2021-06-13
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/bug/" class="category-chain-item">bug</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/bug/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-              <a href="/tags/excel/">#excel</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2021/05/29/%E6%AD%A3%E5%88%99%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99/" target="_self">
-          正则校验规则
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2021/05/29/%E6%AD%A3%E5%88%99%E6%A0%A1%E9%AA%8C%E8%A7%84%E5%88%99/" target="_self">
-        <div>
-          在写项目的时候是不是经常需要使用到很多校验规则呢列举一些实用的校验规则  可以在写项目的时候方便使用哦手机号校验 validatorPhone (value) &amp;#123;    const reg &#x3D; &#x2F;^1[3456789]\d&amp;#123;9&amp;#125;$&#x2F;    return reg.test(value)  &amp;#125;,  邮箱校验 validatorEmail (value) &amp;#12
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2021-05-29 19:13" pubdate>
-              2021-05-29
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/js/" class="category-chain-item">js</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/js/%E6%AD%A3%E5%88%99/" class="category-chain-item">正则</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/%E6%AD%A3%E5%88%99/">#正则</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
+      <a class="extend prev" rel="prev" href="/page/6/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/#board">8</a><a class="page-number" href="/page/9/#board">9</a><a class="extend next" rel="next" href="/page/8/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

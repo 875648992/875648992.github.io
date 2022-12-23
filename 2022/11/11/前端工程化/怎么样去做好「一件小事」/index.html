@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前置工作中一些会收到做事「不细致」「不认真」的一些反馈，但是单纯从字面角度可能很难理解，觉得自己把代码认真写完了，代码也很整洁，感觉已经很认真了。为什么会有这样的反馈呢？而且对这种反馈也不太知道怎么去改进。 其实很多工程师对「做事细致」存在一个误解，认为自己的工作只有写代码这一件事，只要能完成团队交给自己的任务就是做好了。但一个 Feature &#x2F; BugFix &#x2F; Proje">
+<meta property="og:type" content="article">
+<meta property="og:title" content="怎么样去做好「一件小事」">
+<meta property="og:url" content="http://example.com/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%80%8E%E4%B9%88%E6%A0%B7%E5%8E%BB%E5%81%9A%E5%A5%BD%E3%80%8C%E4%B8%80%E4%BB%B6%E5%B0%8F%E4%BA%8B%E3%80%8D/index.html">
+<meta property="og:site_name" content="吴文皓的博客">
+<meta property="og:description" content="前置工作中一些会收到做事「不细致」「不认真」的一些反馈，但是单纯从字面角度可能很难理解，觉得自己把代码认真写完了，代码也很整洁，感觉已经很认真了。为什么会有这样的反馈呢？而且对这种反馈也不太知道怎么去改进。 其实很多工程师对「做事细致」存在一个误解，认为自己的工作只有写代码这一件事，只要能完成团队交给自己的任务就是做好了。但一个 Feature &#x2F; BugFix &#x2F; Proje">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-11T04:41:09.000Z">
+<meta property="article:modified_time" content="2022-12-09T12:09:40.427Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>怎么样去做好「一件小事」 - 吴文皓的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <!-- <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>吴文皓技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="怎么样去做好「一件小事」"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-11 12:41" pubdate>
+          November 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          4.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          37 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">怎么样去做好「一件小事」</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 14 days ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前置"><a href="#前置" class="headerlink" title="前置"></a>前置</h1><p>工作中一些会收到做事「不细致」「不认真」的一些反馈，但是单纯从字面角度可能很难理解，觉得自己把代码认真写完了，代码也很整洁，感觉已经很认真了。为什么会有这样的反馈呢？而且对这种反馈也不太知道怎么去改进。</p>
+<p>其实很多工程师对「做事细致」存在一个误解，认为自己的工作只有写代码这一件事，只要能完成团队交给自己的任务就是做好了。但一个 Feature &#x2F; BugFix &#x2F; Project 都涉及了前期调研、技术实施、推动上线、总结复盘等多个环节，代码编写只是技术实施这一步，在其他地方的纰漏和粗心大意就会收到这样的反馈了。</p>
+<p>此外目前公司内部可能相关方面建设也相对缺乏，所以就要我们形成相关的意识。这篇文档正是用一些过往经验想在这方面给大家一个参考，应该怎么样去做好「一件小事」。</p>
+<h1 id="方法论"><a href="#方法论" class="headerlink" title="方法论"></a>方法论</h1><p>无论是 Feature 还是项目，生命周期大抵都跟下图一样，分为四步：</p>
+<ol>
+<li>立项：明确做这件事的原因，比如提升 XX 的效率，提升 YY 的性能</li>
+<li>实施：对解决问题的方案进行设计并实施</li>
+<li>落地：推动我们所做的工作上线，或者在业务团队中使用</li>
+<li>总结：明确我们所做的 Feature 是不是真的解决了问题，根据落地过程中的反馈重新推动实施</li>
+</ol>
+<p>下面我们分不同的阶段讨论一下应该如何把事情做好。</p>
+<h1 id="立项"><a href="#立项" class="headerlink" title="立项"></a>立项</h1><p>立项是一个非常考验大家「工作能力」的事情。因为立项的难点在于「信息获取」，即如何通过「搜索引擎」「和他人沟通」等多种方法，获取到充足的信息来帮助自己完成第一版的决定。</p>
+<blockquote>
+<p>谨记：在各行各业，只要你还在工作，信息获取能力永远都是工作能力之首。</p>
+</blockquote>
+<p>一个正式的立项要经历，充分的信息搜索，进行足够的思考和一定实践，让慢工出细活。</p>
+<h4 id="怎样做信息获取？"><a href="#怎样做信息获取？" class="headerlink" title="怎样做信息获取？"></a><strong>怎样做信息获取？</strong></h4><p>在这一步我们要找的信息是「有没有人遇到过类似的问题」「大家有什么类似的解决方案」，为后续的方案设计打一定的基础。这里千万不要潦草随意，禁忌「盲目自信」，翻了翻 Github ，翻了翻一些内外网的文档，通过一些片面的信息就确定了自己要怎么干，甚至跳过了后续的和他人讨论的阶段，直接开始写代码。这样非常有可能因为信息不充分导致自己做的决策是错误的，白白浪费了自己的时间。</p>
+<p>信息获取的方法有大概这样几种：</p>
+<p>方法一：聊。和相关的同学进行沟通是一个非常有效的手段，业务同学、自己的 mentor 或者在闲聊吹水的群里随便聊。聊也不一定要在内部，只要不涉及公司业务和保密内容，也可以在外网（discord 等）渠道沟通。</p>
+<p>方法二：搜。搜索要拿出娱乐记者搞八卦的劲头来，穷尽各种可能的渠道去获取信息。下面给大家列举几个：</p>
+<ol>
+<li>通用搜索： Google &#x2F; Stackoverflow &#x2F; Reddit &#x2F; Twitter &#x2F; 知乎</li>
+<li>代码搜索： Github</li>
+<li>内网搜索： 文档 &#x2F; 群聊记录 &#x2F; 一些技术官网</li>
+</ol>
+<p>方法三：攒。前面讲到的两个都是在出现问题的时候，主动去获取信息的手段。但所有的信息都等待遇到问题的时候再去获取，是不容易获取到全面的信息的。所以在平常就要注意积累，例如看到的 Github 的 issue，关联的东西可以自己留意一下；还有很多的知识在书本、在课程视频里面，在平常多去阅读，构建自己的知识体系，提升自己的技术视野，在将来遇到问题的时候思路才会更加广阔。也更容易出现灵光一闪的瞬间。</p>
+<h4 id="怎样分析问题？"><a href="#怎样分析问题？" class="headerlink" title="怎样分析问题？"></a>怎样分析问题？</h4><p>收集信息是第一步，那么对信息进行处理就是第二步，在方案设计这一步中主要有「问题抽象」 &gt; 「多方案设计」 &gt; 「POC」。</p>
+<p>先带大家了解一个简单的例子：</p>
+<p>📌</p>
+<p>拿 Polyfill 举例，当代浏览器和用户设备的发展，对 JavaScript 最新的语法已经支持的越来越好了，但是为了兼容用户群体中最低端的那一部分，我们需要 90% 的用户也加载 Polyfill 这个好像并不合理。为了提升绝大多数用户的性能体验，我们对 Polyfill 这个问题抽象为「如何在尽可能多的设备上执行尽可能少的 Polyfill 代码」。带着这个问题设计方案，我们需要考虑如何识别环境，如何根据环境不同加载不同的资源（空资源也是一种特殊的资源），所以在客户端侧通过识别用户的浏览器环境，将 polyfill 的资源链接映射成空链接就可以提升高端设备的执行性能。最后一步就是写个 Demo 验证这件事的可行性。</p>
+<p>有前面这个真实的例子之后，理解后面的方法论大家应该也比较好理解了。</p>
+<h4 id="怎么抽象问题？"><a href="#怎么抽象问题？" class="headerlink" title="怎么抽象问题？"></a><strong>怎么抽象问题？</strong></h4><p>我自己感受下来，对「抽象」这个词大家的理解是不尽相同的，在这里我说一些自己的感受。抽象的核心是寻找规律和特征。抽象能力和设计能力很像，没有一套公式能够让你成为专家，只有多多练习才能提升。</p>
+<p>当然了抽象是一个非常复杂的话题，我们不在这里展开了。</p>
+<h4 id="多方案设计与-PoC（Proof-of-Concept）"><a href="#多方案设计与-PoC（Proof-of-Concept）" class="headerlink" title="多方案设计与 PoC（Proof of Concept）"></a>多方案设计与 PoC（Proof of Concept）</h4><p>方案设计应该大家都会吧。</p>
+<p>很多优秀的工程师可能在这个阶段开始之前，就已经有了一个初期的想法。那么在立项的过程中，就需要加入自己对于这个方案的思考，并且在多个方案之间进行充分的对比。想清楚，自己做这件事到底怎么不一样的解决了什么问题。</p>
+<h1 id="实施"><a href="#实施" class="headerlink" title="实施"></a>实施</h1><p>实施阶段就是指在完成立项之后，进入 Coding 阶段（干活的阶段）。那么怎么算是写好了一段代码？这个事情的衡量的标准：「一个能通过面试的实习生，能在多长时间接手这段代码？」</p>
+<p><strong>怎么接手一段代码</strong></p>
+<p><strong>功能：</strong></p>
+<p>有渠道要首先要了解这段代码的功能，这样才知道这段代码要做什么事情，自己内心对于功能的实现也会有一些初步的想法</p>
+<p><strong>测试用例：</strong></p>
+<p>看他的测试用例，通过测试用例上的输入输出可以知道这段代码的作用是什么的同时并且可以通过一些边界 case 知道他曾经遇到过什么样的问题，比如在 babel 的 system js 插件中<a target="_blank" rel="noopener" href="https://github.com/babel/babel/tree/main/packages/babel-plugin-transform-modules-systemjs/test/fixtures/allow-top-level-this/false">这段代码</a>，就说明了 SystemJS 中 Top Level 的 this 应该被翻译成 undefined。</p>
+<p><strong>阅读源码实现：</strong></p>
+<p>在了解完测试用例之后，会开始正式看源码，找到代码的入口（entry），根据入口看看程序的启动逻辑，看看程序的模块关系，遇到一些看不太懂的逻辑，就会需要注释的帮助。</p>
+<p><strong>运行：</strong></p>
+<p>仅仅读代码是不够的，毕竟人脑不是编译器也不是虚拟机，最后要通过把代码跑起来，一步步调试，这时候就需要一份文档能够解释清楚如何调试。</p>
+<p><strong>健康代码的一些通用标准</strong></p>
+<p>根据上面这段讲解的思路，一段代码是不是易于被他人理解、学习和维护，有几个要求：</p>
+<ol>
+<li>TDD：无论是 e2e 还是 UT 都要保证代码有自动化的测试。</li>
+<li>注释：在代码中总会有一个 hack 的逻辑，神奇的代码绕过神奇的 bug，写好注释利人利己。</li>
+<li>README：在文档中，解释清楚代码如何使用和运行，介绍调试的办法。</li>
+</ol>
+<p>最后，上面这段只讲解了一段小代码需要注意的事情，在大型软件工程中，还需要清晰的架构分层、模块划分、抽象等等，这些如果大家有兴趣我们换个文章再聊。</p>
+<h1 id="落地"><a href="#落地" class="headerlink" title="落地"></a>落地</h1><p>正如背景所说的，写完代码并不是结束，一个完整的需求需要包含后期的落地推动。落地这件事是很多同学的做的不足的地方。对落地一句话的总结：「用自己实施的结果解决立项时候所发现的问题」。落地的意义有两部分：「消除业务和基建的 Gap」和「证明工作价值」。</p>
+<p><strong>怎么解释落地的意义？</strong></p>
+<p>不如从另一个视角来看这个问题。</p>
+<p>在金融行业中，对一家公司 &#x2F; 行业进行分析的时候，会有一个分析点叫做「<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Value_chain">产业链分析</a>」。当资方决定买入一家公司的股票的时候，这个分析手段可以帮资方看出当前行业的上下游是什么，这家公司处在什么位置，是不是要最终买入。例如下图是某证券机构评估百度无人车业务的时候分析的产业链结构，不管大家对百度怎么看，只要产业链在发展，上下游都很活跃，百度在这里的位置合理并且能够发挥足够的作用，那么对百度的评价就是「买入」。</p>
+<p>同样的道理，我们做出来的一项技术，在公司大前端业务的产业链上处于什么位置，在下一个年度规划的时候是加大、保持还是减少投入，就是在一个个「落地」中表现出来的。</p>
+<p>在开头讲到，落地的意义有两部分：「消除业务和基建的 Gap」和「证明工作价值」。消除 Gap 才能让业务使用我们提供的基础服务，我们提供的服务就进入了大前端业务的产业链。</p>
+<p>所以落地是一个证明工作价值的过程。</p>
+<p><strong>具体怎么做好落地？</strong></p>
+<p>上面说的比较宏观，下面讲一点实际的，具体到项目上，应该怎么样推进落地。</p>
+<p>在一个在项目中应该怎么不断调整我们的技术方案，消除业务和基建的 Gap</p>
+<p>落地一定要有结果来证明价值，尤其是业务上的结果，比如能够帮助业务提升开发效率，比如能够提升线上业务的技术指标等等。这里举个例子：</p>
+<p>很多同学做的是工具链上的工作，很难直接取得业务上的收益，这种类型的就要通过对业务效率的提升来表示：</p>
+<p>当时在支持公司监控SDK的开发，为了减小SDK的体积给接入方带来的负面影响（如加载性能）做了非常多的优化，如class to func、enum to const enum、处理promise等最后使得SDK体积降低逾35%。监控平台上线以后上千业务线进行了接入，帮助重点项目发现和定位异常X例，有效P0报警X起，业务侧通过监控来分析性能优化X%。</p>
+<p>void 0</p>
+<p>1[1]</p>
+<p>1..1</p>
+<h1 id="复盘"><a href="#复盘" class="headerlink" title="复盘"></a>复盘</h1><p>复盘是个形式，复盘对团队来说的意义大于个人。对每一个同学来说，他可能在做事的过程中，就已经形成了清晰的思考，对事情有反思，想到了下一步应该怎么做。但是团队内的同学并不知道这件事在落地过程中遇到什么问题，为什么下一步是做那件事。</p>
+<p>我观察到很多团队只在出现事故后才会对事故进行复盘，但实际上复盘的作用远不止于此。复盘是对之前所做事情的沉淀和梳理。</p>
+<h4 id="怎么做复盘？"><a href="#怎么做复盘？" class="headerlink" title="怎么做复盘？"></a>怎么做复盘？</h4><p>写一份复盘文档就好了。复盘文档采用总分结构，先介绍「整体结果」再介绍「项目过程」，分析一下过程中的「问题」，最后列举一些 Action 即可。</p>
+<p>整体部分，主要介绍这件事情的结果，如业务或者技术指标的变化等，最好有数据作为支撑。同时有一些业务反馈的评价就更好了。</p>
+<p>过程记录，要记录事情过程中的一些关键节点，如得知一些业务反馈做的技术调整等。这里很关键，大家通过阅读这部分能获得清晰的上下文和背景。</p>
+<p>问题总结，我们经常会说一句话，「假如当初 XXX 就好了」，这里就写这些 XXX。</p>
+<p><strong>一些问题</strong></p>
+<p>Q：这样做事情的话，我们的工作节奏会变慢很多，如果面对一些竞争可能会失去优势，应该怎么办呢？</p>
+<p>A：很多事情我们要意识到不能图快例如相关基础设施通用能力的搭建，要认真踏实交付出来好的东西，快的话交付出去非常有可能是一堆问题；大家认真做的这些文档和分析一定都会在未来的某一天发挥作用。</p>
+<p>Q：文档写的那么长，写那么多文章，是不是卷？</p>
+<p>A：首先不要管别人卷不卷，多关注自己，当你想要去完成一件事的时候，是否倾注了心血，把这件事做到有头有尾有始有终，最后只要能产生价值就不是卷；其次文档只是思考的文本表达，这种表现形式能够起到沉淀总结的作用即可，不必过分追求长短，在能把问题说清楚的前提下，喜欢写长一点就写长一点，喜欢写短一点就写短一点。</p>
+<p>Q：我拿很多时间去写文档，去做思考，自己的产出变少了？</p>
+<p>A：首先文档是工作产出的一部分，文档背后的思考也是。其次工作的数量确实会变少，但追求数量不该是追求极致的同学做事的态度，先把事情的质量做好，不要像土拨鼠一样每天不停的挖新坑。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>怎么样去做好「一件小事」</div>
+      <div>http://example.com/2022/11/11/前端工程化/怎么样去做好「一件小事」/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 11, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96/" title="首屏加载优化">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">首屏加载优化</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/01/js/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" title="事件循环深度学习">
+                        <span class="hidden-mobile">事件循环深度学习</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>吴文皓的博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>保持学习</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  <!-- <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css"></link> -->
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/fireworks.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

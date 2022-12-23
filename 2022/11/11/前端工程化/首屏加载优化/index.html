@@ -1,0 +1,801 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="项目分析假设现在接到一个需求，需要优化某项目的首屏加载时间，首先需要了解当前项目的各项指标，测量方式，优化步骤 指标名词首次绘制(FP)：渲染时候，创建的空白页面的时间首次内容绘制(FCP)：渲染出第一个内容，第一个内容可以是文字，图片等最大内容绘制时间(LCP)：最大内容绘制时间最有意义内容绘制时间(FMP)：首次渲染最有意义的时间，但他没有一个标准的定义，并且计算方式比较复杂，lighthou">
+<meta property="og:type" content="article">
+<meta property="og:title" content="首屏加载优化">
+<meta property="og:url" content="http://example.com/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96/index.html">
+<meta property="og:site_name" content="吴文皓的博客">
+<meta property="og:description" content="项目分析假设现在接到一个需求，需要优化某项目的首屏加载时间，首先需要了解当前项目的各项指标，测量方式，优化步骤 指标名词首次绘制(FP)：渲染时候，创建的空白页面的时间首次内容绘制(FCP)：渲染出第一个内容，第一个内容可以是文字，图片等最大内容绘制时间(LCP)：最大内容绘制时间最有意义内容绘制时间(FMP)：首次渲染最有意义的时间，但他没有一个标准的定义，并且计算方式比较复杂，lighthou">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-11-11T08:41:09.000Z">
+<meta property="article:modified_time" content="2022-12-09T12:09:40.428Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>首屏加载优化 - 吴文皓的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <!-- <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>吴文皓技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="首屏加载优化"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-11-11 16:41" pubdate>
+          November 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          19 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">首屏加载优化</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 14 days ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h1><p>假设现在接到一个需求，需要优化某项目的首屏加载时间，首先需要了解当前项目的各项指标，测量方式，优化步骤</p>
+<h1 id="指标名词"><a href="#指标名词" class="headerlink" title="指标名词"></a>指标名词</h1><p>首次绘制(FP)：渲染时候，创建的空白页面的时间<br>首次内容绘制(FCP)：渲染出第一个内容，第一个内容可以是文字，图片等<br>最大内容绘制时间(LCP)：最大内容绘制时间<br>最有意义内容绘制时间(FMP)：首次渲染最有意义的时间，但他没有一个标准的定义，并且计算方式比较复杂，lighthouse计算的大概思路是，将页面中最大布局变化后的第一次渲染事件作为FMP事件，并且还考虑了可视区域的因素<br>（如果想知道这个数值，可以使用MutationObserver去计算</p>
+<h1 id="测量工具"><a href="#测量工具" class="headerlink" title="测量工具"></a>测量工具</h1><ul>
+<li>google提供的<a target="_blank" rel="noopener" href="https://pagespeed.web.dev/report">pagespeed</a></li>
+<li>chrome performace &amp; lighthouse</li>
+<li>firebase &amp; sentry</li>
+</ul>
+<h1 id="优化思路"><a href="#优化思路" class="headerlink" title="优化思路"></a>优化思路</h1><p>面试题：从输入URL到浏览器显示页面过程中发生了什么？</p>
+<ul>
+<li>进行DNS解析</li>
+<li>建立TCP连接</li>
+<li>客户端发送HTTP请求</li>
+<li>服务端响应HTTP资源</li>
+<li>浏览器获取响应内容，进行解析和渲染</li>
+</ul>
+<h2 id="资源加载更快"><a href="#资源加载更快" class="headerlink" title="资源加载更快"></a>资源加载更快</h2><h3 id="提前建立连接"><a href="#提前建立连接" class="headerlink" title="提前建立连接"></a>提前建立连接</h3><ul>
+<li>dns-prefetch：是预先通过 DNS 查询得到指定域名对应的 IP，在真正请求该域名下资源时，可以省掉 DNS 查询这一步</li>
+<li>preconnect：提前和目标服务器进行连接，但是只会维持10s，用多了也不好会阻塞正常的请求，一般最多3-4个</li>
+<li>preload：预加载当前页面需要的资源</li>
+<li>prefetch：加载接下来的页面可能用到的资源，会在浏览器空闲时下载资源</li>
+</ul>
+<h3 id="资源传输"><a href="#资源传输" class="headerlink" title="资源传输"></a>资源传输</h3><p>一、http压缩（服务端实现）</p>
+<div class="code-wrapper"><pre><code class="hljs css"><span class="hljs-attribute">content</span>-encoding: gzip</code></pre></div>
+<p>二、压缩项目体积<br>webpack-bundle-analyzer可以分析项目打包后的体积，可以查看哪些项目的体积过大，进行针对性处理</p>
+<ol>
+<li>lodash -&gt; lodash-es<br>后者体积要小于前者50%左右，lodash是es5语法，lodash-es时es6模块化语法，可以实现按需加载</li>
+<li>moment国际化只用中文显示<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-keyword">const</span> <span class="hljs-title class_">MomentLocalesWebpackPlugin</span> = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;moment-locales-webpack-plugin&#x27;</span>);
+<span class="hljs-attr">plugins</span>: [
+    <span class="hljs-keyword">new</span> <span class="hljs-title class_">MomentLocalesWebpackPlugin</span>(&#123;
+       <span class="hljs-attr">localesToKeep</span>: [<span class="hljs-string">&#x27;zh-cn&#x27;</span>]
+     &#125;
+]</code></pre></div>
+moment(51k)功能大体积也大，推荐使用day.js(7k)或者date-fn(模块化，可以按需加载)</li>
+<li>抽离和压缩css（需要注意使用效果）<div class="code-wrapper"><pre><code class="hljs haxe">const MiniCssExtractPlugin = require(<span class="hljs-string">&#x27;mini-css-extract-plugin&#x27;</span>);
+<span class="hljs-keyword">new</span> <span class="hljs-type">MiniCssExtractPlugin</span>(&#123;
+      filename: <span class="hljs-type"></span>&#x27;[name]<span class="hljs-literal">_</span>[contenthash].css<span class="hljs-string">&#x27;,</span>
+<span class="hljs-string">      chunkFilename: &#x27;</span>[id]<span class="hljs-literal">_</span>[contenthash].css<span class="hljs-string">&#x27;</span>
+<span class="hljs-string">    &#125;)</span></code></pre></div>
+4.tree shaking摇掉不用的代码，内联的css样式需要外联，不然会被摇掉<div class="code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> webpack.config.js
+optimization: &#123;
+    usedExports: true,
+ &#125;
+<span class="hljs-regexp">//</span>针对css文件需要在package.json里添加
+<span class="hljs-string">&quot;sideEffects&quot;</span>: [<span class="hljs-string">&quot;*.css&quot;</span>]</code></pre></div></li>
+<li>针对项目中体积较大的包，利用optimization splitchunks将其拆出来<div class="code-wrapper"><pre><code class="hljs awk"><span class="hljs-regexp">//</span> 将vendors单独拆出来引用
+optimization: &#123;
+    splitChunks: &#123;
+    <span class="hljs-regexp">//</span> cacheGroups 继承 splitChunks 里的所有属性的值，也可以覆盖
+      cacheGroups: &#123;
+        vendors: &#123;
+          test: <span class="hljs-regexp">/node_modules\//</span>,
+          name: <span class="hljs-string">&#x27;vendors&#x27;</span>,
+          priority: -<span class="hljs-number">20</span>, <span class="hljs-regexp">//</span> 方案的优先级，值越大表示提取模块时优先采用此方案，默认值为<span class="hljs-number">0</span>；
+          chunks: <span class="hljs-string">&#x27;all&#x27;</span> <span class="hljs-regexp">//</span> 初始chunk和异步chunk，all代表所有
+        &#125;
+      &#125;
+    &#125;
+  &#125;</code></pre></div></li>
+<li>本地静态图片处理<br>使用<a target="_blank" rel="noopener" href="https://tinypng.com/">tinypng</a>对本地静态图片进行压缩，可以使用脚本<a target="_blank" rel="noopener" href="https://object-storage.mihoyo.com:9000/plat-knowledge-management/prod/a3fe84dcbeac017ed65293f2753e81aa_1666952830789.js?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=plat-knowledge-management-admin/20221111//s3/aws4_request&X-Amz-Date=20221111T021311Z&X-Amz-Expires=21600&X-Amz-SignedHeaders=host&X-Amz-Signature=0a045dadc37c762066015bff7b469167ee58a47ba68d436074a1f9c2aefe2d7c">tinypng.js</a>进行批量压缩<br>三、减少http请求</li>
+</ol>
+<ul>
+<li>合并公共资源，如 雪碧图</li>
+<li>合并代码块，如公共组件封装、组件复用逻辑抽离<br>四、路由懒加载，组件动态加载<br>cdn缓存，http2.0 未完待续。。。</li>
+</ul>
+<h2 id="视图更快渲染和交互"><a href="#视图更快渲染和交互" class="headerlink" title="视图更快渲染和交互"></a>视图更快渲染和交互</h2><h3 id="渲染层面"><a href="#渲染层面" class="headerlink" title="渲染层面"></a>渲染层面</h3><h4 id="减少阻塞渲染的因素"><a href="#减少阻塞渲染的因素" class="headerlink" title="减少阻塞渲染的因素"></a>减少阻塞渲染的因素</h4><p>html：避免深层次的嵌套结构<br>css：资源放文档头部，合理使用css选择器<br>js：资源放文档底部，合理使用defer、async加载方式（js的加载和执行会阻塞进程</p>
+<h4 id="图片处理"><a href="#图片处理" class="headerlink" title="图片处理"></a>图片处理</h4><ol>
+<li>懒加载<br>vue-lazyload</li>
+<li>预加载<br>针对已知的图片链接</li>
+<li>图片转成webp格式<br>利用阿里云oss图片处理，针对支持webp格式的浏览器，在静态图片上添加<a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/144582.html">图片处理参数</a>，可以压缩图片</li>
+</ol>
+<p>针对项目中的图片使用<a target="_blank" rel="noopener" href="https://km.mihoyo.com/articleBase/109/83350">mihoyo-mini-oss-img</a>组件处理</p>
+<h4 id="服务端渲染"><a href="#服务端渲染" class="headerlink" title="服务端渲染"></a>服务端渲染</h4><h4 id="白屏优化-加载态过度-骨架屏"><a href="#白屏优化-加载态过度-骨架屏" class="headerlink" title="白屏优化 加载态过度 骨架屏"></a>白屏优化 加载态过度 骨架屏</h4><h3 id="交互层面"><a href="#交互层面" class="headerlink" title="交互层面"></a>交互层面</h3><h4 id="防抖-x2F-节流"><a href="#防抖-x2F-节流" class="headerlink" title="防抖&#x2F;节流"></a>防抖&#x2F;节流</h4><p>防抖：按钮频繁点击<br>节流：滚动事件，模糊搜索</p>
+<h4 id="减少回流-x2F-重绘"><a href="#减少回流-x2F-重绘" class="headerlink" title="减少回流&#x2F;重绘"></a>减少回流&#x2F;重绘</h4><p>margin: 布局属性，改变会引发重排<br>transform：合成属性，内容不变，就不会引起重排</p>
+<h4 id="数据较大时候处理"><a href="#数据较大时候处理" class="headerlink" title="数据较大时候处理"></a>数据较大时候处理</h4><p>列表，大文件上传。。。。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/webpack/">#webpack</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>首屏加载优化</div>
+      <div>http://example.com/2022/11/11/前端工程化/首屏加载优化/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 11, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/25/bug/%E7%A4%BE%E5%8C%BAssr%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" title="社区ssr项目启动时遇到的问题以及解决方案">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">社区ssr项目启动时遇到的问题以及解决方案</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%80%8E%E4%B9%88%E6%A0%B7%E5%8E%BB%E5%81%9A%E5%A5%BD%E3%80%8C%E4%B8%80%E4%BB%B6%E5%B0%8F%E4%BA%8B%E3%80%8D/" title="怎么样去做好「一件小事」">
+                        <span class="hidden-mobile">怎么样去做好「一件小事」</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>吴文皓的博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>保持学习</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  <!-- <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css"></link> -->
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/fireworks.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

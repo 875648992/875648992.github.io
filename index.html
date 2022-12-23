@@ -249,15 +249,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/12/16/document.load%E5%92%8Cdocument.ready%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
-          document.load和document.ready之间的区别
+        <a href="/2022/11/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E8%AE%BE%E7%BD%AE%E5%86%85%E5%AD%98%E7%BC%93%E5%AD%98/" target="_self">
+          设置内存缓存
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/12/16/document.load%E5%92%8Cdocument.ready%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8C%BA%E5%88%AB/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/25/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E8%AE%BE%E7%BD%AE%E5%86%85%E5%AD%98%E7%BC%93%E5%AD%98/" target="_self">
         <div>
-          概括页面加载完成有两种事件 1.load是当页面所有资源全部加载完成后（包括DOM文档树，css文件，js文件，图片资源等），执行一个函数   问题：如果图片资源较多，加载时间较长，onload后等待执行的函数需要等待较长时间，所以一些效果可能受到影响   2.$(document).ready()是当DOM文档树加载完成后执行一个函数 （不包含图片，css等）所以会比load较快执行   在原生
+          如果不用管浏览器本地存储 也能实现把值  存在内存里呢  &#x2F;&#x2F; 内存缓存 const memoryCache &#x3D; (() &#x3D;&gt; &amp;#123;   const cache &#x3D; &amp;#123;&amp;#125;;    return &amp;#123;     &#x2F;&#x2F; 设置内存缓存     set(key, value) &amp;#123;       cache[key] &#x3D; &amp;#123;         tim
         </div>
       </a>
 
@@ -265,8 +265,308 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-12-16 23:30" pubdate>
-              2022-12-16
+            <time datetime="2022-11-25 16:09" pubdate>
+              2022-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/js/" class="category-chain-item">js</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/25/bug/%E7%A4%BE%E5%8C%BAssr%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+          社区ssr项目启动时遇到的问题以及解决方案
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/25/bug/%E7%A4%BE%E5%8C%BAssr%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" target="_self">
+        <div>
+          ssr是什么 server side render，服务端渲染，即页面上的dom结构都是在服务端计算好之后，下发给访问者 可以这样解释 spa打包的是一个dist压缩文件  ssr打包的是整体的一个.nuxt文件   这样有两个好处： 首屏快，用户访问的网页不再需要使用js计算dom，而是拿到资源后直接能够渲染当前网页的内容；  更有利于SEO，搜索引擎的爬虫能够爬到每个页面的具体内容，提升搜索引
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-25 10:11" pubdate>
+              2022-11-25
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/bug/" class="category-chain-item">bug</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/srr/">#srr</a>
+            
+              <a href="/tags/nuxtJs/">#nuxtJs</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96/" target="_self">
+          首屏加载优化
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E9%A6%96%E5%B1%8F%E5%8A%A0%E8%BD%BD%E4%BC%98%E5%8C%96/" target="_self">
+        <div>
+          项目分析假设现在接到一个需求，需要优化某项目的首屏加载时间，首先需要了解当前项目的各项指标，测量方式，优化步骤 指标名词首次绘制(FP)：渲染时候，创建的空白页面的时间首次内容绘制(FCP)：渲染出第一个内容，第一个内容可以是文字，图片等最大内容绘制时间(LCP)：最大内容绘制时间最有意义内容绘制时间(FMP)：首次渲染最有意义的时间，但他没有一个标准的定义，并且计算方式比较复杂，lighthou
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-11 16:41" pubdate>
+              2022-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%80%8E%E4%B9%88%E6%A0%B7%E5%8E%BB%E5%81%9A%E5%A5%BD%E3%80%8C%E4%B8%80%E4%BB%B6%E5%B0%8F%E4%BA%8B%E3%80%8D/" target="_self">
+          怎么样去做好「一件小事」
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/11/11/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%80%8E%E4%B9%88%E6%A0%B7%E5%8E%BB%E5%81%9A%E5%A5%BD%E3%80%8C%E4%B8%80%E4%BB%B6%E5%B0%8F%E4%BA%8B%E3%80%8D/" target="_self">
+        <div>
+          前置工作中一些会收到做事「不细致」「不认真」的一些反馈，但是单纯从字面角度可能很难理解，觉得自己把代码认真写完了，代码也很整洁，感觉已经很认真了。为什么会有这样的反馈呢？而且对这种反馈也不太知道怎么去改进。 其实很多工程师对「做事细致」存在一个误解，认为自己的工作只有写代码这一件事，只要能完成团队交给自己的任务就是做好了。但一个 Feature &#x2F; BugFix &#x2F; Proje
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-11-11 12:41" pubdate>
+              2022-11-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/01/js/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" target="_self">
+          事件循环深度学习
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/01/js/%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" target="_self">
+        <div>
+          事件循环 学习事件循环  首先就要了解一下浏览器的进程模型  浏览器的进程模型何为进程? 如果要运行一个程序  就要属于他自己的内存空间  可以把这块内存空间简单理解为进程 什么对象,函数啥啥啥的  都是放在内存里面的  所以就需要开辟一块内存空间让这个程序自己去使用 总结 :  进程 &#x3D;&#x3D; 开辟出的这块内存空间 每一个应用 至少也要有一个进程 进程之间相互独立 即使要通讯 也需要双方同意才行比如
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-01 16:09" pubdate>
+              2022-10-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/js/" class="category-chain-item">js</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/js/">#js</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/10/01/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" target="_self">
+          浏览器渲染原理深度学习
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/10/01/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/%E6%B5%8F%E8%A7%88%E5%99%A8%E6%B8%B2%E6%9F%93%E5%8E%9F%E7%90%86%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" target="_self">
+        <div>
+          啥叫渲染render在浏览器中html字符串 - 渲染 -&gt; 屏幕上的像素信息  就好比在url地址栏上输入一串地址 , 普通人可以直接说访问到了对应的网站    但是身为一个前端工程师却不能这么看,你必须要搞懂这里面的原因才行,拿我们输入url拿到的是什么呢?拿到的其实是这么一个玩意 拿到的是一个字符串 html,css,js都在这个字符串里面    浏览器就会根据这个字符串去进行复杂的计
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-01 16:09" pubdate>
+              2022-10-01
             </time>
           </div>
         
@@ -296,7 +596,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/js/">#js</a>
+              <a href="/tags/%E9%9D%A2%E8%AF%95%E9%A2%98/">#面试题</a>
             
           </div>
         
@@ -310,15 +610,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/09/06/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E6%8A%BD%E5%A5%96%E7%9A%84%E7%BB%84%E4%BB%B6/" target="_self">
-          实现一个轮播抽奖的组件
+        <a href="/2022/09/28/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D%E5%92%8C%E7%9C%81%E7%95%A5%E5%90%8E%E7%BC%80/" target="_self">
+          webpack如何设置路径别名和省略后缀
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/06/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E6%8A%BD%E5%A5%96%E7%9A%84%E7%BB%84%E4%BB%B6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/28/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E8%B7%AF%E5%BE%84%E5%88%AB%E5%90%8D%E5%92%8C%E7%9C%81%E7%95%A5%E5%90%8E%E7%BC%80/" target="_self">
         <div>
-          组件代码&lt;script&gt; function getDprSize (x) &amp;#123;   return x * (window.dpr || 1) &amp;#125; function offsetLeft (itemWidth, itemHeight, index, space, xCount, yCount) &amp;#123;   const res &#x3D; &amp;#123;     x: 0,
+          需求 每次使用import引入路径的时候都很麻烦 – 都要..&#x2F;..&#x2F;..&#x2F;这样的  大量的重复操作 我再想可不可以设置一个别名  只要输入import &amp;#123; xxx &amp;#125; from &#39;appConfig&#39;; – 就可以直接拿到这个js里面的文件呢 可以方便用于拿一些公共的工具类  解决方案 我发现webpack的配置里有个这个属性re
         </div>
       </a>
 
@@ -326,8 +626,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2022-09-06 16:41" pubdate>
-              2022-09-06
+            <time datetime="2022-09-28 16:47" pubdate>
+              2022-09-28
             </time>
           </div>
         
@@ -342,7 +642,190 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/27/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack-merge%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          webpack-merge的使用
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/27/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack-merge%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          为什么要用webpack-merge development(开发环境) 和 production(生产环境) 这两个环境下的构建目标存在着巨大差异 所以webpack的配置写的差距会非常的大 在开发环境中，我们需要：强大的 source map 和一个有着 live reloading(实时重新加载) 或 hot module replacement(热模块替换) 能力的 localhost s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-27 16:47" pubdate>
+              2022-09-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/27/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+          webpack5代码分离优化项目加载速度
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/27/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8/" target="_self">
+        <div>
+          环境变量可用于搭建项目架子的时候判断当前的环境 那环境变量具体是怎么使用的呢   webpack 命令行 环境配置 的 –env 参数，可以允许你传入任意数量的环境变量。 而在 webpack.config.js 中可以访问到这些环境变量。 例如，--env production 或 --env goal&#x3D;local。 如果设置 env 变量，却没有赋值，–env production 默认表示将
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-27 16:47" pubdate>
+              2022-09-27
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/webpack/">#webpack</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2022/09/09/%E6%BA%90%E7%A0%81/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_self">
+          vue源码分析-观察者模式
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2022/09/09/%E6%BA%90%E7%A0%81/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" target="_self">
+        <div>
+          目录  vue的一个核心特点就是数据驱动  如果和jq一样的思想 数据变化了想要同步到dom 需要手动操作dom更新一下    但是vue不需要  vue内部肯定有机制能尖塔到数据数据变动自动更新视图的功能 我来学习学习    new一个vue的实例 正常写法中使用vue肯定要先new一个vue的实例  通过使用了new这可以看出 vue其实就是一个构造函数 传入的参数就是一个对象 可以叫做为op
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-09 10:11" pubdate>
+              2022-09-09
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3 d-flex align-items-center">
+            <i class="iconfont icon-category"></i>
+            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/" class="category-chain-item">源码分析</a>
   
   
 
@@ -358,505 +841,6 @@
             <i class="iconfont icon-tags"></i>
             
               <a href="/tags/vue/">#vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" target="_self">
-          qiankun在兼容ie的坑
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/07/08/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" target="_self">
-        <div>
-          最近在做ie11的需求  需要了两个坑 第一个坑可能不是ie的问题  就是接口在ie模式下 会出现缓存  比如登录后 登录信息不同步这类似的 因为在ie中  请求的url地址一样的话会被缓存– 导致下一次的get请求 还是上一次的信息  需要在axios中 给每个get请求携带一个时间戳   第二个问题是在qiankun中调用主应用的极验等一系列第三方js会报错  原因是qiankun的第三方sc
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-07-08 12:11" pubdate>
-              2022-07-08
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/bug/" class="category-chain-item">bug</a>
-  
-  
-    <span>></span>
-    
-  <a href="/categories/bug/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-              <a href="/tags/qiankun/">#qiankun</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/06/14/mac%20M1%20nvm%20%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" target="_self">
-          mac M1 nvm 安装问题
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/14/mac%20M1%20nvm%20%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98/" target="_self">
-        <div>
-          新款的mac搭载了苹果自研的芯片，放弃了intel的x86芯片，那之前的软件难免会存在兼容性问题。 鄙人有幸踩了第一个坑。 在通过nvm 安装不同版本的node 时，出现了问题。 问题一：先说一下 nvm的安装问题，这个跟m1的兼容性无关。参考大神文章（https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;622ad36ee020）  我在通过命令行安装nvm成功之后（curl -o- https:
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-14 22:31" pubdate>
-              2022-06-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E9%85%8D%E7%BD%AE/" class="category-chain-item">配置</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/mac/">#mac</a>
-            
-              <a href="/tags/m1/">#m1</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/06/14/vue3%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91%E5%92%8C%E7%BA%B5%E5%90%91%E6%BB%9A%E5%8A%A8%E8%B7%9D%E7%A6%BB/" target="_self">
-          vue3获取页面横向和纵向滚动距离
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/14/vue3%E8%8E%B7%E5%8F%96%E9%A1%B5%E9%9D%A2%E6%A8%AA%E5%90%91%E5%92%8C%E7%BA%B5%E5%90%91%E6%BB%9A%E5%8A%A8%E8%B7%9D%E7%A6%BB/" target="_self">
-        <div>
-          创建一个hooks文件保存进去就行import &amp;#123; ref, onMounted, onBeforeMount &amp;#125; from &amp;#x27;vue&amp;#x27; export function useWindowScroll () &amp;#123;   const x &#x3D; ref(0)   const y &#x3D; ref(0)   const onScroll &#x3D; () &#x3D;&gt; &amp;#
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-06-14 22:31" pubdate>
-              2022-06-14
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/vue/" class="category-chain-item">vue</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/vue/">#vue</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/23/webpack%E9%85%8D%E7%BD%AE%E7%BC%93%E5%AD%98/" target="_self">
-          移动端配置postcss-pxtorem
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/23/webpack%E9%85%8D%E7%BD%AE%E7%BC%93%E5%AD%98/" target="_self">
-        <div>
-          为什么要设置缓存 我们使用webpack来打包我们模块化以后的应用程序  , webpack会生成一个可以部署的dist目录 , 然后我们把打包好的内容放置在这个目录里 , 将来我们把这个目录的内容部署到服务器上 , 浏览器就可以访问这个服务器上的网站和资源了   而最后一步获取资源是比较耗时间的 所以浏览器会使用一个叫做缓存的技术我们可以通过命中缓存去降低网络流量 , 使网站加载速度更快   然
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-23 11:10" pubdate>
-              2022-05-23
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/22/webpack5%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%A6%82%E5%BF%B5/" target="_self">
-          webpack5快速上手打包以及概念
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B%E6%89%93%E5%8C%85%E4%BB%A5%E5%8F%8A%E6%A6%82%E5%BF%B5/" target="_self">
-        <div>
-          @[toc] 安装webpack有两种方式&#x2F;&#x2F; 全局安装(不建议 会锁定webpack的版本)  npm install webpack webpack-cli --global &#x2F;&#x2F; 项目中安装  npm install webpack webpack-cli --save-dev  在项目中安装的时候  可以安装在setup-app文件的里面也可以安装在setup-app文件的外面   安装在
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-22 16:49" pubdate>
-              2022-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/22/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" target="_self">
-          webpack5的插件plugin
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" target="_self">
-        <div>
-          引导 上一篇讲解了 webpack的快速打包 因此衍生出了一个问题  webpack打包那么方便  能不能自动管理index.html中script的路径  什么是插件  webpack就像是一条生产线  要经过一系列处理流程后 才能将入口文件转化成输出的结果 入口文件还可以依赖于其他两个js的模块 其中被依赖的模块  还可能依赖于其他的模块   并且js也会引用css文件  css文件的引入
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-22 16:49" pubdate>
-              2022-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/22/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/" target="_self">
-          webpack5资源模块asset
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/" target="_self">
-        <div>
-          引导 上一篇讲解了webpack搭建开发环境 有一个问题  到目前为止  项目只能加载JS  但是我们想混合一些其他的资源怎么办呢?– 比如images&#x2F; 字体 &#x2F; 图标等  资源模块asset module type 可以通过4种类型模块 来替换掉所有的loader  asset &#x2F; resource 导出图片资源 用于发送一个单独的文件并导出URl   比如我现在想在项目中
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-22 16:48" pubdate>
-              2022-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/2022/05/22/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" target="_self">
-          webpack5 loader解析器
-        </a>
-      </h1>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/05/22/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" target="_self">
-        <div>
-          引导 上一篇讲解了 webpack的asset资源模块 除了资源模块 还可以通过loader来引入其他类型的文件  loader webpack只能解析js和json这样的文件 loader可以让webpack解析其他类型的文件 并且转化成模块来供我们使用  使用loader去加载一个css模块 如果我们不加loader去解析css  打包的时候就会报错  显示识别不了css 所以在项目的根目录下
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-22 16:48" pubdate>
-              2022-05-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3 d-flex align-items-center">
-            <i class="iconfont icon-category"></i>
-            
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/tags/webpack/">#webpack</a>
             
           </div>
         
@@ -868,7 +852,7 @@
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/#board">8</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#board">9</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

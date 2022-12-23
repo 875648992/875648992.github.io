@@ -1,0 +1,1123 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="组件代码&lt;script&gt; function getDprSize (x) &amp;#123;   return x * (window.dpr || 1) &amp;#125; function offsetLeft (itemWidth, itemHeight, index, space, xCount, yCount) &amp;#123;   const res &#x3D; &amp;#123;     x: 0,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="实现一个轮播抽奖的组件">
+<meta property="og:url" content="http://example.com/2022/09/06/%E6%A1%86%E6%9E%B6/%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%BD%AE%E6%92%AD%E6%8A%BD%E5%A5%96%E7%9A%84%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:site_name" content="吴文皓的博客">
+<meta property="og:description" content="组件代码&lt;script&gt; function getDprSize (x) &amp;#123;   return x * (window.dpr || 1) &amp;#125; function offsetLeft (itemWidth, itemHeight, index, space, xCount, yCount) &amp;#123;   const res &#x3D; &amp;#123;     x: 0,">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-06T08:41:09.000Z">
+<meta property="article:modified_time" content="2022-12-09T12:09:40.434Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="vue">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>实现一个轮播抽奖的组件 - 吴文皓的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <!-- <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>吴文皓技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="实现一个轮播抽奖的组件"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-06 16:41" pubdate>
+          September 6, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          5.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">实现一个轮播抽奖的组件</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 14 days ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="组件代码"><a href="#组件代码" class="headerlink" title="组件代码"></a>组件代码</h3><div class="code-wrapper"><pre><code class="hljs javascript">&lt;script&gt;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">getDprSize</span> (x) &#123;
+  <span class="hljs-keyword">return</span> x * (<span class="hljs-variable language_">window</span>.<span class="hljs-property">dpr</span> || <span class="hljs-number">1</span>)
+&#125;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">offsetLeft</span> (itemWidth, itemHeight, index, space, xCount, yCount) &#123;
+  <span class="hljs-keyword">const</span> res = &#123;
+    <span class="hljs-attr">x</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-attr">y</span>: <span class="hljs-number">0</span>
+  &#125;
+  <span class="hljs-keyword">if</span> (index &lt; xCount) &#123;
+    res.<span class="hljs-property">x</span> = index * (itemWidth + <span class="hljs-title function_">getDprSize</span>(space))
+  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (index &lt; xCount + yCount - <span class="hljs-number">1</span>) &#123;
+    res.<span class="hljs-property">x</span> = (itemWidth + <span class="hljs-title function_">getDprSize</span>(space)) * (xCount - <span class="hljs-number">1</span>)
+    res.<span class="hljs-property">y</span> = (itemHeight + <span class="hljs-title function_">getDprSize</span>(space)) * (index - (xCount - <span class="hljs-number">1</span>))
+  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (index &lt; <span class="hljs-number">2</span> * xCount + yCount - <span class="hljs-number">2</span>) &#123;
+    <span class="hljs-keyword">const</span> revertIndex = index - xCount - (yCount - <span class="hljs-number">2</span>)
+    res.<span class="hljs-property">x</span> = (itemWidth + <span class="hljs-title function_">getDprSize</span>(space)) * (xCount - revertIndex - <span class="hljs-number">1</span>)
+    res.<span class="hljs-property">y</span> = (itemHeight + <span class="hljs-title function_">getDprSize</span>(space)) * (yCount - <span class="hljs-number">1</span>)
+  &#125; <span class="hljs-keyword">else</span> &#123;
+    <span class="hljs-keyword">const</span> lastIndex = <span class="hljs-number">2</span> * (xCount + yCount) - <span class="hljs-number">4</span> - index
+    res.<span class="hljs-property">y</span> = lastIndex * (itemHeight + <span class="hljs-title function_">getDprSize</span>(space))
+  &#125;
+  <span class="hljs-keyword">return</span> res
+&#125;
+<span class="hljs-keyword">function</span> <span class="hljs-title function_">CircIn</span> (k) &#123;
+  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> - <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">sqrt</span>(<span class="hljs-number">1</span> - k * k)
+&#125;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;magic-lamp&#x27;</span>,
+  <span class="hljs-attr">props</span>: &#123;
+    <span class="hljs-attr">xAxis</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">3</span>
+    &#125;,
+    <span class="hljs-attr">yAxis</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">3</span>
+    &#125;,
+    <span class="hljs-attr">itemSpace</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">3</span>
+    &#125;,
+    <span class="hljs-attr">value</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">0</span>
+    &#125;,
+    <span class="hljs-attr">maxSpeedChangeTime</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">15</span>
+    &#125;,
+    <span class="hljs-attr">canPlay</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Boolean</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-literal">true</span>
+    &#125;,
+    <span class="hljs-attr">duration</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">100</span>
+    &#125;,
+    <span class="hljs-attr">endPoint</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: -<span class="hljs-number">1</span>
+    &#125;,
+    <span class="hljs-attr">fakeLoop</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">2</span>
+    &#125;,
+    <span class="hljs-attr">endDuration</span>: &#123;
+      <span class="hljs-attr">type</span>: <span class="hljs-title class_">Number</span>,
+      <span class="hljs-attr">default</span>: <span class="hljs-number">1000</span>
+    &#125;
+  &#125;,
+  data () &#123;
+    <span class="hljs-keyword">return</span> &#123;
+      <span class="hljs-attr">runing</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">index</span>: <span class="hljs-number">0</span>,
+      <span class="hljs-attr">canStop</span>: <span class="hljs-literal">false</span>,
+      <span class="hljs-attr">timers</span>: <span class="hljs-literal">null</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">computed</span>: &#123;
+    length () &#123;
+      <span class="hljs-keyword">return</span> <span class="hljs-number">2</span> * (<span class="hljs-variable language_">this</span>.<span class="hljs-property">xAxis</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">yAxis</span>) - <span class="hljs-number">4</span>
+    &#125;
+  &#125;,
+  <span class="hljs-attr">watch</span>: &#123;
+    index () &#123;
+      <span class="hljs-variable language_">this</span>.$emit(<span class="hljs-string">&#x27;input&#x27;</span>, <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span>)
+    &#125;,
+    endPoint () &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">endPoint</span> &gt; -<span class="hljs-number">1</span>) &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">endPlay</span>()
+      &#125;
+    &#125;,
+    value () &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> !== <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span>) &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>
+      &#125;
+    &#125;
+  &#125;,
+  destroyed () &#123;
+    <span class="hljs-built_in">clearTimeout</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">timer</span>)
+  &#125;,
+  created () &#123;
+    <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> = <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>
+  &#125;,
+  mounted () &#123;
+    <span class="hljs-built_in">setTimeout</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">caculatePosition</span>, <span class="hljs-number">10</span>)
+  &#125;,
+  <span class="hljs-attr">methods</span>: &#123;
+    resetData () &#123;
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">runing</span> = <span class="hljs-literal">false</span>
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">canStop</span> = <span class="hljs-literal">false</span>
+    &#125;,
+    renderItem (h) &#123;
+      <span class="hljs-keyword">const</span> itemLength = <span class="hljs-number">2</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">xAxis</span> + <span class="hljs-number">2</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">yAxis</span> - <span class="hljs-number">4</span>
+      <span class="hljs-keyword">const</span> divs = <span class="hljs-title class_">Array</span>(itemLength)
+        .<span class="hljs-title function_">join</span>()
+        .<span class="hljs-title function_">split</span>(<span class="hljs-string">&#x27;,&#x27;</span>)
+        .<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">it, i</span>) =&gt;</span> &#123;
+          <span class="hljs-keyword">const</span> exitDefault = !!<span class="hljs-variable language_">this</span>.<span class="hljs-property">$slots</span>.<span class="hljs-property">default</span>
+          <span class="hljs-keyword">return</span> <span class="hljs-title function_">h</span>(
+            <span class="hljs-string">&#x27;div&#x27;</span>,
+            &#123;
+              <span class="hljs-attr">class</span>: [
+                <span class="hljs-string">&#x27;me-magic-lamp-item&#x27;</span>,
+                <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> === i ? <span class="hljs-string">&#x27;active&#x27;</span> : <span class="hljs-string">&#x27;&#x27;</span>,
+                <span class="hljs-string">`me-magic-lamp-item-<span class="hljs-subst">$&#123;i&#125;</span>`</span>
+              ],
+              <span class="hljs-attr">style</span>: &#123;&#125;,
+              <span class="hljs-attr">key</span>: i
+            &#125;,
+            [
+              exitDefault &amp;&amp; <span class="hljs-variable language_">this</span>.<span class="hljs-property">$slots</span>.<span class="hljs-property">default</span>[i]
+                ? <span class="hljs-variable language_">this</span>.<span class="hljs-property">$slots</span>.<span class="hljs-property">default</span>[i]
+                : <span class="hljs-title function_">h</span>(<span class="hljs-string">&#x27;div&#x27;</span>)
+            ]
+          )
+        &#125;)
+      <span class="hljs-keyword">return</span> divs
+    &#125;,
+    caculatePosition () &#123;
+      <span class="hljs-keyword">const</span> els = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$el</span>.<span class="hljs-title function_">querySelectorAll</span>(<span class="hljs-string">&#x27;.me-magic-lamp-item&#x27;</span>)
+      <span class="hljs-title class_">Array</span>.<span class="hljs-title function_">from</span>(els).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">it, i</span>) =&gt;</span> &#123;
+        <span class="hljs-keyword">const</span> style = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getItemStyle</span>(i)
+        <span class="hljs-title class_">Object</span>.<span class="hljs-title function_">keys</span>(style).<span class="hljs-title function_">forEach</span>(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> &#123;
+          it.<span class="hljs-property">style</span>[key] = style[key]
+        &#125;)
+      &#125;)
+    &#125;,
+    getItemStyle (i) &#123;
+      <span class="hljs-keyword">const</span> rootWidth = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$el</span>.<span class="hljs-property">clientWidth</span>
+      <span class="hljs-keyword">const</span> rootHeight = <span class="hljs-variable language_">this</span>.<span class="hljs-property">$el</span>.<span class="hljs-property">clientHeight</span>
+      <span class="hljs-keyword">const</span> itemWidth =
+        (rootWidth - <span class="hljs-title function_">getDprSize</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">itemSpace</span>) * (<span class="hljs-variable language_">this</span>.<span class="hljs-property">xAxis</span> - <span class="hljs-number">1</span>)) /
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">xAxis</span>
+      <span class="hljs-keyword">const</span> itemheight =
+        (rootHeight - <span class="hljs-title function_">getDprSize</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">itemSpace</span>) * (<span class="hljs-variable language_">this</span>.<span class="hljs-property">yAxis</span> - <span class="hljs-number">1</span>)) /
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">yAxis</span>
+      <span class="hljs-keyword">const</span> res = <span class="hljs-title function_">offsetLeft</span>(
+        itemWidth,
+        itemheight,
+        i,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">itemSpace</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">xAxis</span>,
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">yAxis</span>
+      )
+      <span class="hljs-keyword">return</span> &#123;
+        <span class="hljs-attr">left</span>: <span class="hljs-string">`<span class="hljs-subst">$&#123;res.x&#125;</span>px`</span>,
+        <span class="hljs-attr">top</span>: <span class="hljs-string">`<span class="hljs-subst">$&#123;res.y&#125;</span>px`</span>,
+        <span class="hljs-attr">width</span>: <span class="hljs-string">`<span class="hljs-subst">$&#123;itemWidth&#125;</span>px`</span>,
+        <span class="hljs-attr">height</span>: <span class="hljs-string">`<span class="hljs-subst">$&#123;itemheight&#125;</span>px`</span>
+      &#125;
+    &#125;,
+    startGame () &#123;
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">canPlay</span>) &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">play</span>()
+      &#125;
+    &#125;,
+    play () &#123;
+      <span class="hljs-keyword">let</span> timers = <span class="hljs-number">0</span>
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">runing</span>) <span class="hljs-keyword">return</span>
+      <span class="hljs-variable language_">this</span>.$emit(<span class="hljs-string">&#x27;start&#x27;</span>)
+      <span class="hljs-variable language_">this</span>.<span class="hljs-property">runing</span> = <span class="hljs-literal">true</span>
+      <span class="hljs-keyword">const</span> <span class="hljs-title function_">payNormal</span> = (<span class="hljs-params"></span>) =&gt; &#123;
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span> = <span class="hljs-built_in">setTimeout</span>(payNormal, <span class="hljs-variable language_">this</span>.<span class="hljs-property">duration</span>)
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span>) &#123;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> = <span class="hljs-number">0</span>
+          timers++
+        &#125;
+        <span class="hljs-keyword">if</span> (timers &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">fakeLoop</span>) &#123;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">canStop</span> = <span class="hljs-literal">true</span>
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">endPlay</span>()
+        &#125;
+      &#125;
+      <span class="hljs-title function_">payNormal</span>()
+    &#125;,
+    getFinalStep () &#123;
+      <span class="hljs-keyword">return</span> (
+        ((<span class="hljs-variable language_">this</span>.<span class="hljs-property">endPoint</span> + <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span>) % <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span>) +
+        <span class="hljs-number">2</span> * <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span>
+      )
+    &#125;,
+    endPlay () &#123;
+      <span class="hljs-keyword">if</span> (!<span class="hljs-variable language_">this</span>.<span class="hljs-property">canStop</span>) &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+      &#125;
+      <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">endPoint</span> &lt; <span class="hljs-number">0</span>) &#123;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+      &#125;
+      <span class="hljs-built_in">clearTimeout</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">timers</span>)
+      <span class="hljs-keyword">const</span> final = <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">getFinalStep</span>()
+      <span class="hljs-keyword">let</span> step = <span class="hljs-number">0</span>
+      <span class="hljs-keyword">const</span> <span class="hljs-title function_">playFinal</span> = (<span class="hljs-params"></span>) =&gt; &#123;
+        step++
+        <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span>++
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> &gt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span>) &#123;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">index</span> = <span class="hljs-number">0</span>
+        &#125;
+        <span class="hljs-keyword">if</span> (step &lt; final) &#123;
+          <span class="hljs-keyword">let</span> &#123; duration &#125; = <span class="hljs-variable language_">this</span>
+          <span class="hljs-keyword">if</span> (final - step - <span class="hljs-number">1</span> &lt;= <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxSpeedChangeTime</span>) &#123;
+            duration =
+              <span class="hljs-variable language_">this</span>.<span class="hljs-property">duration</span> +
+              (<span class="hljs-variable language_">this</span>.<span class="hljs-property">endDuration</span> - <span class="hljs-variable language_">this</span>.<span class="hljs-property">duration</span>) *
+                <span class="hljs-title class_">CircIn</span>(
+                  (<span class="hljs-variable language_">this</span>.<span class="hljs-property">maxSpeedChangeTime</span> &lt; final
+                    ? step + <span class="hljs-number">1</span> - final + <span class="hljs-variable language_">this</span>.<span class="hljs-property">maxSpeedChangeTime</span>
+                    : step + <span class="hljs-number">1</span>) / <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">min</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">maxSpeedChangeTime</span>, final)
+                )
+          &#125;
+          <span class="hljs-built_in">setTimeout</span>(playFinal, duration)
+        &#125; <span class="hljs-keyword">else</span> &#123;
+          <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">resetData</span>()
+          <span class="hljs-variable language_">this</span>.$emit(<span class="hljs-string">&#x27;end&#x27;</span>)
+        &#125;
+      &#125;
+      <span class="hljs-built_in">setTimeout</span>(playFinal, <span class="hljs-variable language_">this</span>.<span class="hljs-property">duration</span>)
+    &#125;
+  &#125;,
+  render (h) &#123;
+    <span class="hljs-keyword">return</span> <span class="hljs-title function_">h</span>(
+      <span class="hljs-string">&#x27;div&#x27;</span>,
+      &#123;
+        <span class="hljs-attr">class</span>: <span class="hljs-string">&#x27;me-magic-lamp&#x27;</span>
+      &#125;,
+      [
+        <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">renderItem</span>(h),
+        <span class="hljs-title function_">h</span>(
+          <span class="hljs-string">&#x27;div&#x27;</span>,
+          &#123;
+            <span class="hljs-attr">class</span>: <span class="hljs-string">&#x27;me-magic-lamp-center&#x27;</span>,
+            <span class="hljs-attr">on</span>: &#123;
+              <span class="hljs-attr">click</span>: <span class="hljs-variable language_">this</span>.<span class="hljs-property">startGame</span>
+            &#125;
+          &#125;,
+          <span class="hljs-variable language_">this</span>.<span class="hljs-property">$slots</span>.<span class="hljs-property">center</span> || <span class="hljs-string">&#x27;点击开始&#x27;</span>
+        )
+      ]
+    )
+  &#125;
+&#125;
+&lt;/script&gt;
+
+<span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span>&gt;</span><span class="language-css"></span></span>
+<span class="language-css"><span class="language-xml"><span class="hljs-selector-class">.me-magic-lamp</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-attribute">position</span>: relative;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.me-magic-lamp-item</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">position</span>: absolute;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">display</span>: flex;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">align-items</span>: center;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">justify-content</span>: center;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">6px</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">background</span>: <span class="hljs-number">#f5f5f5</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &amp;<span class="hljs-selector-class">.active</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">      <span class="hljs-attribute">box-shadow</span>: inset <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">5px</span> <span class="hljs-number">#f60</span>;</span></span>
+<span class="language-css"><span class="language-xml">    &#125;</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">  <span class="hljs-selector-class">.me-magic-lamp-center</span> &#123;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">position</span>: absolute;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">left</span>: <span class="hljs-number">50%</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">top</span>: <span class="hljs-number">50%</span>;</span></span>
+<span class="language-css"><span class="language-xml">    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">translateX</span>(-<span class="hljs-number">50%</span>) <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">50%</span>);</span></span>
+<span class="language-css"><span class="language-xml">  &#125;</span></span>
+<span class="language-css"><span class="language-xml">&#125;</span></span>
+<span class="language-css"><span class="language-xml"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span></span></code></pre></div>
+
+<h2 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h2><h3 id="基础用法-需要自己定宽高"><a href="#基础用法-需要自己定宽高" class="headerlink" title="基础用法 需要自己定宽高"></a>基础用法 <code>需要自己定宽高</code></h3><div class="code-wrapper"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">magic-lamp</span> <span class="hljs-attr">:end-point</span>=<span class="hljs-string">&quot;3&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;demo-item&quot;</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">&quot;(item, index) in imgs&quot;</span> <span class="hljs-attr">:key</span>=<span class="hljs-string">&quot;index&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">:src</span>=<span class="hljs-string">&quot;item&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">magic-lamp</span>&gt;</span></code></pre></div>
+
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><h3 id="Props"><a href="#Props" class="headerlink" title="Props"></a>Props</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>含义</th>
+<th>默认值</th>
+<th>类型</th>
+<th>必填</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>value</td>
+<td>跑马灯的下标</td>
+<td><code>0</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>xAxis</td>
+<td>水平方向的item个数</td>
+<td><code>3</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>yAxis</td>
+<td>垂直方向的个数</td>
+<td><code>3</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>itemSpace</td>
+<td>item间的间距，对标375屏</td>
+<td><code>3</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>canPlay</td>
+<td>是否可以点击开始</td>
+<td><code>true</code></td>
+<td><em>boolean</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>匀速运动阶段的时间间隔</td>
+<td><code>100</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>fakeLoop</td>
+<td>匀速运动阶段的最少圈数</td>
+<td><code>2</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>endPoint</td>
+<td>最终中奖的index</td>
+<td><code>-1</code></td>
+<td><em>number</em></td>
+<td>是</td>
+</tr>
+<tr>
+<td>maxSpeedChangeTime</td>
+<td>变速运动阶段的最多item数</td>
+<td><code>15</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+<tr>
+<td>endDuration</td>
+<td>变速运动阶段的最长时常，这里的运动曲线采用CircularIN算法</td>
+<td><code>1000</code></td>
+<td><em>number</em></td>
+<td>否</td>
+</tr>
+</tbody></table>
+<h3 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h3><p>| 事件名 | 含义 | 回调参数  |<br>| —- | —- | — | — |<br>| start | 游戏开始 | <em>-</em> |<br>| end | 游戏结束 | <em>-</em> |<br>| input | 每跳一个item会触发一次 | <em>index: number</em> |</p>
+<h3 id="Slot"><a href="#Slot" class="headerlink" title="Slot"></a>Slot</h3><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+<th>参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>default</td>
+<td>item 数据</td>
+<td>-</td>
+</tr>
+<tr>
+<td>center</td>
+<td>跑马灯中间按钮</td>
+<td>-</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BB%84%E4%BB%B6/" class="category-chain-item">组件</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/vue/">#vue</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>实现一个轮播抽奖的组件</div>
+      <div>http://example.com/2022/09/06/框架/实现一个轮播抽奖的组件/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 6, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/09/%E6%BA%90%E7%A0%81/vue%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F/" title="vue源码分析-观察者模式">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">vue源码分析-观察者模式</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/08/bug/qiankun%E5%9C%A8%E5%85%BC%E5%AE%B9ie%E7%9A%84%E5%9D%91/" title="qiankun在兼容ie的坑">
+                        <span class="hidden-mobile">qiankun在兼容ie的坑</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>吴文皓的博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>保持学习</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  <!-- <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css"></link> -->
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/fireworks.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

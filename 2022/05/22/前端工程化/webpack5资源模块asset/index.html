@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="引导 上一篇讲解了webpack搭建开发环境 有一个问题  到目前为止  项目只能加载JS  但是我们想混合一些其他的资源怎么办呢?– 比如images&#x2F; 字体 &#x2F; 图标等  资源模块asset module type 可以通过4种类型模块 来替换掉所有的loader  asset &#x2F; resource 导出图片资源 用于发送一个单独的文件并导出URl   比如我现在想在项目中">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack5资源模块asset">
+<meta property="og:url" content="http://example.com/2022/05/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack5%E8%B5%84%E6%BA%90%E6%A8%A1%E5%9D%97asset/index.html">
+<meta property="og:site_name" content="吴文皓的博客">
+<meta property="og:description" content="引导 上一篇讲解了webpack搭建开发环境 有一个问题  到目前为止  项目只能加载JS  但是我们想混合一些其他的资源怎么办呢?– 比如images&#x2F; 字体 &#x2F; 图标等  资源模块asset module type 可以通过4种类型模块 来替换掉所有的loader  asset &#x2F; resource 导出图片资源 用于发送一个单独的文件并导出URl   比如我现在想在项目中">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/1fa498751b1b4b0889efc8f37484f731.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/b98041e3efef4abf97e8aed3729081e0.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/e85cefdf41e84fe4a97642fee848e88d.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2ef5ddc27c1a412cb31ec1c28af59832.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/ae1c7502816645b4999959708f6e5ceb.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/8c7bd7f699d9437eb5d0204e2e8abf05.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/4039d764410745d5a4cc6b804c0c6fc5.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/71f04fed0ed343a6bebccb3520a4873b.png">
+<meta property="article:published_time" content="2022-05-22T08:48:28.000Z">
+<meta property="article:modified_time" content="2022-12-09T12:09:40.426Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="webpack">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/1fa498751b1b4b0889efc8f37484f731.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>webpack5资源模块asset - 吴文皓的博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/scrollbar.css">
+<link rel="stylesheet" href="/css/indeximg-hover.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+  <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+  <!-- <script src="https://fastly.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script> -->
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>吴文皓技术博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                主页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                链接
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://resource.kechuang.cn/prod/1584892155574/img/g60/20220827/e32c94b2-b29b-4696-9763-308e73c1ae21.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="webpack5资源模块asset"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        John Doe
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-22 16:48" pubdate>
+          May 22, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">webpack5资源模块asset</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    Last updated on 14 days ago
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="引导"><a href="#引导" class="headerlink" title="引导"></a>引导</h2><ul>
+<li>上一篇讲解了<a target="_blank" rel="noopener" href="https://blog.csdn.net/haosicx/article/details/124889423?spm=1001.2014.3001.5502">webpack搭建开发环境</a></li>
+<li>有一个问题  到目前为止  项目只能加载JS </li>
+<li>但是我们想混合一些其他的资源怎么办呢?<br>– 比如images&#x2F; 字体 &#x2F; 图标等</li>
+</ul>
+<h2 id="资源模块asset-module-type"><a href="#资源模块asset-module-type" class="headerlink" title="资源模块asset module type"></a>资源模块asset module type</h2><blockquote>
+<p>可以通过4种类型模块 来替换掉所有的loader<br><img src="https://img-blog.csdnimg.cn/1fa498751b1b4b0889efc8f37484f731.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></p>
+</blockquote>
+<h3 id="asset-resource-导出图片资源"><a href="#asset-resource-导出图片资源" class="headerlink" title="asset / resource 导出图片资源"></a><code>asset / resource 导出图片资源</code></h3><blockquote>
+<p>用于发送一个单独的文件并导出URl</p>
+</blockquote>
+<ul>
+<li>比如我现在想在项目中加载png类型的本地图片需要怎么做呢?<br>– 首先要配置webpack.config.js 增加一个属性<code>modules</code>用来写入规则<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-attr">module</span>:&#123; <span class="hljs-comment">//设置模块</span>
+    <span class="hljs-attr">rules</span>:[ <span class="hljs-comment">//设置loader</span>
+      &#123;
+        <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.png$/</span>, <span class="hljs-comment">//已png作为扩展名这样类型的文件</span>
+        <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;asset/resource&#x27;</span>, <span class="hljs-comment">//资源模块类型</span>
+      &#125;
+    ]
+  &#125;,</code></pre></div></li>
+<li>接着我们在文件中写入一个png文件<br><img src="https://img-blog.csdnimg.cn/b98041e3efef4abf97e8aed3729081e0.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+<li>然后我们终端命令输入webpack进行打包  会发现dist下面生成了一个png文件<br>– 这个是系统自动帮助我们生成出来的<br><img src="https://img-blog.csdnimg.cn/e85cefdf41e84fe4a97642fee848e88d.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+<li>并且成功在浏览器上显示出来了<br><img src="https://img-blog.csdnimg.cn/2ef5ddc27c1a412cb31ec1c28af59832.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+<li>webpack会自动帮我们把资源打包在dist文件下并且自动取好了文件名<br>– 那我们能不能自己定义文件的目录和文件名呢?</li>
+</ul>
+<h4 id="修改asset-x2F-resource模块下打包后的资源路径和文件名"><a href="#修改asset-x2F-resource模块下打包后的资源路径和文件名" class="headerlink" title="修改asset&#x2F;resource模块下打包后的资源路径和文件名"></a>修改asset&#x2F;resource模块下打包后的资源路径和文件名</h4><blockquote>
+<p>有两个方法</p>
+</blockquote>
+<ul>
+<li>方法1:<br>– 在output下面加一个<code>assetMoudleFilename</code> 属性<br>– 比如我想让打包的资源输出在<code>dist / images</code>下可以这么去写</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-attr">output</span>:&#123;
+	<span class="hljs-comment">//设置图片输出路径以及文件名称</span>
+   <span class="hljs-attr">assetModuleFilename</span>:<span class="hljs-string">&#x27;images/[contenthash][ext]&#x27;</span> 
+   <span class="hljs-comment">// [contenthash] webpack自带方法  根据文件的内容去生产一个hash字符串</span>
+	<span class="hljs-comment">// [ext] webpack自带方法 根据文件的内容生成扩展名</span>
+ &#125;,</code></pre></div>
+<ul>
+<li>打包出来的结果就是自己定义的了<br><img src="https://img-blog.csdnimg.cn/ae1c7502816645b4999959708f6e5ceb.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+<li>方法2:<br>– 可以在module的rules中添加属性 <code>generator</code><br>– 这次我们打包在<code>dist / picture</code>下</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-attr">module</span>:&#123; <span class="hljs-comment">//设置模块</span>
+   <span class="hljs-attr">rules</span>:[ <span class="hljs-comment">//设置loader</span>
+     &#123;
+       <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.png$/</span>, <span class="hljs-comment">//已png作为扩展名这样类型的文件</span>
+       <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;asset/resource&#x27;</span>, <span class="hljs-comment">//资源文件</span>
+       <span class="hljs-attr">generator</span>:&#123; <span class="hljs-comment">//设置生成器</span>
+         <span class="hljs-attr">filename</span>:<span class="hljs-string">&#x27;picture/[contenthash][ext]&#x27;</span>, <span class="hljs-comment">//设置生成的文件名</span>
+       &#125; 
+     &#125;
+   ]
+ &#125;,</code></pre></div>
+<ul>
+<li>打包的结果就在picture下了<br><img src="https://img-blog.csdnimg.cn/8c7bd7f699d9437eb5d0204e2e8abf05.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"><blockquote>
+<p>如果方法1和方法2同时都写了<br>那么写在<code>rules下的generator</code>方法的优先级是比写在<code>output下的assetModuleFilename</code>的优先级高的</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="asset-inline-资源转化成base64"><a href="#asset-inline-资源转化成base64" class="headerlink" title="asset / inline 资源转化成base64"></a><code>asset / inline 资源转化成base64</code></h3><blockquote>
+<p>用于导出一个资源的Data URL ( base64 )</p>
+</blockquote>
+<ul>
+<li>比如 这次我们想导出一个<code>svg</code>类型的资源</li>
+<li>webpack.config.js中配置</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-attr">module</span>:&#123; <span class="hljs-comment">//设置模块</span>
+    <span class="hljs-attr">rules</span>:[ <span class="hljs-comment">//设置loader</span>
+      &#123;
+        <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.svg$/</span>, <span class="hljs-comment">//已svg作为扩展名这样类型的文件</span>
+        <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;asset/inline&#x27;</span>, <span class="hljs-comment">//内联文件</span>
+      &#125;
+    ]
+  &#125;,</code></pre></div>
+<ul>
+<li>然后引入一个svg<br><img src="https://img-blog.csdnimg.cn/4039d764410745d5a4cc6b804c0c6fc5.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+<li>打包后发现dist下的目录并没有导出资源</li>
+<li>只能在浏览器中控制台看到资源 这就是asset&#x2F;inline类型<br><img src="https://img-blog.csdnimg.cn/71f04fed0ed343a6bebccb3520a4873b.png" srcset="/img/loading.gif" lazyload alt="在这里插入图片描述"></li>
+</ul>
+<h3 id="asset-source-读取资源的内容"><a href="#asset-source-读取资源的内容" class="headerlink" title="asset / source 读取资源的内容"></a><code>asset / source 读取资源的内容</code></h3><ul>
+<li>用于导出资源的源代码</li>
+<li>比如导出一个<code>txt</code>格式的文本文件</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-attr">module</span>:&#123; <span class="hljs-comment">//设置模块</span>
+   <span class="hljs-attr">rules</span>:[ <span class="hljs-comment">//设置loader</span>
+     &#123;
+       <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.txt$/</span>, <span class="hljs-comment">//已txt作为扩展名这样类型的文件</span>
+       <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;asset/source&#x27;</span>, <span class="hljs-comment">//源文件</span>
+     &#125;
+   ]
+ &#125;,</code></pre></div>
+<ul>
+<li>然后我们写入一个txt文件并且打包</li>
+<li>会发现dist下也不会打包出任何的文件</li>
+<li>页面上才可以看到  说明asset&#x2F;source可以读取资源的源文件</li>
+</ul>
+<h3 id="asset通用数据类型自动转换"><a href="#asset通用数据类型自动转换" class="headerlink" title="asset通用数据类型自动转换"></a><code>asset通用数据类型自动转换</code></h3><ul>
+<li>他会在导出一个Data URL( base64 )和发送一个单独文件之间自动进行选择</li>
+<li>也就是说会在<code>resource类型和inline中自动转换</code></li>
+<li>那么这个是根据的什么东西去自动转换的呢?</li>
+<li>默认情况下<br>– 当资源大于8k的情况下 走的就是<code>asset/resource</code>  ( 输出图片资源 )<br>– 当资源小于8k的情况下 走的就是<code>asset/inline</code> ( 不输出图片资源 变成base64链接 )<blockquote>
+<p>那怎么去调整这个阈值呢  可以设置如下参数</p>
+</blockquote>
+</li>
+</ul>
+<div class="code-wrapper"><pre><code class="hljs javascript"><span class="hljs-attr">module</span>:&#123; <span class="hljs-comment">//设置模块</span>
+    <span class="hljs-attr">rules</span>:[ <span class="hljs-comment">//设置loader</span>
+      &#123;
+        <span class="hljs-attr">test</span>:<span class="hljs-regexp">/\.jpg$/</span>, <span class="hljs-comment">//已作为jpg扩展名这样类型的文件</span>
+        <span class="hljs-attr">type</span>:<span class="hljs-string">&#x27;asset&#x27;</span>, <span class="hljs-comment">//源文件</span>
+        <span class="hljs-attr">parser</span>:&#123;  <span class="hljs-comment">//设置解析器</span>
+         <span class="hljs-attr">dataUrlCondition</span>:&#123; <span class="hljs-comment">//设置解析条件</span>
+            <span class="hljs-attr">maxSize</span>:<span class="hljs-number">10</span>*<span class="hljs-number">1024</span>*<span class="hljs-number">1024</span>, <span class="hljs-comment">//最大10mb</span>
+         &#125;
+        &#125;
+      &#125;
+    ]
+  &#125;,</code></pre></div>
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="category-chain-item">前端工程化</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/webpack/">#webpack</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>webpack5资源模块asset</div>
+      <div>http://example.com/2022/05/22/前端工程化/webpack5资源模块asset/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 22, 2022</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack5%E7%9A%84%E6%8F%92%E4%BB%B6plugin/" title="webpack5的插件plugin">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">webpack5的插件plugin</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/22/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/webpack5%20loader%E8%A7%A3%E6%9E%90%E5%99%A8/" title="webpack5 loader解析器">
+                        <span class="hidden-mobile">webpack5 loader解析器</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"BdYDA5GcsSARKdUvr1g6KR1Y-gzGzoHsz","appKey":"deDvzI8LcDpdDiuVJannjooQ","path":"window.location.pathname","placeholder":"快点评论一下~ 让我感受感受人气~ 哇哈哈哈哈~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"","emojiCDN":"//i0.hdslb.com/bfs/emote/","emojiMaps":{"tv_doge":"6ea59c827c414b4a2955fe79e0f6fd3dcd515e24.png","tv_亲亲":"a8111ad55953ef5e3be3327ef94eb4a39d535d06.png","tv_偷笑":"bb690d4107620f1c15cff29509db529a73aee261.png","tv_再见":"180129b8ea851044ce71caf55cc8ce44bd4a4fc8.png","tv_冷漠":"b9cbc755c2b3ee43be07ca13de84e5b699a3f101.png","tv_发怒":"34ba3cd204d5b05fec70ce08fa9fa0dd612409ff.png","tv_发财":"34db290afd2963723c6eb3c4560667db7253a21a.png","tv_可爱":"9e55fd9b500ac4b96613539f1ce2f9499e314ed9.png","tv_吐血":"09dd16a7aa59b77baa1155d47484409624470c77.png","tv_呆":"fe1179ebaa191569b0d31cecafe7a2cd1c951c9d.png","tv_呕吐":"9f996894a39e282ccf5e66856af49483f81870f3.png","tv_困":"241ee304e44c0af029adceb294399391e4737ef2.png","tv_坏笑":"1f0b87f731a671079842116e0991c91c2c88645a.png","tv_大佬":"093c1e2c490161aca397afc45573c877cdead616.png","tv_大哭":"23269aeb35f99daee28dda129676f6e9ea87934f.png","tv_委屈":"d04dba7b5465779e9755d2ab6f0a897b9b33bb77.png","tv_害羞":"a37683fb5642fa3ddfc7f4e5525fd13e42a2bdb1.png","tv_尴尬":"7cfa62dafc59798a3d3fb262d421eeeff166cfa4.png","tv_微笑":"70dc5c7b56f93eb61bddba11e28fb1d18fddcd4c.png","tv_思考":"90cf159733e558137ed20aa04d09964436f618a1.png","tv_惊吓":"0d15c7e2ee58e935adc6a7193ee042388adc22af.png"},"enableQQ":true,"visitor":true},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>吴文皓的博客</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>保持学习</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  <!-- <script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/yinghua.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/js/dianjichuzi.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css"></link>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css"></link> -->
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/fireworks.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
